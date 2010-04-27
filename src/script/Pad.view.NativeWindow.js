@@ -7,6 +7,8 @@ Pad.view.NativeWindow = function(config) {
 	if(typeof Pad.view.NativeWindow.initialized == "undefined"){
 		Pad.view.NativeWindow.prototype.init = function (){
 			this.buildNativeWindow();
+			this.buildNaviPanel();
+			
             this.moveActionRegister();
             
             if(this.config.closable) {
@@ -51,6 +53,20 @@ Pad.view.NativeWindow = function(config) {
         		}
         	}
         };
+        
+        /**创建窗口*/
+        Pad.view.NativeWindow.prototype.buildNaviPanel = function (){
+        	
+        	$('.windowbody').append("<div class='navipanel'></div>");
+
+        	$('.windowbody .navipanel').append("<div class='homenavi'></div>");        	
+        	$('.windowbody .navipanel').append("<div class='onlinenavi'></div>");
+        	$('.windowbody .navipanel').append("<div class='clientsnavi'></div>");
+        	$('.windowbody .navipanel').append("<div class='storagenavi'></div>");
+        	$('.windowbody .navipanel').append("<div class='billchecknavi'></div>");
+        	$('.windowbody .navipanel').append("<div class='billinputnavi'></div>");
+        };
+        
         /**关闭窗口事件*/
         Pad.view.NativeWindow.prototype.closeActionRegister = function (){        	
         	var close = $('.windowheader .tools-close')[0];
