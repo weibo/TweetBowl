@@ -65,6 +65,10 @@ Pad.view.NativeWindow = function(config) {
         	$('.windowbody .navipanel').append("<div class='storagenavi'></div>");
         	$('.windowbody .navipanel').append("<div class='billchecknavi'></div>");
         	$('.windowbody .navipanel').append("<div class='billinputnavi'></div>");
+        	
+        	$('.windowbody').append("<div class='contentpanel'></div>");
+        	$('.windowbody .contentpanel').append("<div class='stockspanel'></div>");
+        	$('.windowbody .contentpanel').append("<div class='billpanel'></div>");
         };
         
         /**关闭窗口事件*/
