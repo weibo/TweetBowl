@@ -2,10 +2,13 @@
     <head>
         <title>salePad</title>
 		
+		<!--link rel="stylesheet" type="text/css" href="lib/jquery/css/overcast/jquery-ui-1.8.custom.css" /-->
+		<link rel="stylesheet" type="text/css" href="lib/jquery/css/smoothness/jquery-ui-1.8.custom.css" />
 		<link rel="stylesheet" type="text/css" href="src/css/window.css" />
 		
         <script type="text/javascript" src="lib/air/AIRAliases.js"></script>
 		<script type="text/javascript" src="lib/jquery/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="lib/jquery/jquery-ui-1.8.custom.min.js"></script>
 		<script type="text/javascript" src="src/script/Pad.view.NativeWindow.js"></script>
         
 		<script>
@@ -17,6 +20,8 @@
 					minimizable: true,
 					tools: ['close','minimize']
 				});
+				
+				$(".stockspanel").accordion({ header: "h3" });
 			});
 		</script>
     </head>
