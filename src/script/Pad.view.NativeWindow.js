@@ -68,9 +68,9 @@ Pad.view.NativeWindow = function(config) {
         	
         	$('.windowbody').append("<div class='contentpanel'></div>");
         	$('.windowbody .contentpanel').append("<div class='stockspanel'></div>");
-        	$('.contentpanel .stockspanel').append("<div><div class='header'><a href='#'>商品列表</a></div><div class='productitems'></div></div>");
-        	$('.contentpanel .stockspanel').append("<div><div class='header'><a href='#'>客户列表</a></div><div class='clientitems'></div></div>");
-        	$('.windowbody .contentpanel').append("<div class='billpanel'></div>");
+        	$('.contentpanel .stockspanel').append("<div><div class='header'><a href='#'>商品列表</a></div><div class='productitems'>ttttt</div></div>");
+        	$('.contentpanel .stockspanel').append("<div><div class='header'><a href='#'>客户列表</a></div><div class='clientitems'>eeeee</div></div>");
+        	$('.windowbody .contentpanel').append("<div class='billpanel'><div></div></div>");
         };
         
         /**关闭窗口事件*/

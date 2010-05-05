@@ -133,3 +133,11 @@
 	background-color:rgba(255,255,255,1);
 	-webkit-border-radius:5px;
 }
+
+.windowbody .billpanel div {
+	margin:10px auto;
+	height:100px;width:96%;
+	border:2px solid #000;
+	background-color:rgba(255,255,255,1);
+	-webkit-border-radius:5px;
+}
