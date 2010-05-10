@@ -3,15 +3,18 @@
         <title>salePad</title>
 		
 		<!--link rel="stylesheet" type="text/css" href="lib/jquery/css/overcast/jquery-ui-1.8.custom.css" /-->
-		<link rel="stylesheet" type="text/css" href="lib/jquery/css/smoothness/jquery-ui-1.8.custom.css" />
+		<link class='changeme' rel="stylesheet" type="text/css" href="lib/jquery/css/smoothness/jquery-ui-1.8.custom.css" />
+		<link rel="stylesheet" type="text/css" href="lib/jquery/css/colorpicker.css" />
 		<link rel="stylesheet" type="text/css" href="src/css/window.css" />
 		
         <script type="text/javascript" src="lib/air/AIRAliases.js"></script>
 		<script type="text/javascript" src="lib/jquery/jquery-1.4.2.min.js"></script>
 		<script type="text/javascript" src="lib/jquery/jquery-ui-1.8.custom.min.js"></script>
+		<script type="text/javascript" src="lib/jquery/colorpicker.js"></script>
 		<script type="text/javascript" src="src/script/Pad.view.NativeWindow.js"></script>
         
 		<script>
+			
 			$(function(){
 				Pad.show({
 					title:'salePad',
@@ -22,6 +25,77 @@
 				});
 				
 				$(".stockspanel").accordion({ header: "div .header" });
+				
+				$("#catalog li").draggable({
+					appendTo: "body",
+					helper: "clone"
+				});
+				
+				$("#cart div").droppable({
+					activeClass: "ui-state-default",
+					hoverClass: "ui-state-hover",
+					accept: ":not(.ui-sortable-helper)",
+					drop: function(event, ui) {
+						$(this).find(".placeholder").remove();
+						$("<li></li>").text(ui.draggable.text()).appendTo(this);
+					}
+				}).sortable({
+					items: "li:not(.placeholder)",
+					sort: function() {
+						// gets added unintentionally by droppable interacting with sortable
+						// using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
+						$(this).removeClass("ui-state-default");
+					}
+				});
+				
+				$(".billpanel").droppable({
+					activeClass: "ui-state-default",
+					hoverClass: "ui-state-hover",
+					accept: ":not(.ui-sortable-helper)",
+					drop: function(event, ui) {
+						$(this).find(".placeholder").remove();
+						$("<li></li>").text(ui.draggable.text()).appendTo(this);
+					}
+				}).sortable({
+					items: "li:not(.placeholder)",
+					sort: function() {
+						// gets added unintentionally by droppable interacting with sortable
+						// using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
+						$(this).removeClass("ui-state-default");
+					}
+				});
+
+				$('#colorSelector').ColorPicker({
+					
+					onShow: function (colpkr) {
+						$(colpkr).fadeIn(500);
+						return false;
+					},
+					onHide: function (colpkr) {
+						$(colpkr).fadeOut(500);
+						return false;
+					},
+					onChange: function (hsb, hex, rgb) {
+						$('#colorSelector').css('backgroundColor', '#' + hex);
+						Pad.rgb = rgb;
+						$('.nativewindow').css('backgroundColor', 'rgba(' + Pad.rgb.r + ',' +Pad.rgb.g +',' + Pad.rgb.b + ',0.5)');
+						$("link.changeme").attr("href","lib/jquery/css/overcast/jquery-ui-1.8.custom.css");
+					}
+				});
+				
+				$("#slider").slider({
+					value:0.5,
+					min: 0,
+					max: 1,
+					step: 0.1,
+					orientation: "vertical",
+					slide: function(event, ui) {
+						//air.trace('$' + ui.value);
+						$('.nativewindow').css('background-color', 'rgba(' + Pad.rgb.r + ',' +Pad.rgb.g +',' + Pad.rgb.b + ','+ui.value+')');
+					}
+
+				});
+
 			});
 		</script>
     </head>
