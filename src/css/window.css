@@ -43,12 +43,21 @@
 }
 .windowheader .tools-maximize {
 	float: right;
+	width:25px; height:16px;
 	margin-right: 1px;
-	background:transparent url(../icons/window/maximize.png) no-repeat top center !important; 
+	background:transparent url(../icons/window/maximize.png) no-repeat -2px center !important; 
+}
+.windowheader .tools-maximize:hover {
+	background:transparent url(../icons/window/maximize.png) no-repeat -2px center !important; 
 }
 .windowheader .tools-restore {
 	float: right;
-	background:transparent url(../icons/window/restore.png) no-repeat top center !important; 
+	width:25px; height:16px;
+	margin-right: 1px;
+	background:transparent url(../icons/window/close.png) no-repeat -2px center !important; 
+}
+.windowheader .tools-restore:hover {
+	background:transparent url(../icons/window/close.png) no-repeat -2px center !important; 
 }
 
 .windowbody {

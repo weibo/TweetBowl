@@ -3,7 +3,7 @@
         <title>salePad</title>
 		
 		<!--link rel="stylesheet" type="text/css" href="lib/jquery/css/overcast/jquery-ui-1.8.custom.css" /-->
-		<link class='changeme' rel="stylesheet" type="text/css" href="lib/jquery/css/smoothness/jquery-ui-1.8.custom.css" />
+		<link class='changeme' rel="stylesheet" type="text/css" href="lib/jquery/css/lightness/jquery-ui-1.8.1.custom.css" />
 		<link rel="stylesheet" type="text/css" href="lib/jquery/css/colorpicker.css" />
 		<link rel="stylesheet" type="text/css" href="src/css/window.css" />
 		
@@ -11,20 +11,25 @@
 		<script type="text/javascript" src="lib/jquery/jquery-1.4.2.min.js"></script>
 		<script type="text/javascript" src="lib/jquery/jquery-ui-1.8.custom.min.js"></script>
 		<script type="text/javascript" src="lib/jquery/colorpicker.js"></script>
-		<script type="text/javascript" src="src/script/Pad.view.NativeWindow.js"></script>
+		<script type="text/javascript" src="src/script/jquery-air-ui.window.js"></script>
         
 		<script>
 			
 			$(function(){
-				Pad.show({
+//				Pad.show({
+//					title:'salePad',
+//					position: 'center',
+//					closable: true,
+//					minimizable: true,
+//					tools: ['close','minimize']
+//				});
+				
+				$("#nativewindow").nativeWindow({
 					title:'salePad',
-					position: 'center',
-					closable: true,
-					minimizable: true,
-					tools: ['close','minimize']
+					tools: ['close','maximize','minimize']
 				});
 				
-				$(".stockspanel").accordion({ header: "div .header" });
+				$(".stockspanel").accordion({ header: "div .header"});
 				
 				$("#catalog li").draggable({
 					appendTo: "body",
@@ -32,8 +37,8 @@
 				});
 				
 				$("#cart div").droppable({
-					activeClass: "ui-state-default",
-					hoverClass: "ui-state-hover",
+					activeClass: "ui-state-active",
+					hoverClass: "ui-widget-content",
 					accept: ":not(.ui-sortable-helper)",
 					drop: function(event, ui) {
 						$(this).find(".placeholder").remove();
@@ -79,7 +84,7 @@
 						$('#colorSelector').css('backgroundColor', '#' + hex);
 						Pad.rgb = rgb;
 						$('.nativewindow').css('backgroundColor', 'rgba(' + Pad.rgb.r + ',' +Pad.rgb.g +',' + Pad.rgb.b + ',0.5)');
-						$("link.changeme").attr("href","lib/jquery/css/overcast/jquery-ui-1.8.custom.css");
+						//$("link.changeme").attr("href","lib/jquery/css/overcast/jquery-ui-1.8.custom.css");
 					}
 				});
 				
