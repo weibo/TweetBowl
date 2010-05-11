@@ -27,37 +27,37 @@
 	float: right;
 	margin-right: 10px;
 	width:36px; height:16px;
-	background:transparent url(../icons/window/close.png) no-repeat -2px right !important;
+	background:transparent url(../icons/window/win_tools.png) no-repeat right -2px !important;
 }
 .windowheader .tools-close:hover {
-	background:transparent url(../icons/window/close_hover.png) no-repeat -2px right !important;
+	background:transparent url(../icons/window/win_tools_hover.png) no-repeat right -2px !important;
 }
 .windowheader .tools-minimize {
 	float: right;
-	width:25px; height:16px;
+	width:24px; height:16px;
 	margin-right: 1px;
-	background:transparent url(../icons/window/minimize.png) no-repeat -2px left !important; 
+	background:transparent url(../icons/window/win_tools.png) no-repeat left -2px !important; 
 }
 .windowheader .tools-minimize:hover {
-	background:transparent url(../icons/window/minimize_hover.png) no-repeat -2px left !important; 
+	background:transparent url(../icons/window/win_tools_hover.png) no-repeat left -2px !important; 
 }
 .windowheader .tools-maximize {
 	float: right;
-	width:25px; height:16px;
+	width:24px; height:16px;
 	margin-right: 1px;
-	background:transparent url(../icons/window/maximize.png) no-repeat -2px center !important; 
+	background:transparent url(../icons/window/win_tools.png) no-repeat -58px -2px !important; 
 }
 .windowheader .tools-maximize:hover {
-	background:transparent url(../icons/window/maximize.png) no-repeat -2px center !important; 
+	background:transparent url(../icons/window/win_tools_hover.png) no-repeat -58px -2px !important; 
 }
 .windowheader .tools-restore {
 	float: right;
-	width:25px; height:16px;
+	width:24px; height:16px;
 	margin-right: 1px;
-	background:transparent url(../icons/window/close.png) no-repeat -2px center !important; 
+	background:transparent url(../icons/window/win_tools.png) no-repeat -30px -2px !important; 
 }
 .windowheader .tools-restore:hover {
-	background:transparent url(../icons/window/close.png) no-repeat -2px center !important; 
+	background:transparent url(../icons/window/win_tools_hover.png) no-repeat -30px -2px !important; 
 }
 
 .windowbody {
