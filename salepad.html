@@ -10,6 +10,7 @@
         <script type="text/javascript" src="lib/air/AIRAliases.js"></script>
 		<script type="text/javascript" src="lib/jquery/jquery-1.4.2.min.js"></script>
 		<script type="text/javascript" src="lib/jquery/jquery-ui-1.8.custom.min.js"></script>
+		<script type="text/javascript" src="lib/jquery/jquery.json-2.2.min.js"></script>
 		<script type="text/javascript" src="lib/jquery/colorpicker.js"></script>
 		<script type="text/javascript" src="src/script/jquery-air-ui.window.js"></script>
         
@@ -82,21 +83,22 @@
 					},
 					onChange: function (hsb, hex, rgb) {
 						$('#colorSelector').css('backgroundColor', '#' + hex);
-						Pad.rgb = rgb;
-						$('.nativewindow').css('backgroundColor', 'rgba(' + Pad.rgb.r + ',' +Pad.rgb.g +',' + Pad.rgb.b + ',0.5)');
+						//Pad.rgb = rgb;
+						$('.nativewindow').backgroundColor(rgb);
 						//$("link.changeme").attr("href","lib/jquery/css/overcast/jquery-ui-1.8.custom.css");
 					}
 				});
 				
 				$("#slider").slider({
-					value:0.5,
+					value:$.nativeWindow.config.rgba.a,
 					min: 0,
 					max: 1,
 					step: 0.1,
-					orientation: "vertical",
+					//orientation: "vertical",
 					slide: function(event, ui) {
 						//air.trace('$' + ui.value);
-						$('.nativewindow').css('background-color', 'rgba(' + Pad.rgb.r + ',' +Pad.rgb.g +',' + Pad.rgb.b + ','+ui.value+')');
+						$('.nativewindow').backgroundColor({a:ui.value});
+						//$('.nativewindow').css('background-color', 'rgba(' + Pad.rgb.r + ',' +Pad.rgb.g +',' + Pad.rgb.b + ','+ui.value+')');
 					}
 
 				});

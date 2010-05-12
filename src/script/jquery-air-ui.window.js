@@ -23,7 +23,9 @@
 		},opts||{});
 		
 		/**创建窗口*/
-		$(document.body).append("<div class='nativewindow'><div class='windowheader'></div><div class='windowbody'></div></div>");
+		$(document.body).append("<div class='nativewindow'><div class='windowheader'></div><div class='windowbody'></div><div class='windowfooter'></div></div>");
+		
+		$("<div id='colorSelector'></div><div class='sliderdemo'><div id='slider'></div></div>").appendTo(".windowfooter");
 		
 		/**拖动窗口事件*/
 		if(opts.movable) {
@@ -43,6 +45,16 @@
     			if(value == 'close') {
     				$('.windowheader').append("<div class='tools-close'></div>");
     				$('.windowheader .tools-close').click(function(){
+    					
+    					if($.nativeWindow.state == 'preserve') {
+    						$.nativeWindow.config.position = {
+    							x: window.nativeWindow.x,
+    							y: window.nativeWindow.y
+    						}
+    						var bytes = new air.ByteArray();
+    						bytes.writeUTFBytes($.encode($.nativeWindow.config));
+    						air.EncryptedLocalStore.setItem('windowstate', bytes);
+    					}
     					
     					var exitingEvent = new air.Event(air.Event.EXITING, false, true);
     	                air.NativeApplication.nativeApplication.dispatchEvent(exitingEvent);
@@ -81,10 +93,53 @@
     			window.nativeWindow.y = opts.position.y;
     		}
     	}
+    	
+    	if($.nativeWindow.state == 'preserve') {
+	    	var storedValue = air.EncryptedLocalStore.getItem("windowstate");
+			if (storedValue) {
+				var config = storedValue.readUTFBytes(storedValue.length); 
+				$.nativeWindow.config = $.decode(config);
+				
+				if($.nativeWindow.config.rgba) {
+					$(".nativewindow").backgroundColor($.nativeWindow.config.rgba);
+				}
+				
+				if($.nativeWindow.config.position) {
+					var position = $.nativeWindow.config.position;
+					window.nativeWindow.x = position.x;
+	    			window.nativeWindow.y = position.y;
+				}
+			}
+    	}
 	}
 	$.fn.nativeWindow = function(opts) {		
 		if(!$(this).length){
 			$.nativeWindow(opts);
 		}
+	}
+	
+	$.nativeWindow.state = 'preserve';
+	$.nativeWindow.config = {};
+	$.nativeWindow.config.rgba = {r: 75, g: 175, b: 175, a: 0.8};
+	
+	$.fn.backgroundColor = function(rgba) {
+		$.nativeWindow.config.rgba = jQuery.extend($.nativeWindow.config.rgba, rgba||{});
+		rgba = $.nativeWindow.config.rgba;
+		if($(this).length){
+			$(this).css('backgroundColor', 'rgba(' + rgba.r + ',' +rgba.g +',' + rgba.b + ',' + rgba.a + ')');
+		}
+	}
+	
+	$.decode = function(text) {
+		if(!text) {
+			return null;
+		}
+		return eval("("+text+")");
+	}
+	$.encode = function(json) {
+		if(!json) {
+			return null;
+		}
+		return $.toJSON(json);
 	}
 })(jQuery);

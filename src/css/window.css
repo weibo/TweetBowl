@@ -5,7 +5,7 @@
 	display: table;
 	width:100%;height:100%;
 	-webkit-border-radius:5px;	
-	background-color:rgba(175,175,75,1);
+	background-color:rgba(75,175,175,0.8);
 	font:normal normal Tahoma,Arial,Geogia,宋体,Sans-serif;
 	background-image: -webkit-gradient(linear, left top, left bottom,
 		color-stop(0%, rgba(255, 255, 255, .4)),
@@ -64,6 +64,23 @@
 	height:100%;width:100%;
 	padding:8px;
 	display:table-cell;
+}
+
+.windowfooter {
+	height:50px;width:100%;
+	display:table-footer-group;
+}
+
+.windowfooter #colorSelector {
+	float:left;
+	margin-left:8px;
+	margin-bottom: 3px;
+}
+
+.windowfooter .sliderdemo {
+	float:left;
+	padding: 10px !important;
+	width: 100px;
 }
 
 .windowbody .navipanel {
@@ -152,6 +169,4 @@
 }
 
 
-.sliderdemo {
-	padding: 10px !important;
-}
+
