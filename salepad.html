@@ -18,6 +18,7 @@
 		<script type="text/javascript" src="lib/ext/ext-base64.js"></script>
 		
 		<script type="text/javascript" src="lib/api/twitter.js"></script>
+		<script type="text/javascript" src="lib/api/cnfol.js"></script>
 		
 		<script type="text/javascript" src="src/script/jquery-air-ui.window.js"></script>
 		<script type="text/javascript" src="src/script/jquery-twitter-plugin.js"></script>
@@ -36,20 +37,15 @@
 //					minimizable: true,
 //					tools: ['close','minimize']
 //				});
-				$.ajax({
-				  url: 'http://twitter.com/search.json?q=test',
-				  dataType: "json",
-				  success: function(data) {
-				    air.trace(data.results.length);
-				  }
-				});
 				
-				$.twitter.search({q:'#someken'}, function(response, options){
+				$.tweet = $.cnfol;
+				
+				$.tweet.search({q:'#someken'}, function(response, options){
 					var data = Ext.decode(response.responseText);
-					air.trace(response.responseText);
+					//air.trace(response.responseText);
 				});
 				
-				$.twitter.update({status:'#twitpop'}, function(response, options){
+				$.tweet.verify({username:'helio',password:'welcome8298'}, function(response, options){
 					//var data = Ext.decode(response.responseText);
 					//alert(data.results.length)
 					air.trace(response.responseText);
