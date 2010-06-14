@@ -17,8 +17,10 @@
 		<script type="text/javascript" src="lib/ext/ext-core.js"></script>
 		<script type="text/javascript" src="lib/ext/ext-base64.js"></script>
 		
-		<script type="text/javascript" src="lib/api/twitter.js"></script>
 		<script type="text/javascript" src="lib/api/cnfol.js"></script>
+		<script type="text/javascript" src="lib/api/twitter.js"></script>
+		<script type="text/javascript" src="lib/api/sina.js"></script>
+		<script type="text/javascript" src="lib/api/sohu.js"></script>
 		
 		<script type="text/javascript" src="src/script/jquery-air-ui.window.js"></script>
 		<script type="text/javascript" src="src/script/jquery-twitter-plugin.js"></script>
@@ -38,16 +40,21 @@
 //					tools: ['close','minimize']
 //				});
 				
-				$.tweet = $.cnfol;
+				$.tweet = $.sina;				
 				
-				$.tweet.search({q:'#someken'}, function(response, options){
-					var data = Ext.decode(response.responseText);
-					//air.trace(response.responseText);
-				});
-				
-				$.tweet.verify({username:'helio',password:'welcome8298'}, function(response, options){
+				$.tweet.verify({username:'scorpio_xinxin@sina.com',password:'welcome8298'}, function(response, options){
 					//var data = Ext.decode(response.responseText);
 					//alert(data.results.length)
+					air.trace(response.responseText);
+				});
+				
+				$.tweet.search({q:'世界杯'}, function(response, options){
+					var data = Ext.decode(response.responseText);
+					air.trace(response.responseText);
+				});
+				
+				$.tweet.update({status:'世界杯'}, function(response, options){
+					var data = Ext.decode(response.responseText);
 					air.trace(response.responseText);
 				});
 				
