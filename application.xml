@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<application xmlns="http://ns.adobe.com/air/application/2.0beta2">
+<application xmlns="http://ns.adobe.com/air/application/2.0">
 
 <!-- Adobe AIR Application Descriptor File Template.
 
 	Specifies parameters for identifying, installing, and launching AIR applications.
 
-	xmlns - The Adobe AIR namespace: http://ns.adobe.com/air/application/2.0beta2
+	xmlns - The Adobe AIR namespace: http://ns.adobe.com/air/application/2.0
 			The last segment of the namespace specifies the version 
 			of the AIR runtime required for this application to run.
 			
@@ -23,7 +23,7 @@
 	<name>salepad</name>
 
 	<!-- An application version designator (such as "v1", "2.5", or "Alpha 1"). Required. -->
-	<version>1.0</version>
+	<version>1.0.0</version>
 
 	<!-- Description, displayed in the AIR application installer. Optional. -->
 	<description/>
