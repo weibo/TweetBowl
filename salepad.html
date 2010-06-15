@@ -94,10 +94,17 @@
 
 				});
 				
-				$.cnfol.statuses.user_timeline({}, function(results){
+				$.tweet.statuses.friends_timeline({}, function(results){
 					$.each(results, function(index, value){
-		    			//$('#content').append(value);
-						//air.trace(value);
+						
+						$("#content").addTweetPanel(value);
+						
+		    		});
+				});
+				
+				
+				$.tweet.statuses.user_timeline({}, function(results){
+					$.each(results, function(index, value){
 						
 						$("#content").addTweetPanel(value);
 						
@@ -106,6 +113,7 @@
 				
 				$.tweet.search({q:'世界杯'}, function(results){
 					$.each(results, function(index, value){
+						
 						$("#content").addTweetPanel(value);
 						
 		    		});

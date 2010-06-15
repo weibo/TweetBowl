@@ -7,7 +7,7 @@
 	padding:10px;
 	width:31%;height:30%;
 	-webkit-border-radius:5px;
-	background-color:rgba(240,240,240,0.9);
+	background-color:rgba(222,222,222,0.6);
 	background-image: -webkit-gradient(linear, left top, left bottom,
 		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
 		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
@@ -18,9 +18,11 @@
 }
 
 .tweetpanel:hover {	
-	margin:1% auto 1%;	
 	width:33%;height:30%;
-	background-color:rgba(222,222,222,0.6);
+	margin:1% auto;
+	padding:9px;
+	border:1px outset #e1e1e1;
+	background-color:rgba(240,240,240,1);
 }
 
 .tweetpanel .tweetpaneltitle {

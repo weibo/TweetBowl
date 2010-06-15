@@ -25,7 +25,7 @@
 		
 		var nameDiv = document.createElement("div");
 		nameDiv.className = "user_name";
-		nameDiv.innerHTML = tweet.user.name;
+		nameDiv.innerHTML = tweet.user.screen_name;
 		titleDiv.appendChild(nameDiv);
 		
 		var contentDiv = document.createElement("div");
