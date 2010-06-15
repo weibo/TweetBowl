@@ -1,0 +1,50 @@
+@CHARSET "utf-8";
+
+.tweetpanel {	
+	display: table;
+	float:left;
+	margin:1%;
+	padding:10px;
+	width:31%;height:30%;
+	-webkit-border-radius:5px;
+	background-color:rgba(240,240,240,0.9);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
+	font:normal normal 宋体,Tahoma,Arial,Geogia,Sans-serif;
+	
+	overflow:auto;
+}
+
+.tweetpanel:hover {	
+	margin:1% auto 1%;	
+	width:33%;height:30%;
+	background-color:rgba(222,222,222,0.6);
+}
+
+.tweetpanel .tweetpaneltitle {
+	display:table-header-group; 
+}
+
+.tweetpanel .profile_image_url {
+	float:left;
+	height:40px;width:40px;
+}
+
+.tweetpanel .user_name {
+	float:left;
+	height:16px;width:50%;
+	padding:0px 5px 0px;	 
+}
+
+.tweetpanel .tweetpanelbody {	
+	display:table-cell;
+	overflow:hidden;
+}
+
+.tweetpanel .tweetcontent {
+	height:110px;
+	word-wrap:break-word;
+	word-break:break-all;
+}

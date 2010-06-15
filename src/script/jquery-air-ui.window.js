@@ -83,6 +83,12 @@
     		});
     	}
     	
+    	if(opts.items) {
+    		$.each(opts.items, function(index, value){
+    			$('.windowbody').append(value);
+    		});
+    	}
+    	
     	/**窗口坐标*/
     	if(opts.position) {
     		if(opts.position == 'center') {

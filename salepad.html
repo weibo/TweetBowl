@@ -6,6 +6,7 @@
 		<link class='changeme' rel="stylesheet" type="text/css" href="lib/jquery/css/lightness/jquery-ui-1.8.1.custom.css" />
 		<link rel="stylesheet" type="text/css" href="lib/jquery/css/colorpicker.css" />
 		<link rel="stylesheet" type="text/css" href="src/css/window.css" />
+		<link rel="stylesheet" type="text/css" href="src/css/tweetpanel.css" />
 		
         <script type="text/javascript" src="lib/air/AIRAliases.js"></script>
 		<script type="text/javascript" src="lib/jquery/jquery-1.4.2.min.js"></script>
@@ -17,13 +18,18 @@
 		<script type="text/javascript" src="lib/ext/ext-core.js"></script>
 		<script type="text/javascript" src="lib/ext/ext-base64.js"></script>
 		
+		<script type="text/javascript" src="lib/api/api9911.js"></script>
 		<script type="text/javascript" src="lib/api/cnfol.js"></script>
-		<script type="text/javascript" src="lib/api/twitter.js"></script>
+		<script type="text/javascript" src="lib/api/digu.js"></script>
+		<script type="text/javascript" src="lib/api/renjian.js"></script>
 		<script type="text/javascript" src="lib/api/sina.js"></script>
 		<script type="text/javascript" src="lib/api/sohu.js"></script>
+		<script type="text/javascript" src="lib/api/zuosa.js"></script>
+		<script type="text/javascript" src="lib/api/tongxue.js"></script>
+		<script type="text/javascript" src="lib/api/twitter.js"></script>
 		
 		<script type="text/javascript" src="src/script/jquery-air-ui.window.js"></script>
-		<script type="text/javascript" src="src/script/jquery-twitter-plugin.js"></script>
+		<script type="text/javascript" src="src/script/Pad.view.tweetpanel.js"></script>
         
 		<script>
 			
@@ -32,76 +38,28 @@
 			}
 			
 			$(function(){
-//				Pad.show({
-//					title:'salePad',
-//					position: 'center',
-//					closable: true,
-//					minimizable: true,
-//					tools: ['close','minimize']
+				
+				$.tweet = $.cnfol;				
+				
+//				$.tweet.verify({username:'helio',password:'welcome8298'}, function(response, options){
+//					//var data = Ext.decode(response.responseText);
+//					//alert(data.results.length)
+//					air.trace(response.responseText);
 //				});
 				
-				$.tweet = $.sina;				
 				
-				$.tweet.verify({username:'scorpio_xinxin@sina.com',password:'welcome8298'}, function(response, options){
-					//var data = Ext.decode(response.responseText);
-					//alert(data.results.length)
-					air.trace(response.responseText);
-				});
 				
-				$.tweet.search({q:'世界杯'}, function(response, options){
-					var data = Ext.decode(response.responseText);
-					air.trace(response.responseText);
-				});
 				
-				$.tweet.update({status:'世界杯'}, function(response, options){
-					var data = Ext.decode(response.responseText);
-					air.trace(response.responseText);
-				});
+				
+//				$.tweet.update({status:'世界杯'}, function(response, options){
+//					var data = Ext.decode(response.responseText);
+//					air.trace(response.responseText);
+//				});
 				
 				$("#nativewindow").nativeWindow({
-					title:'salePad',
-					tools: ['close','maximize','minimize']
-				});
-				
-				$(".stockspanel").accordion({ header: "div .header"});
-				
-				$("#catalog li").draggable({
-					appendTo: "body",
-					helper: "clone"
-				});
-				
-				$("#cart div").droppable({
-					activeClass: "ui-state-active",
-					hoverClass: "ui-widget-content",
-					accept: ":not(.ui-sortable-helper)",
-					drop: function(event, ui) {
-						$(this).find(".placeholder").remove();
-						$("<li></li>").text(ui.draggable.text()).appendTo(this);
-					}
-				}).sortable({
-					items: "li:not(.placeholder)",
-					sort: function() {
-						// gets added unintentionally by droppable interacting with sortable
-						// using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
-						$(this).removeClass("ui-state-default");
-					}
-				});
-				
-				$(".billpanel").droppable({
-					activeClass: "ui-state-default",
-					hoverClass: "ui-state-hover",
-					accept: ":not(.ui-sortable-helper)",
-					drop: function(event, ui) {
-						$(this).find(".placeholder").remove();
-						$("<li></li>").text(ui.draggable.text()).appendTo(this);
-					}
-				}).sortable({
-					items: "li:not(.placeholder)",
-					sort: function() {
-						// gets added unintentionally by droppable interacting with sortable
-						// using connectWithSortable fixes this, but doesn't allow you to customize active/hoverClass options
-						$(this).removeClass("ui-state-default");
-					}
+					title: 'salePad',
+					tools: ['close','maximize','minimize'],
+					items: ['<div id="content"></div>']
 				});
 
 				$('#colorSelector').ColorPicker({
@@ -135,7 +93,23 @@
 					}
 
 				});
-
+				
+				$.cnfol.statuses.user_timeline({}, function(results){
+					$.each(results, function(index, value){
+		    			//$('#content').append(value);
+						//air.trace(value);
+						
+						$("#content").addTweetPanel(value);
+						
+		    		});
+				});
+				
+				$.tweet.search({q:'世界杯'}, function(results){
+					$.each(results, function(index, value){
+						$("#content").addTweetPanel(value);
+						
+		    		});
+				});
 			});
 		</script>
     </head>
