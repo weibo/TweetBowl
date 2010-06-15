@@ -37,7 +37,8 @@
 .tweetpanel .user_name {
 	float:left;
 	height:16px;width:50%;
-	padding:0px 5px 0px;	 
+	padding:0px 5px 0px;
+	font-weight:bolder;
 }
 
 .tweetpanel .tweetpanelbody {	
@@ -46,7 +47,20 @@
 }
 
 .tweetpanel .tweetcontent {
-	height:110px;
+	height:108px;
 	word-wrap:break-word;
 	word-break:break-all;
+}
+
+.tweetpanel .tweetpanelfooter {	
+	display:table-footer-group;
+}
+
+.tweetpanel .create_date {
+	float:left;
+	height:10px;width:60%;
+	padding:2px auto;
+	font-size:small;
+	font-style:oblique;
+	color:#888;
 }
