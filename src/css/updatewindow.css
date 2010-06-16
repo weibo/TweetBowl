@@ -1,0 +1,41 @@
+@CHARSET "utf-8";
+
+.updatewindow {
+	margin:0px auto;
+	position:absolute; 
+	display: table;
+	padding:5%;
+	width:300px;height:150px;
+	border:1px sold #e1e1e1;
+	-webkit-border-radius:5px;
+	background-color:rgba(215,225,235,0.9);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
+	font:normal larger 宋体,Tahoma,Arial,Geogia,Sans-serif;
+	display:none;
+}
+			#windowtitle {
+				height:100%;width:100%;	
+				display:table-header-group; 
+				vertical-align: top;
+			}
+			#contentpanel {
+				height:100%;width:100%;
+				padding:1px;
+			}
+			#buttonpanel {				
+				font:normal normal 宋体,Tahoma,Arial,Geogia,Sans-serif;
+				padding:1px 1px 0px;
+			}
+			#buttonpanel .fontleft {
+				float:left;
+				width:50px;
+			}
+			#buttonpanel .bottonright {
+				float:right;
+			}
+			.btn-update {
+				width: 80px;
+			}			

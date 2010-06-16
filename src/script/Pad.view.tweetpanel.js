@@ -11,6 +11,10 @@
  */
 (function($){
 	
+	function reply(id) {
+		alert(id);
+	};
+	
 	$.buildTweetPanel = function(tweet) {
 		var panelDiv = document.createElement("div");
 		panelDiv.className = "tweetpanel";
@@ -27,6 +31,11 @@
 		nameDiv.className = "user_name";
 		nameDiv.innerHTML = tweet.user.screen_name;
 		titleDiv.appendChild(nameDiv);
+		
+		var toolsDiv = document.createElement("div");
+		toolsDiv.className = "tweetpaneltools";
+		toolsDiv.innerHTML = "<li>收藏</li><li class='retweet'>转发</li><li class='reply'>回复</li>";
+		titleDiv.appendChild(toolsDiv);
 		
 		var contentDiv = document.createElement("div");
 		contentDiv.className = "tweetpanelbody";
@@ -48,8 +57,14 @@
 		if($(this)[0]){
 			var tweetPanel = $.buildTweetPanel(tweet);
 			$(this).append(tweetPanel);
-			
-			//$(this).append("<div class='tweetpanel'><div class='tweetpaneltitle'><div class='profile_image_url'></div>"+tweet.name+"</div><div class='tweetcontent'>"+tweet.text+"</div></div>");
+			$(tweetPanel).bind('click', function(){
+				//$(this).hide();
+			});
+			$("li.reply", tweetPanel).bind('click', function(){
+				//alert(tweet.id);
+				
+				$('#updatewindow').css('display','block');
+			});
 			
 		}
 	}

@@ -7,6 +7,7 @@
 		<link rel="stylesheet" type="text/css" href="lib/jquery/css/colorpicker.css" />
 		<link rel="stylesheet" type="text/css" href="src/css/window.css" />
 		<link rel="stylesheet" type="text/css" href="src/css/tweetpanel.css" />
+		<link rel="stylesheet" type="text/css" href="src/css/updatewindow.css" />
 		
         <script type="text/javascript" src="lib/air/AIRAliases.js"></script>
 		<script type="text/javascript" src="lib/jquery/jquery-1.4.2.min.js"></script>
@@ -95,22 +96,22 @@
 
 				});
 				
-				$.tweet.statuses.friends_timeline({}, function(results){
-					$.each(results, function(index, value){
-						
-						$("#content").addTweetPanel(value);
-						
-		    		});
-				});
+//				$.tweet.statuses.friends_timeline({}, function(results){
+//					$.each(results, function(index, value){
+//						
+//						$("#content").addTweetPanel(value);
+//						
+//		    		});
+//				});
 				
 				
-				$.tweet.statuses.user_timeline({}, function(results){
-					$.each(results, function(index, value){
-						
-						$("#content").addTweetPanel(value);
-						
-		    		});
-				});
+//				$.tweet.statuses.user_timeline({}, function(results){
+//					$.each(results, function(index, value){
+//						
+//						$("#content").addTweetPanel(value);
+//						
+//		    		});
+//				});
 				
 				$.tweet.search({q:'世界杯'}, function(results){
 					$.each(results, function(index, value){
@@ -123,6 +124,22 @@
 		</script>
     </head>
     <body>
-    	
+    	<div id="updatewindow" class="updatewindow">
+			<div id="windowtitle">
+				<div id="tools-close" class="tools-close" onclick="UpdateWindow.close();"></div>
+			</div>
+			<form onsubmit="UpdateWindow.update(this)">
+			<div id="contentpanel">
+				<textarea id="status" name="content" wrap="on" style="height:150px;width:98%;" onkeyup="UpdateWindow.checkLength(this);"></textarea>
+			</div>
+			<div id="buttonpanel">
+				<div id="fontleft" class="fontleft">140</div>
+				<div class="bottonright">
+					<input type="reset" value="取消" class="btn-image"/>
+					<input type="button" value="发送" onclick="UpdateWindow.update(this.form)" class="btn-image btn-update"/>
+				</div>
+			</div>
+			</form>
+		</div>
     </body>
 </html>
