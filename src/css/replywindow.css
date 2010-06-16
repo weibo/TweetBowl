@@ -1,6 +1,6 @@
 @CHARSET "utf-8";
 
-.updatewindow {
+.replywindow {
 	position:absolute; 
 	display: table;
 	padding:20px;
@@ -15,47 +15,31 @@
 	font:normal larger 宋体,Tahoma,Arial,Geogia,Sans-serif;
 	display:none;
 }
-.updatewindowtitle {
+.replywindowtitle {
 	display:table-header-group; 
 	vertical-align: top;
 }
-.updatewindowbody {
+.replywindowbody {
 	display:table-cell;
 }
 
-.updatewindowfooter {
+.replywindowfooter {
 	display:table-footer-group;
 	font:normal normal 宋体,Tahoma,Arial,Geogia,Sans-serif;
 }
 
-.updatewindowfooter .fontleft {
+.replywindowfooter .fontleft {
 	float:left;
 	width:50px;
 	margin-top:5px;
 }
-.updatewindowfooter .bottonright {
+.replywindowfooter .bottonright {
 	float:right;
 	margin-top:5px;
 }
-.updatewindowfooter .btn-update {
+.replywindowfooter .btn-update {
 	width: 80px;
 }
-.updatewindowfooter .btn-cancel {
+.replywindowfooter .btn-cancel {
 	width: 80px;
 }
-
-.btn-image {
-	border-width:thin;
-	-webkit-border-radius: 2px;
-	background-color:rgba(222,222,222,0.9);
-	background-image: -webkit-gradient(linear, left top, left bottom,
-		color-stop(0, rgba(255, 255, 255, .1)),/*透明度 90%*/
-		color-stop(50%, rgba(255, 255, 255, .2)), /*透明度 70%*/
-		color-stop(90%, rgba(255, 255, 255, .4)));/*透明度 40%*/
-	height:28px;
-	vertical-align:middle;
-}
-
-.btn-image:hover {
-	background-color:rgba(150,150,150,0.9);
-}		

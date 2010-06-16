@@ -11,10 +11,6 @@
  */
 (function($){
 	
-	function reply(id) {
-		alert(id);
-	};
-	
 	$.buildTweetPanel = function(tweet) {
 		var panelDiv = document.createElement("div");
 		panelDiv.className = "tweetpanel";
@@ -57,16 +53,112 @@
 		if($(this)[0]){
 			var tweetPanel = $.buildTweetPanel(tweet);
 			$(this).append(tweetPanel);
+			
 			$(tweetPanel).bind('click', function(){
-				//$(this).hide();
+				$(this).fadeIn("slow");
+				var position = $(this).position();
 			});
 			$("li.reply", tweetPanel).bind('click', function(){
 				//alert(tweet.id);
+				var position = $(this).position();
 				
-				$('#updatewindow').css('display','block');
+				$.replywindow.show(position);
 			});
-			
+			$("li.retweet", tweetPanel).bind('click', function(){
+				//alert(tweet.id);
+				var position = $(this).position();
+				
+				$.updatewindow.show(position);
+			});
 		}
+	}
+	
+	/**
+	 * 发布窗口
+	 */
+	$.updatewindow = {};
+	
+	$.updatewindow.show = function(position) {
+		if(position.left + $('#updatewindow').outerWidth(true) > 800) {
+			$('#updatewindow').css('left',position.left - $('#updatewindow').outerWidth(true));
+		} else {
+			$('#updatewindow').css('left',position.left);
+		}
+		
+		if(position.top + $('#updatewindow').outerHeight(true) > 600) {
+			$('#updatewindow').css('top',position.top - $('#updatewindow').outerHeight(true));
+		} else {
+			$('#updatewindow').css('top',position.top);
+		}
+		$('#updatewindow').show();
+		$("#updatewindow #updatetext").focus();
+	}
+	
+	$.updatewindow.checkLength = function(textArea) {
+		var length = 140 - textArea.value.length;
+		if(length > 0) {
+			$("#updatewindow #fontleft").html(length);
+		} else {
+			$("#updatewindow #fontleft").html('<font color="red">' + length + '</font>');
+		}
+	}
+	
+	$.updatewindow.update = function(form) {
+		if(form) {
+			air.trace(form.elements["updatetext"].value);
+		}		
+	}
+	
+	$.updatewindow.cancel = function(form) {
+		if(form) {
+			form.reset();
+			$('#updatewindow').hide();
+			$("#updatewindow #fontleft").html(140);
+		}		
+	}
+	
+	/**
+	 * 回复窗口
+	 */
+	$.replywindow = {};
+	
+	$.replywindow.show = function(position) {
+		if(position.left + $('#replywindow').outerWidth(true) > 800) {
+			$('#replywindow').css('left',position.left - $('#replywindow').outerWidth(true));
+		} else {
+			$('#replywindow').css('left',position.left);
+		}
+		
+		if(position.top + $('#replywindow').outerHeight(true) > 600) {
+			$('#replywindow').css('top',position.top - $('#replywindow').outerHeight(true));
+		} else {
+			$('#replywindow').css('top',position.top);
+		}
+		$('#replywindow').show();
+		$("#replywindow #updatetext").focus();
+	}
+	
+	$.replywindow.checkLength = function(textArea) {
+		var length = 140 - textArea.value.length;
+		if(length > 0) {
+			$("#replywindow #fontleft").html(length);
+		} else {
+			$("#replywindow #fontleft").html('<font color="red">' + length + '</font>');
+		}
+	}
+	
+	$.replywindow.update = function(form) {
+		if(form) {
+			air.trace(form.elements["updatetext"].value);
+		}		
+	}
+	
+	$.replywindow.cancel = function(form) {
+		if(form) {
+			form.reset();
+			$('#replywindow').hide();
+			$("#replywindow #fontleft").html(140);
+		}		
 	}
 	
 })(jQuery);

@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="src/css/window.css" />
 		<link rel="stylesheet" type="text/css" href="src/css/tweetpanel.css" />
 		<link rel="stylesheet" type="text/css" href="src/css/updatewindow.css" />
+		<link rel="stylesheet" type="text/css" href="src/css/replywindow.css" />
 		
         <script type="text/javascript" src="lib/air/AIRAliases.js"></script>
 		<script type="text/javascript" src="lib/jquery/jquery-1.4.2.min.js"></script>
@@ -96,13 +97,13 @@
 
 				});
 				
-//				$.tweet.statuses.friends_timeline({}, function(results){
-//					$.each(results, function(index, value){
-//						
-//						$("#content").addTweetPanel(value);
-//						
-//		    		});
-//				});
+				$.tweet.statuses.friends_timeline({}, function(results){
+					$.each(results, function(index, value){
+						
+						$("#content").addTweetPanel(value);
+						
+		    		});
+				});
 				
 				
 //				$.tweet.statuses.user_timeline({}, function(results){
@@ -113,30 +114,47 @@
 //		    		});
 //				});
 				
-				$.tweet.search({q:'世界杯'}, function(results){
-					$.each(results, function(index, value){
-						
-						$("#content").addTweetPanel(value);
-						
-		    		});
-				});
+//				$.tweet.search({q:'世界杯'}, function(results){
+//					$.each(results, function(index, value){
+//						
+//						$("#content").addTweetPanel(value);
+//						
+//		    		});
+//				});
 			});
 		</script>
     </head>
     <body>
     	<div id="updatewindow" class="updatewindow">
-			<div id="windowtitle">
-				<div id="tools-close" class="tools-close" onclick="UpdateWindow.close();"></div>
+			<div class="updatewindowtitle">
+				<div>发布</div>
 			</div>
-			<form onsubmit="UpdateWindow.update(this)">
-			<div id="contentpanel">
-				<textarea id="status" name="content" wrap="on" style="height:150px;width:98%;" onkeyup="UpdateWindow.checkLength(this);"></textarea>
+			<form onsubmit="$.updatewindow.update(this)">
+			<div class="updatewindowbody">
+				<textarea id="updatetext" name="updatetext" wrap="on" style="margin:0 auto;height:150px;width:250px" onkeyup="$.updatewindow.checkLength(this);"></textarea>
 			</div>
-			<div id="buttonpanel">
+			<div class="updatewindowfooter">
 				<div id="fontleft" class="fontleft">140</div>
 				<div class="bottonright">
-					<input type="reset" value="取消" class="btn-image"/>
-					<input type="button" value="发送" onclick="UpdateWindow.update(this.form)" class="btn-image btn-update"/>
+					<input type="button" value="取消" onclick="$.updatewindow.cancel(this.form)" class="btn-image btn-cancel"/>
+					<input type="button" value="发送" onclick="$.updatewindow.update(this.form)" class="btn-image btn-update"/>
+				</div>
+			</div>
+			</form>
+		</div>
+		<div id="replywindow" class="replywindow">
+			<div class="replywindowtitle">
+				<div>回复</div>
+			</div>
+			<form onsubmit="$.replywindow.update(this)">
+			<div class="replywindowbody">
+				<textarea id="updatetext" name="updatetext" wrap="on" style="margin:0 auto;height:150px;width:250px" onkeyup="$.replywindow.checkLength(this);"></textarea>
+			</div>
+			<div class="replywindowfooter">
+				<div id="fontleft" class="fontleft">140</div>
+				<div class="bottonright">
+					<input type="button" value="取消" onclick="$.replywindow.cancel(this.form)" class="btn-image btn-cancel"/>
+					<input type="button" value="发送" onclick="$.replywindow.update(this.form)" class="btn-image btn-update"/>
 				</div>
 			</div>
 			</form>
