@@ -54,10 +54,7 @@
 				
 				
 				
-//				$.tweet.update({status:'世界杯'}, function(response, options){
-//					var data = Ext.decode(response.responseText);
-//					air.trace(response.responseText);
-//				});
+				
 				
 				$("#nativewindow").nativeWindow({
 					title: 'salePad',
@@ -144,7 +141,8 @@
 		</div>
 		<div id="replywindow" class="replywindow">
 			<div class="replywindowtitle">
-				<div>回复</div>
+				<div class="profile_image_url"></div>
+				<div class="screen_name"></div>
 			</div>
 			<form onsubmit="$.replywindow.update(this)">
 			<div class="replywindowbody">

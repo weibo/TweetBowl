@@ -59,16 +59,16 @@
 				var position = $(this).position();
 			});
 			$("li.reply", tweetPanel).bind('click', function(){
-				//alert(tweet.id);
+				
 				var position = $(this).position();
 				
-				$.replywindow.show(position);
+				$.replywindow.show(position,tweet);
 			});
 			$("li.retweet", tweetPanel).bind('click', function(){
-				//alert(tweet.id);
+				
 				var position = $(this).position();
 				
-				$.updatewindow.show(position);
+				$.updatewindow.show(position, tweet.id);
 			});
 		}
 	}
@@ -79,6 +79,7 @@
 	$.updatewindow = {};
 	
 	$.updatewindow.show = function(position) {
+
 		if(position.left + $('#updatewindow').outerWidth(true) > 800) {
 			$('#updatewindow').css('left',position.left - $('#updatewindow').outerWidth(true));
 		} else {
@@ -122,7 +123,13 @@
 	 */
 	$.replywindow = {};
 	
-	$.replywindow.show = function(position) {
+	$.replywindow.show = function(position, tweet) {
+		$.replywindow.tweet = tweet;
+		
+		$('#replywindow .profile_image_url').html("<img src='"+tweet.user.profile_image_url+"' width='32px' height='32px'/>");
+		$('#replywindow .screen_name').html(tweet.user.screen_name);
+		$('#replywindow #updatetext').val("@" + tweet.user.screen_name);
+		
 		if(position.left + $('#replywindow').outerWidth(true) > 800) {
 			$('#replywindow').css('left',position.left - $('#replywindow').outerWidth(true));
 		} else {
@@ -149,7 +156,13 @@
 	
 	$.replywindow.update = function(form) {
 		if(form) {
-			air.trace(form.elements["updatetext"].value);
+			var updatetext = form.elements["updatetext"].value;
+			
+			$.tweet.update({status:updatetext,in_reply_to_status_id:$.replywindow.tweet.id}, function(){
+				form.reset();
+				$('#replywindow').hide();
+				$("#replywindow #fontleft").html(140);
+			});
 		}		
 	}
 	
