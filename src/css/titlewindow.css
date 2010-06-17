@@ -1,0 +1,63 @@
+@CHARSET "utf-8";
+
+.title #titlenenu {
+	margin:0;
+	padding:0;
+	padding-right:20px;
+	list-style:none;
+	background:transparent url(../icons/window/select.png) no-repeat right 2px !important;
+}
+
+#titlenenu li {
+	position:relative;
+	z-index:500;
+}
+
+#titlenenu ul {
+	position:absolute;
+	left:0;
+	display:none;
+	margin:0 0 0 -16px;
+	padding:5px;
+	list-style:none;
+	font:bold 18px 宋体,Tahoma,Arial,Geogia,Sans-serif;
+	
+	-webkit-border-radius:5px;
+	-webkit-border-bottom-right-radius:5px;
+	background-color:rgba(222,222,222,0.9);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
+}
+		
+#titlenenu ul li {
+	float:left;
+	width:150px;
+	margin:0 1px;
+	padding:5px 15px 5px;
+	border-top:1px solid #fff;
+	
+	background-color:rgba(255,100,0,0.6);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(0%, rgba(255, 255, 255, .6)),
+		color-stop(5%, rgba(255, 255, 255, .3)),
+		color-stop(25%, rgba(255, 255, 255, .1)), 
+		color-stop(100%, rgba(255, 255, 255, 0)));
+}
+
+#titlenenu ul li:hover {
+	background-color:rgba(255,100,0,0.9);
+}
+		
+/* display block will make the link fill the whole area of LI */
+#titlenenu ul a {
+	display:block;  
+	height:15px;
+	padding: 8px 5px; 
+	color:#666;
+}
+		
+#titlenenu ul a:hover {
+	text-decoration:underline;	
+}

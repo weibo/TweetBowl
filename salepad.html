@@ -9,6 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="src/css/tweetpanel.css" />
 		<link rel="stylesheet" type="text/css" href="src/css/updatewindow.css" />
 		<link rel="stylesheet" type="text/css" href="src/css/replywindow.css" />
+		<link rel="stylesheet" type="text/css" href="src/css/titlewindow.css" />
 		
         <script type="text/javascript" src="lib/air/AIRAliases.js"></script>
 		<script type="text/javascript" src="lib/jquery/jquery-1.4.2.min.js"></script>
@@ -57,7 +58,7 @@
 				
 				
 				$("#nativewindow").nativeWindow({
-					title: 'salePad',
+					title: '百家微博',
 					tools: ['close','maximize','minimize'],
 					items: ['<div id="content"></div>']
 				});
@@ -93,6 +94,18 @@
 					}
 
 				});
+				
+				$('#titlenenu').hover(
+					function () {
+						//show its submenu
+						$('ul', this).slideDown(100);
+			
+					}, 
+					function () {
+						//hide its submenu
+						$('ul', this).slideUp(100);			
+					}
+				);
 				
 				$.tweet.statuses.friends_timeline({}, function(results){
 					$.each(results, function(index, value){
