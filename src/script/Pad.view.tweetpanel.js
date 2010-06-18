@@ -106,7 +106,13 @@
 	
 	$.updatewindow.update = function(form) {
 		if(form) {
-			air.trace(form.elements["updatetext"].value);
+			var updatetext = form.elements["updatetext"].value;
+			
+			$.tweet.update({status:updatetext}, function(){
+				form.reset();
+				$('#updatewindow').hide();
+				$("#updatewindow #fontleft").html(140);
+			});
 		}		
 	}
 	

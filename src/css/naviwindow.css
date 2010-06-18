@@ -14,6 +14,7 @@
 .navipanelhome {
 	float: left;
 	width:16px;height:16px;
+	cursor:pointer;
 	background:transparent url(../icons/navibar/go_home.png) no-repeat left top !important;
 }
 .navipanelhome:hover {
@@ -24,11 +25,13 @@
 	float: left;
 	margin-left:5px;
 	width:16px;height:16px;
+	cursor:pointer;
 	background:transparent url(../icons/navibar/update.png) no-repeat center 1px !important;
 }
 .navipanelsearch {
 	float: left;
 	margin-left:5px;
 	width:16px;height:16px;
+	cursor:pointer;
 	background:transparent url(../icons/navibar/search.png) no-repeat center 1px !important;
 }

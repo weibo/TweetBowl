@@ -33,24 +33,21 @@
 	
 	$.fn.addNaviPanel = function() {		
 		if($(this)[0]){
-			var tweetPanel = $.buildNaviPanel();
-			$(this).append(tweetPanel);
+			var naviPanel = $.buildNaviPanel();
+			$(this).append(naviPanel);
 			
-			$(tweetPanel).bind('click', function(){
-				$(this).fadeIn("slow");
-				var position = $(this).position();
+			$(".navipanelupdate",naviPanel).bind('click', function(){
+				var position = $(this).position();				
+				$.updatewindow.show(position);
 			});
-			$("li.reply", tweetPanel).bind('click', function(){
-				
-				var position = $(this).position();
-				
-				$.replywindow.show(position,tweet);
-			});
-			$("li.retweet", tweetPanel).bind('click', function(){
-				
-				var position = $(this).position();
-				
-				$.updatewindow.show(position, tweet.id);
+			
+			$(".navipanelhome",naviPanel).bind('click', function(){
+				$.tweet.statuses.friends_timeline({}, function(results){
+					$("#content").empty();
+					$.each(results, function(index, value){						
+						$("#content").addTweetPanel(value);						
+		    		});
+				});
 			});
 		}
 	}
