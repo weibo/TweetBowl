@@ -25,6 +25,7 @@
 		/**创建窗口*/
 		$(document.body).append("<div class='nativewindow'><div class='windowheader'></div><div class='windowbody'></div><div class='windowfooter'></div></div>");
 		
+		/**皮肤修改*/
 		$("<div id='colorSelector'></div><div class='sliderdemo'><div id='slider'></div></div>").appendTo(".windowfooter");
 		
 		/**拖动窗口事件*/
@@ -36,7 +37,7 @@
 		
 		/**窗口名称*/
 		if(opts.title) {
-    		$('.windowheader').append("<div class='title'><ul id='titlenenu'><li>" + opts.title + "<ul><li>添加微博用戶</li><li>test2</li><li>test3</li></ul><li></div></div>");
+    		$('.windowheader').append("<div class='title'><ul id='titlenenu'><li>" + opts.title + "<ul><li>添加微博用戶</li><li>test2</li><li>test3</li></ul><li></ul></div>");
     	}
     	
 		/**窗口工具*/
