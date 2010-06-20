@@ -1,0 +1,69 @@
+@CHARSET "utf-8";
+
+.settingpanel {	
+	float:left;
+	width:100%;height:100%;	
+}
+
+.settingpanel .settingpanelleft {
+	float:left;
+	margin: 20px 5px 20px;
+	width:30%;height:95%;
+	border:solid 2px #eee;
+	-webkit-border-radius:5px;
+	background-color:rgba(222,222,222,0.6);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
+	font:normal normal 宋体,Tahoma,Arial,Geogia,Sans-serif;
+	
+	overflow:auto;
+}
+
+.settingpanelleft ul {
+	list-style:none;
+	margin: 10px 0px;
+	padding: 10px;
+	font-weight:bolder;
+}
+
+.settingpanelleft ul li {
+	padding: 5px;
+	cursor:pointer;
+}
+
+.settingpanelleft li:hover {
+	-webkit-border-radius:3px;
+	border:solid 1px #aaa;
+	background-color:rgba(200,200,200,0.5);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(10%, rgba(255, 255, 255, .3)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .2)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
+}
+
+.settingpanelleft ul li a {
+	padding: 3px;
+	padding-left: 24px;
+}
+
+.settingpanelleft .cnfol {
+	background:transparent url(../icons/logo/cnfol.png) no-repeat left top !important;
+}
+
+.settingpanel .settingpanelright {
+	float:right;
+	margin: 20px 5px 20px;
+	width:66%;;height:95%;
+	border:solid 2px #eee;
+	-webkit-border-radius:5px;
+	background-color:rgba(222,222,222,0.6);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
+	font:normal normal 宋体,Tahoma,Arial,Geogia,Sans-serif;
+	
+	overflow:auto;
+}

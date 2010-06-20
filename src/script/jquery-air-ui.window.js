@@ -37,7 +37,7 @@
 		
 		/**窗口名称*/
 		if(opts.title) {
-    		$('.windowheader').append("<div class='title'><ul id='titlenenu'><li>" + opts.title + "<ul><li>添加微博用戶</li><li>test2</li><li>test3</li></ul><li></ul></div>");
+    		$('.windowheader').append("<div class='title'><ul id='titlenenu'><li>" + opts.title + "<li></ul></div>");
     	}
     	
 		/**窗口工具*/

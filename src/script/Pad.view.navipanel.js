@@ -33,6 +33,14 @@
 	
 	$.fn.addNaviPanel = function() {		
 		if($(this)[0]){
+			
+			
+			$("#titlenenu li").first().append("<ul><li>添加微博用戶</li></ul>");
+			$("#titlenenu ul").first().bind('click', function(){
+				$("#content").empty();
+				$("#content").settingPanel();
+			});
+			
 			var naviPanel = $.buildNaviPanel();
 			$(this).append(naviPanel);
 			
