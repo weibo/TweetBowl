@@ -21,6 +21,7 @@
 		
 		var rightDiv = document.createElement("div");
 		rightDiv.className = "settingpanelright";
+		rightDiv.innerHTML = "<div class='rightcontainer'></div>";
 		
 		settingDiv.appendChild(leftDiv);
 		settingDiv.appendChild(rightDiv);
@@ -33,8 +34,16 @@
 			var settingPanel = $.buildSettingPanel();
 			$(this).append(settingPanel);
 			
+			$('li',settingPanel).bind('click', function(){
+				if($(this)[0]){
+					$(".settingpanel li.selected").removeClass("selected");
+					$(this).addClass("selected");
+				}
+			});
+			
 			$('a.cnfol',this).bind('click', function(){
-				
+				$(".settingpanel .rightcontainer").empty();
+				$(".settingpanel .rightcontainer").loginPanel();
 			});
 		}
 	}
