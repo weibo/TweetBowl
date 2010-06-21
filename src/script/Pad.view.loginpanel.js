@@ -51,6 +51,8 @@
 	$.login = function(account) {
 		$.cnfol.verify(account, function(response,options){
 			air.trace(response.responseText);
+			var userInfo = Ext.decode(response.responseText);
+			$.account.add({});
 		})
 	}
 	

@@ -41,6 +41,8 @@
 		<script type="text/javascript" src="src/script/Pad.view.settingpanel.js"></script>
 		<script type="text/javascript" src="src/script/Pad.view.loginpanel.js"></script>
         
+		<script type="text/javascript" src="src/script/Pad.utils.account.js"></script>
+		
 		<script>
 			
 			function printSuccess(result) {
@@ -48,6 +50,10 @@
 			}
 			
 			$(function(){
+				
+				//$.account.save();
+				$.account.read();
+				air.trace($.account.accounts[0].username);
 				
 				$.tweet = $.twitter;				
 				
