@@ -11,7 +11,7 @@
  */
 (function($){
 	
-	$.buildNaviPanel = function(tweet) {
+	$.buildNaviPanel = function() {
 		var panelDiv = document.createElement("div");
 		panelDiv.className = "navipanel";
 		
@@ -31,15 +31,53 @@
 		return panelDiv;
 	},
 	
+	$.buildTitleMenu = function() {
+		var menu = document.createElement("ul");
+		menu.className = "menu";
+			
+		$("<li>添加微博用戶</li>").appendTo(menu).bind('click', function(){
+			$("#content").empty();
+			$("#content").settingPanel();
+		});
+		
+		$.each($.account.accounts, function(index, value){
+			$("<li name='"+value.name+"' type='"+value.type+"'><img src='"+value.profile_image_url+"' width='16' height='16'/>"+value.screen_name+"</li>").appendTo(menu).bind('click', function(){
+				var account = {
+					username: $(this).attr('name'),
+					type : $(this).attr('type')
+				}
+				
+				$.tweet = $.api($.account.find(account));
+				$.tweet.statuses.friends_timeline({}, function(results){
+					$("#content").empty();
+					$.each(results, function(index, value){
+						
+						$("#content").addTweetPanel(value);
+						
+		    		});
+				});
+			});
+		});		
+		
+		return menu;
+	}
+	
 	$.fn.addNaviPanel = function() {		
 		if($(this)[0]){
 			
-			
-			$("#titlenenu li").first().append("<ul><li>添加微博用戶</li></ul>");
-			$("#titlenenu ul").first().bind('click', function(){
-				$("#content").empty();
-				$("#content").settingPanel();
-			});
+			$('#titlenenu').hover(
+				function () {
+					$("#titlenenu ul").first().remove();
+					$("#titlenenu li").first().append($.buildTitleMenu());
+					//show its submenu
+					$('ul', this).slideDown(100);
+		
+				}, 
+				function () {
+					//hide its submenu
+					$('ul', this).slideUp(100);			
+				}
+			);
 			
 			var naviPanel = $.buildNaviPanel();
 			$(this).append(naviPanel);

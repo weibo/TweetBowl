@@ -12,7 +12,7 @@
 (function($){
 	
 	$.account = {
-		accounts:[{username:'helio',password:'welcome8298',type:'cnfol'}],
+		accounts:[],
 		storekey:'ACCOUNTS_STORE_KEY'
 	}
 	

@@ -50,6 +50,11 @@
 #titlenenu ul li:hover {
 	background-color:rgba(255,100,0,0.9);
 }
+
+#titlenenu ul li img {
+	-webkit-border-radius:2px;
+	margin-right:5px;
+}
 		
 /* display block will make the link fill the whole area of LI */
 #titlenenu ul a {

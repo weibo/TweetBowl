@@ -60,11 +60,36 @@
 	padding-left: 24px;
 }
 
+.settingpanelleft div {
+	display:list-item;
+	margin: 0px 10px;
+	padding: 10px;
+	font-weight:bolder;
+}
+
+.settingpanelleft img {
+	float:left;
+	-webkit-border-radius:2px;
+	margin:0px 10px;
+}
+
+.settingpanelleft div ul {
+	margin: 5px auto;
+	padding: 0px;
+}
+
+.settingpanelleft div ul a {
+	display:list-item;
+	margin:0px;padding:0px;
+}
+
 .settingpanelleft .cnfol {
 	width:90%;
 	display:list-item;
 	background:transparent url(../icons/logo/cnfol.png) no-repeat left top !important;
 }
+
+
 
 .settingpanel .settingpanelright {
 	float:right;

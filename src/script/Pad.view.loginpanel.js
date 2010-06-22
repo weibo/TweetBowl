@@ -36,7 +36,8 @@
 				if($(this)[0]){
 					var account = {
 						username : $("input[name='username']").val(),
-						password : $("input[name='password']").val()
+						password : $("input[name='password']").val(),
+						type: 'cnfol'
 					}
 					
 					if(account.username && account.password) {
@@ -50,9 +51,16 @@
 	
 	$.login = function(account) {
 		$.cnfol.verify(account, function(response,options){
-			air.trace(response.responseText);
+			//air.trace(response.responseText);
 			var userInfo = Ext.decode(response.responseText);
-			$.account.add({});
+			userInfo.username = account.username;
+			userInfo.password = account.password;
+			userInfo.type = account.type;
+			$.account.add(userInfo);
+			$.account.save();
+			
+			air.trace('Varify OK');
+			
 		})
 	}
 	

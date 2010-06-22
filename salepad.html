@@ -42,6 +42,7 @@
 		<script type="text/javascript" src="src/script/Pad.view.loginpanel.js"></script>
         
 		<script type="text/javascript" src="src/script/Pad.utils.account.js"></script>
+		<script type="text/javascript" src="src/script/Pad.utils.api.js"></script>
 		
 		<script>
 			
@@ -53,7 +54,6 @@
 				
 				//$.account.save();
 				$.account.read();
-				air.trace($.account.accounts[0].username);
 				
 				$.tweet = $.twitter;				
 				
@@ -108,18 +108,6 @@
 					}
 
 				});
-				
-				$('#titlenenu').hover(
-					function () {
-						//show its submenu
-						$('ul', this).slideDown(100);
-			
-					}, 
-					function () {
-						//hide its submenu
-						$('ul', this).slideUp(100);			
-					}
-				);
 				
 				$.tweet.statuses.friends_timeline({}, function(results){
 					$.each(results, function(index, value){
