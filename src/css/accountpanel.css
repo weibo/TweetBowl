@@ -1,0 +1,14 @@
+@CHARSET "utf-8";
+
+.accountpanel {	
+	float:left;
+	width:100%;height:100%;	
+}
+.accountpanel .accountdetail {
+	margin:20px auto;
+	width:80%;
+	text-align:center;
+}
+.accountpanel img {
+	float:left;
+}

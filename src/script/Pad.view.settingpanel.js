@@ -17,9 +17,10 @@
 		
 		var leftDiv = document.createElement("div");
 		leftDiv.className = "settingpanelleft";
-			
-		$("<ul><li><a class='cnfol'>中金在线微博</a></li></ul>").appendTo(leftDiv);
+		leftDiv.innerHTML = "<ul></ul>";
 		
+		$("ul", leftDiv).append("<li><a class='cnfol'>中金在线微博</a></li>");
+		$("ul", leftDiv).append("<li><a class='twitter'>Twitter(推特)</a></li>");
 		
 		if($.account.accounts.length) {
 			$(leftDiv).append("<div>已经添加的微博<ul></ul></div>");
@@ -72,7 +73,12 @@
 			
 			$('a.cnfol',this).bind('click', function(){
 				$(".settingpanel .rightcontainer").empty();
-				$(".settingpanel .rightcontainer").loginPanel();
+				$(".settingpanel .rightcontainer").loginPanel("cnfol");
+			});
+			
+			$('a.twitter',this).bind('click', function(){
+				$(".settingpanel .rightcontainer").empty();
+				$(".settingpanel .rightcontainer").loginPanel("twitter");
 			});
 		}
 	}

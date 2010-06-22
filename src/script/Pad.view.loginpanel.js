@@ -27,7 +27,7 @@
 		return loginDiv;
 	},
 	
-	$.fn.loginPanel = function() {		
+	$.fn.loginPanel = function(type) {		
 		if($(this)[0]){
 			var loginPanel = $.buildLoginPanel();
 			$(this).append(loginPanel);
@@ -37,7 +37,7 @@
 					var account = {
 						username : $("input[name='username']").val(),
 						password : $("input[name='password']").val(),
-						type: 'twitter'
+						type: type
 					}
 					
 					if(account.username && account.password) {
@@ -50,7 +50,7 @@
 	}
 	
 	$.login = function(account) {
-		$.twitter.verify(account, function(response,options){
+		$.api(account).verify(account, function(response,options){
 			//air.trace(response.responseText);
 			var userInfo = Ext.decode(response.responseText);
 			userInfo.username = account.username;

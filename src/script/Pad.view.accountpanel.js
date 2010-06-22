@@ -19,7 +19,15 @@
 		detailDiv.className = "accountdetail";
 		
 		$("<img src='"+account.profile_image_url+"' />").appendTo(detailDiv);
-		//$("<div>"+account.screen_name+"</div>").appendTo(detailDiv);
+		$("<div>"+account.screen_name+"</div>").appendTo(detailDiv);
+		$("<div>"+account.followers_count+"</div>").appendTo(detailDiv);
+		$("<div>"+account.friends_count+"</div>").appendTo(detailDiv);
+		$("<div>"+account.statuses_count+"</div>").appendTo(detailDiv);
+		
+		if(account.status) {
+			$("<div>"+account.status.text+"</div>").appendTo(detailDiv);
+			$("<div>"+account.status.created_at+"</div>").appendTo(detailDiv);
+		}
 		
 		$(accountDiv).append(detailDiv);
 		
@@ -28,6 +36,7 @@
 	
 	$.fn.accountPanel = function(account) {		
 		if($(this)[0]){
+			var currentObj = $(this);
 			var accountInfo = $.account.find(account);
 			
 			if(accountInfo) {
@@ -37,9 +46,7 @@
 					accountInfo = $.extend(accountInfo,userInfo||{});
 					var accountPanel = $.buildAccountPanel(accountInfo);
 					
-					air.trace($(accountPanel).context);
-					//$(accountPanel).appendTo(this);
-					$(this).append("<div>"+accountInfo.screen_name+"</div>");
+					currentObj.append(accountPanel);
 				});
 			}
 			
