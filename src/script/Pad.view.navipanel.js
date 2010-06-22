@@ -41,7 +41,7 @@
 		});
 		
 		$.each($.account.accounts, function(index, value){
-			$("<li name='"+value.name+"' type='"+value.type+"'><img src='"+value.profile_image_url+"' width='16' height='16'/>"+value.screen_name+"</li>").appendTo(menu).bind('click', function(){
+			$("<li name='"+value.username+"' type='"+value.type+"'><img src='"+value.profile_image_url+"' width='16' height='16'/>"+value.screen_name+"</li>").appendTo(menu).bind('click', function(){
 				var account = {
 					username: $(this).attr('name'),
 					type : $(this).attr('type')

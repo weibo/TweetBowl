@@ -20,5 +20,14 @@
 			
 			return $.cnfol;
 		}
+		
+		if(account.type == 'twitter') {
+			if(account.username && account.password) {
+				$.twitter.username = account.username;
+				$.twitter.passwrod = account.password;
+			}
+			
+			return $.twitter;
+		}
 	}
 })(jQuery);

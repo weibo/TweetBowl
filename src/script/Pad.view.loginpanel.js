@@ -37,7 +37,7 @@
 					var account = {
 						username : $("input[name='username']").val(),
 						password : $("input[name='password']").val(),
-						type: 'cnfol'
+						type: 'twitter'
 					}
 					
 					if(account.username && account.password) {
@@ -50,7 +50,7 @@
 	}
 	
 	$.login = function(account) {
-		$.cnfol.verify(account, function(response,options){
+		$.twitter.verify(account, function(response,options){
 			//air.trace(response.responseText);
 			var userInfo = Ext.decode(response.responseText);
 			userInfo.username = account.username;
