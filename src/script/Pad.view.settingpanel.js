@@ -34,7 +34,12 @@
 				
 				$(link).appendTo(namelist).bind('click', function(){
 					if($(this)[0]){
-						air.trace($(this).attr('name'));
+						var account = {
+							username: $(this).attr('name'),
+							type : $(this).attr('type')
+						};
+						$(".settingpanel .rightcontainer").empty();
+						$(".settingpanel .rightcontainer").accountPanel(account);
 					}
 				});
 				
