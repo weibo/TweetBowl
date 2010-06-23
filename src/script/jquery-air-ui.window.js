@@ -26,7 +26,7 @@
 		$(document.body).append("<div class='nativewindow'><div class='windowheader'></div><div class='windowbody'></div><div class='windowfooter'></div></div>");
 		
 		/**皮肤修改*/
-		$("<div id='colorSelector'></div><div class='sliderdemo'><div id='slider'></div></div>").appendTo(".windowfooter");
+		$("<span>@author waltz_h@163.com</span>").appendTo(".windowfooter");
 		
 		/**拖动窗口事件*/
 		if(opts.movable) {

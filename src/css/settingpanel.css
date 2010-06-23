@@ -57,7 +57,7 @@
 
 .settingpanelleft ul li a {
 	padding: 3px;
-	padding-left: 24px;
+	padding-left: 26px;
 }
 
 .settingpanelleft div {
@@ -93,6 +93,12 @@
 	width:90%;
 	display:list-item;
 	background:transparent url(../icons/logo/twitter.png) no-repeat left top !important;
+}
+
+.settingpanelleft .setting {
+	width:90%;
+	display:list-item;
+	background:transparent url(../icons/settings.png) no-repeat 2px top !important;
 }
 
 

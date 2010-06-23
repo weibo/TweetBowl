@@ -45,17 +45,16 @@
 }
 
 .btn-image {
-	border-width:thin;
-	-webkit-border-radius: 2px;
-	background-color:rgba(222,222,222,0.9);
+	padding:4px 15px 3px;
+	border:solid 1px #888;
+	-webkit-border-radius:3px;
+	background-color:rgba(200,200,200,0.4);
 	background-image: -webkit-gradient(linear, left top, left bottom,
-		color-stop(0, rgba(255, 255, 255, .1)),/*透明度 90%*/
-		color-stop(50%, rgba(255, 255, 255, .2)), /*透明度 70%*/
-		color-stop(90%, rgba(255, 255, 255, .4)));/*透明度 40%*/
-	height:28px;
-	vertical-align:middle;
+		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
 }
 
 .btn-image:hover {
-	background-color:rgba(150,150,150,0.9);
+	background-color:rgba(180,180,180,0.9);
 }		

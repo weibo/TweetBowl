@@ -1,0 +1,47 @@
+@CHARSET "utf-8";
+
+.skinpanel {	
+	float:left;
+	width:100%;height:100%;	
+}
+
+.skinpanel .skinsetting {
+	margin:20px auto;
+	width:90%;
+	font:normal 14px 宋体,Tahoma,Arial,Geogia,Sans-serif;
+}
+.skinsetting span {	
+	font:bolder 16px 宋体,Tahoma,Arial,Geogia,Sans-serif;
+}
+.skinsetting hr {
+	float: left;
+	width: 100%;
+}
+
+.skinsetting ul {
+	list-style:none;
+	margin: 10px 0px;
+	padding: 10px;
+	font-weight: lighter;
+}
+
+.skinsetting ul li {
+	padding: 5px;
+	cursor:pointer;
+	float:left;
+}
+
+.skinsetting ul li label{
+	float: left;
+}
+
+.skinsetting #colorSelector {
+	float: left;
+	margin:-10px 50px 0px 0px;
+}
+
+.skinsetting .sliderdemo {
+	float: left;
+	margin:0px auto;
+	width: 150px;
+}

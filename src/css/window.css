@@ -82,105 +82,17 @@
 	overflow:auto;
 }
 
+.windowbody #content {
+	width:100%;height:100%;
+	overflow:auto;
+}
+
 .windowfooter {
 	height:50px;width:100%;
 	display:table-footer-group;
 }
 
-.windowfooter #colorSelector {
-	float:left;
-	margin-left:8px;
-	margin-bottom: 3px;
-}
-
-.windowfooter .sliderdemo {
-	float:left;
-	padding: 10px !important;
-	width: 100px;
-}
-
-.windowbody .navipanel {
-	margin: 0px auto;
-	height:64px;width:100%;
-	background-color:rgba(255,255,255,0.2);
-	-webkit-border-radius:5px;
-}
-.navipanel .billinputnavi {
-	float:right;
-	height:64px;width:64px;
-	background:transparent url(../icons/navibar/navibar.png) no-repeat top left !important;
-	cursor:pointer;
-}
-.navipanel .billchecknavi {
-	float:right;
-	height:64px;width:64px;
-	background:transparent url(../icons/navibar/navibar.png) no-repeat top -64px !important;
-	cursor:pointer;
-}
-.navipanel .storagenavi {
-	float:right;
-	height:64px;width:64px;
-	background:transparent url(../icons/navibar/navibar.png) no-repeat top -128px !important;
-	cursor:pointer;
-}
-.navipanel .clientsnavi {
-	float:right;
-	height:64px;width:64px;
-	background:transparent url(../icons/navibar/navibar.png) no-repeat top -192px !important;
-	cursor:pointer;
-}
-.navipanel .onlinenavi {
-	float:right;
-	height:64px;width:64px;
-	background:transparent url(../icons/navibar/navibar.png) no-repeat top -256 !important;
-	cursor:pointer;
-}
-.navipanel .homenavi {
-	float:right;
-	height:64px;width:64px;
-	background:transparent url(../icons/navibar/navibar.png) no-repeat top -320 !important;
-	cursor:pointer;
-}
-.navipanel .billinputnavi:hover {
-	background:transparent url(../icons/navibar/navibar_hover.png) no-repeat top left !important; 
-}
-.navipanel .billchecknavi:hover {
-	background:transparent url(../icons/navibar/navibar_hover.png) no-repeat top -64px !important; 
-}
-.navipanel .storagenavi:hover {
-	background:transparent url(../icons/navibar/navibar_hover.png) no-repeat top -128px !important; 
-}
-.navipanel .clientsnavi:hover {
-	background:transparent url(../icons/navibar/navibar_hover.png) no-repeat top -192px !important; 
-}
-.navipanel .onlinenavi:hover {
-	background:transparent url(../icons/navibar/navibar_hover.png) no-repeat top -256 !important; 
-}
-.navipanel .homenavi:hover {
-	background:transparent url(../icons/navibar/navibar_hover.png) no-repeat top -320 !important; 
-}
-
-.windowbody #content {
-	width:100%;height:100%;
-	overflow:auto;
-}
-.windowbody .stockspanel {
-	float:left;
-	margin-top:0px;
-	height:510px;width:35%;
-}
-.windowbody .billpanel {
-	float:right;
-	margin-top:0px;
-	height:510px;width:64%;
-	background-color:rgba(255,255,255,1);
-	-webkit-border-radius:5px;
-}
-
-.windowbody .billpanel div1 {
-	margin:10px auto;
-	height:100px;width:96%;
-	border:2px solid #000;
-	background-color:rgba(255,255,255,1);
-	-webkit-border-radius:5px;
+.windowfooter span {
+	margin: 5px 15px 10px;
+	float: left;
 }

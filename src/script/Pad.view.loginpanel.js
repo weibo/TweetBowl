@@ -59,8 +59,8 @@
 			$.account.add(userInfo);
 			$.account.save();
 			
-			air.trace('Varify OK');
-			
+			$(".settingpanelleft div ul").addAccountItem(userInfo);
+			$(".loginpanel form")[0].reset();
 		})
 	}
 	

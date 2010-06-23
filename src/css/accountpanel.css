@@ -6,9 +6,64 @@
 }
 .accountpanel .accountdetail {
 	margin:20px auto;
-	width:80%;
-	text-align:center;
+	width:90%;
+	font:normal 14px 宋体,Tahoma,Arial,Geogia,Sans-serif;
 }
-.accountpanel img {
+.accountdetail img {
 	float:left;
+	margin-right:10px;
+	-webkit-border-radius:4px;
+}
+.accountdetail .screen_name {
+	font-weight:bolder;
+	font-size: 18px;
+}
+.accountdetail .btn_delete {
+	float:right;
+	padding:4px 15px 3px;
+	cursor:pointer;
+	border:solid 1px #888;
+	-webkit-border-radius:3px;
+	background-color:rgba(200,200,200,0.4);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
+}
+.accountdetail .btn_delete:hover {
+	background-color:rgba(180,180,180,0.9);
+}
+.accountdetail .followers_count {
+	float:left;
+	margin: 5px 15px 0px 0px;
+}
+
+.accountdetail .friends_count {
+	float:left;
+	margin: 5px 15px 0px 0px;
+}
+.accountdetail .statuses_count {
+	float:left;
+	margin: 5px 15px 0px 0px;
+}
+.accountdetail b {
+	margin-left:3px;
+	font-size:16px;
+}
+
+.accountdetail hr {
+	float:left;
+	width:100%;
+}
+.accountdetail .text {
+	float:left;
+	width:100%;
+	margin: 5px auto;
+	display:block;
+}
+.accountdetail .created_at {
+	float:left;
+	margin: 0px auto;
+	display:block;
+	color:#333;
 }

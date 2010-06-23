@@ -14,6 +14,7 @@
 		<link rel="stylesheet" type="text/css" href="src/css/settingpanel.css" />
 		<link rel="stylesheet" type="text/css" href="src/css/loginpanel.css" />
 		<link rel="stylesheet" type="text/css" href="src/css/accountpanel.css" />
+		<link rel="stylesheet" type="text/css" href="src/css/skinpanel.css" />
 		
         <script type="text/javascript" src="lib/air/AIRAliases.js"></script>
 		<script type="text/javascript" src="lib/jquery/jquery-1.4.2.min.js"></script>
@@ -42,6 +43,7 @@
 		<script type="text/javascript" src="src/script/Pad.view.settingpanel.js"></script>
 		<script type="text/javascript" src="src/script/Pad.view.loginpanel.js"></script>
 		<script type="text/javascript" src="src/script/Pad.view.accountpanel.js"></script>
+		<script type="text/javascript" src="src/script/Pad.view.skinpanel.js"></script>
         
 		<script type="text/javascript" src="src/script/Pad.utils.account.js"></script>
 		<script type="text/javascript" src="src/script/Pad.utils.api.js"></script>
@@ -79,37 +81,7 @@
 				
 				$(".windowheader").addNaviPanel();
 
-				$('#colorSelector').ColorPicker({
-					
-					onShow: function (colpkr) {
-						$(colpkr).fadeIn(500);
-						return false;
-					},
-					onHide: function (colpkr) {
-						$(colpkr).fadeOut(500);
-						return false;
-					},
-					onChange: function (hsb, hex, rgb) {
-						$('#colorSelector').css('backgroundColor', '#' + hex);
-						//Pad.rgb = rgb;
-						$('.nativewindow').backgroundColor(rgb);
-						//$("link.changeme").attr("href","lib/jquery/css/overcast/jquery-ui-1.8.custom.css");
-					}
-				});
 				
-				$("#slider").slider({
-					value:$.nativeWindow.config.rgba.a,
-					min: 0,
-					max: 1,
-					step: 0.1,
-					//orientation: "vertical",
-					slide: function(event, ui) {
-						//air.trace('$' + ui.value);
-						$('.nativewindow').backgroundColor({a:ui.value});
-						//$('.nativewindow').css('background-color', 'rgba(' + Pad.rgb.r + ',' +Pad.rgb.g +',' + Pad.rgb.b + ','+ui.value+')');
-					}
-
-				});
 				
 				$.tweet.statuses.friends_timeline({}, function(results){
 					$.each(results, function(index, value){

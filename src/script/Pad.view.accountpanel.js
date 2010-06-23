@@ -19,14 +19,18 @@
 		detailDiv.className = "accountdetail";
 		
 		$("<img src='"+account.profile_image_url+"' />").appendTo(detailDiv);
-		$("<div>"+account.screen_name+"</div>").appendTo(detailDiv);
-		$("<div>"+account.followers_count+"</div>").appendTo(detailDiv);
-		$("<div>"+account.friends_count+"</div>").appendTo(detailDiv);
-		$("<div>"+account.statuses_count+"</div>").appendTo(detailDiv);
+		$("<div class='screen_name'>"+account.screen_name+"</div>").appendTo(detailDiv);
+		$("<div class='followers_count'>被关注<b>"+account.followers_count+"</b></div>").appendTo(detailDiv);
+		$("<div class='friends_count'>关注<b>"+account.friends_count+"</b></div>").appendTo(detailDiv);
+		$("<div class='statuses_count'>我的微博<b>"+account.statuses_count+"</b></div>").appendTo(detailDiv);
+		
+		$("<div class='btn_delete' name='"+account.username+"' type='"+account.type+"'>删除</div>").appendTo(detailDiv);
+		$("<hr/>").appendTo(detailDiv);
 		
 		if(account.status) {
-			$("<div>"+account.status.text+"</div>").appendTo(detailDiv);
-			$("<div>"+account.status.created_at+"</div>").appendTo(detailDiv);
+			$("<div class='text'>"+account.status.text+"</div>").appendTo(detailDiv);
+			var date = new Date(account.status.created_at);
+			$("<div class='created_at'>"+date.format("Y-m-d H:i:s")+"</div>").appendTo(detailDiv);
 		}
 		
 		$(accountDiv).append(detailDiv);
@@ -41,12 +45,23 @@
 			
 			if(accountInfo) {
 				$.api(accountInfo).verify(accountInfo, function(response,options){
-					air.trace(response.responseText);
+					//air.trace(response.responseText);
 					var userInfo = Ext.decode(response.responseText);
 					accountInfo = $.extend(accountInfo,userInfo||{});
 					var accountPanel = $.buildAccountPanel(accountInfo);
 					
 					currentObj.append(accountPanel);
+					
+					$('.btn_delete', accountPanel).bind('click', function(){
+						var account = {
+							username: $(this).attr('name'),
+							type : $(this).attr('type')
+						};
+						$.account.remove(account);
+						$.account.save();
+						$(".settingpanel .rightcontainer").empty();
+						$(".settingpanelleft a[name='"+account.username+"'][type='"+account.type+"']").parent().remove();
+					});
 				});
 			}
 			

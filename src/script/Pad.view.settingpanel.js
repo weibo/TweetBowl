@@ -24,29 +24,15 @@
 		
 		if($.account.accounts.length) {
 			$(leftDiv).append("<div>已经添加的微博<ul></ul></div>");
-			$.each($.account.accounts, function(index, value){
-				
-				var namelist = document.createElement("li");
-				
-				var link = document.createElement("a");
-				link.name = value.username;
-				link.type = value.type;
-				link.innerHTML = "<img src='"+value.profile_image_url+"' width='16' height='16'/>" + value.screen_name;
-				
-				$(link).appendTo(namelist).bind('click', function(){
-					if($(this)[0]){
-						var account = {
-							username: $(this).attr('name'),
-							type : $(this).attr('type')
-						};
-						$(".settingpanel .rightcontainer").empty();
-						$(".settingpanel .rightcontainer").accountPanel(account);
-					}
-				});
-				
-				$("div ul", leftDiv).append(namelist);
+			$.each($.account.accounts, function(index, value){				
+				$('div ul', leftDiv).addAccountItem(value);
 			});
 		}
+		
+		$("<ul><li><a class='setting'>系统设置</a></li></ul>").appendTo(leftDiv).bind('click', function(){
+			$(".settingpanel .rightcontainer").empty();
+			$(".settingpanel .rightcontainer").skinPanel();
+		});
 		
 		
 		var rightDiv = document.createElement("div");
@@ -58,6 +44,34 @@
 		
 		return settingDiv;
 	},
+	
+	$.fn.addAccountItem = function(account) {
+		var namelist = document.createElement("li");
+		
+		var link = document.createElement("a");
+		link.name = account.username;
+		link.type = account.type;
+		link.innerHTML = "<img src='"+account.profile_image_url+"' width='16' height='16'/>" + account.screen_name;
+		
+		$(link).appendTo(namelist).bind('click', function(){
+			if($(this)[0]){
+				var account = {
+					username: $(this).attr('name'),
+					type : $(this).attr('type')
+				};
+				$(".settingpanel .rightcontainer").empty();
+				$(".settingpanel .rightcontainer").accountPanel(account);
+			}
+		});
+		
+		if($(this)[0]) {
+			$(this).append(namelist);
+		} else {
+			$(".settingpanelleft").append("<div>已经添加的微博<ul></ul></div>");
+			$(".settingpanelleft div ul").append(namelist);
+		}
+		
+	}
 	
 	$.fn.settingPanel = function() {		
 		if($(this)[0]){
