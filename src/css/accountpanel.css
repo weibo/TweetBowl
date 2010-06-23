@@ -63,7 +63,9 @@
 }
 .accountdetail .created_at {
 	float:left;
-	margin: 0px auto;
-	display:block;
-	color:#333;
+	height:10px;width:60%;
+	padding:2px auto;
+	font-size:small;
+	font-style:oblique;
+	color:#888;
 }

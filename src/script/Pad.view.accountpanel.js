@@ -28,7 +28,7 @@
 		$("<hr/>").appendTo(detailDiv);
 		
 		if(account.status) {
-			$("<div class='text'>"+account.status.text+"</div>").appendTo(detailDiv);
+			$("<div class='text'>"+$.link.check(account.status.text)+"</div>").appendTo(detailDiv).addLink();
 			var date = new Date(account.status.created_at);
 			$("<div class='created_at'>"+date.format("Y-m-d H:i:s")+"</div>").appendTo(detailDiv);
 		}

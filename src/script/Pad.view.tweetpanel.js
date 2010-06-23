@@ -35,7 +35,7 @@
 		
 		var contentDiv = document.createElement("div");
 		contentDiv.className = "tweetpanelbody";
-		contentDiv.innerHTML = "<div class='tweetcontent'>" + tweet.text + "</div>";
+		contentDiv.innerHTML = "<div class='tweetcontent'>" + $.link.check(tweet.text) + "</div>";
 		
 		var footerDiv = document.createElement("div");
 		footerDiv.className = "tweetpanelfooter";
@@ -58,6 +58,9 @@
 				$(this).fadeIn("slow");
 				var position = $(this).position();
 			});
+			
+			$(tweetPanel).addLink();
+			
 			$("li.reply", tweetPanel).bind('click', function(){
 				
 				var position = $(this).position();

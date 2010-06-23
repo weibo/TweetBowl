@@ -36,7 +36,7 @@
 
 .tweetpanel .user_name {
 	float:left;
-	height:16px;width:40%;
+	height:16px;width:48%;
 	padding:0px 5px 0px;
 	font-weight:bolder;
 }
@@ -60,7 +60,7 @@
 	float: right;
 	color: #888;
 	font-weight: bold;
-	padding-left:5px;
+	padding-left:4px;
 	background-color: transparent;
 	background-image: url(../icons/line.gif);
 	background-repeat: no-repeat;

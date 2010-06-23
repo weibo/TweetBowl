@@ -7,7 +7,7 @@
 
 .settingpanel .settingpanelleft {
 	float:left;
-	margin: 20px 5px 20px;
+	margin: 10px 5px 5px;
 	width:30%;height:95%;
 	border:solid 2px #eee;
 	-webkit-border-radius:5px;
@@ -104,7 +104,7 @@
 
 .settingpanel .settingpanelright {
 	float:right;
-	margin: 20px 5px 20px;
+	margin: 10px 5px 5px;
 	width:66%;;height:95%;
 	border:solid 2px #eee;
 	-webkit-border-radius:5px;
