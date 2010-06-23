@@ -21,6 +21,7 @@
 		
 		$("ul", leftDiv).append("<li><a class='cnfol'>中金在线微博</a></li>");
 		$("ul", leftDiv).append("<li><a class='twitter'>Twitter(推特)</a></li>");
+		$("ul", leftDiv).append("<li><a class='sohu'>搜狐微博</a></li>");
 		
 		if($.account.accounts.length) {
 			$(leftDiv).append("<div>已经添加的微博<ul></ul></div>");
@@ -93,6 +94,11 @@
 			$('a.twitter',this).bind('click', function(){
 				$(".settingpanel .rightcontainer").empty();
 				$(".settingpanel .rightcontainer").loginPanel("twitter");
+			});
+			
+			$('a.sohu',this).bind('click', function(){
+				$(".settingpanel .rightcontainer").empty();
+				$(".settingpanel .rightcontainer").loginPanel("sohu");
 			});
 		}
 	}

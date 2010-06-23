@@ -15,7 +15,7 @@
 		if(account.type == 'cnfol') {
 			if(account.username && account.password) {
 				$.cnfol.username = account.username;
-				$.cnfol.passwrod = account.password;
+				$.cnfol.password = account.password;
 			}
 			
 			return $.cnfol;
@@ -24,10 +24,19 @@
 		if(account.type == 'twitter') {
 			if(account.username && account.password) {
 				$.twitter.username = account.username;
-				$.twitter.passwrod = account.password;
+				$.twitter.password = account.password;
 			}
 			
 			return $.twitter;
+		}
+		
+		if(account.type == 'sohu') {
+			if(account.username && account.password) {
+				$.sohu.username = account.username;
+				$.sohu.password = account.password;
+			}
+			
+			return $.sohu;
 		}
 	}
 })(jQuery);

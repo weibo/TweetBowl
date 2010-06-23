@@ -60,6 +60,7 @@
     					var exitingEvent = new air.Event(air.Event.EXITING, false, true);
     	                air.NativeApplication.nativeApplication.dispatchEvent(exitingEvent);
     	                if (!exitingEvent.isDefaultPrevented()) {
+    	                	$.account.save();
     	                    air.NativeApplication.nativeApplication.exit();
     	                }
     				});

@@ -86,13 +86,19 @@
 .settingpanelleft .cnfol {
 	width:90%;
 	display:list-item;
-	background:transparent url(../icons/logo/cnfol.png) no-repeat left top !important;
+	background:transparent url(../icons/logo/cnfol.ico) no-repeat 3px 3px !important;
 }
 
 .settingpanelleft .twitter {
 	width:90%;
 	display:list-item;
-	background:transparent url(../icons/logo/twitter.png) no-repeat left top !important;
+	background:transparent url(../icons/logo/twitter.ico) no-repeat 3px 3px !important;
+}
+
+.settingpanelleft .sohu {
+	width:90%;
+	display:list-item;
+	background:transparent url(../icons/logo/sohu.ico) no-repeat 3px 3px !important;
 }
 
 .settingpanelleft .setting {

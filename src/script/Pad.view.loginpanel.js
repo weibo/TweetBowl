@@ -11,12 +11,16 @@
  */
 (function($){
 	
-	$.buildLoginPanel = function(tweet) {
+	$.buildLoginPanel = function(type) {
 		var loginDiv = document.createElement("div");
 		loginDiv.className = "loginpanel";
 		loginDiv.innerHTML = "<form><div></div><table></table></form>"
-			
-		$("form div",loginDiv).first().html("＂中金在线 微博 是一个全新打造的互动社区，我们用140个字记录，关注财经你我，分享投资生活。＂");
+		
+		if(type == 'cnfol') {
+			$("form div",loginDiv).first().html("＂中金在线 微博 是一个全新打造的互动社区，我们用140个字记录，关注财经你我，分享投资生活。＂");
+		} else if(type == 'sohu') {
+			$("form div",loginDiv).first().html("＂写句话，发张图片，记录点滴瞬间。＂");
+		}
 		
 		$("table",loginDiv).append("<tr><td style='text-align:right; width:100px;'>用户名：</td><td><input type='text' name='username' style='width:120px;height:20px;'></td></tr>");
 		
@@ -29,7 +33,7 @@
 	
 	$.fn.loginPanel = function(type) {		
 		if($(this)[0]){
-			var loginPanel = $.buildLoginPanel();
+			var loginPanel = $.buildLoginPanel(type);
 			$(this).append(loginPanel);
 			
 			$('input.btn-login',loginPanel).bind('click', function(){
