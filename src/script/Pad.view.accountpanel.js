@@ -22,7 +22,9 @@
 		$("<div class='screen_name'>"+account.screen_name+"</div>").appendTo(detailDiv);
 		$("<div class='followers_count'>被关注<b>"+account.followers_count+"</b></div>").appendTo(detailDiv);
 		$("<div class='friends_count'>关注<b>"+account.friends_count+"</b></div>").appendTo(detailDiv);
-		$("<div class='statuses_count'>我的微博<b>"+account.statuses_count+"</b></div>").appendTo(detailDiv);
+		if(account.statuses_count) {
+			$("<div class='statuses_count'>我的微博<b>"+account.statuses_count+"</b></div>").appendTo(detailDiv);
+		}
 		
 		$("<div class='btn_delete' name='"+account.username+"' type='"+account.type+"'>删除</div>").appendTo(detailDiv);
 		$("<hr/>").appendTo(detailDiv);
@@ -44,9 +46,7 @@
 			var accountInfo = $.account.find(account);
 			
 			if(accountInfo) {
-				$.api(accountInfo).verify(accountInfo, function(response,options){
-					//air.trace(response.responseText);
-					var userInfo = Ext.decode(response.responseText);
+				$.api(accountInfo).verify(accountInfo, function(userInfo){
 					accountInfo = $.extend(accountInfo,userInfo||{});
 					var accountPanel = $.buildAccountPanel(accountInfo);
 					
@@ -58,7 +58,7 @@
 							type : $(this).attr('type')
 						};
 						$.account.remove(account);
-						$.account.save();
+						
 						$(".settingpanel .rightcontainer").empty();
 						$(".settingpanelleft a[name='"+account.username+"'][type='"+account.type+"']").parent().remove();
 					});

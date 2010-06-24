@@ -64,14 +64,12 @@
 	}
 	
 	$.login = function(account) {
-		$.api(account).verify(account, function(response,options){
-			air.trace(response.responseText);
-			var userInfo = Ext.decode(response.responseText);
+		$.api(account).verify(account, function(userInfo){
 			userInfo.username = account.username;
 			userInfo.password = account.password;
 			userInfo.type = account.type;
+			
 			$.account.add(userInfo);
-			$.account.save();
 			
 			$(".settingpanelleft div ul").addAccountItem(userInfo);
 			$(".loginpanel form")[0].reset();
