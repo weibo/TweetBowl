@@ -34,6 +34,10 @@
 	height:40px;width:40px;
 }
 
+.tweetpanel img {	
+	-webkit-border-radius:3px;
+}
+
 .tweetpanel .user_name {
 	float:left;
 	height:16px;width:48%;
