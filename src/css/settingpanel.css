@@ -2,13 +2,14 @@
 
 .settingpanel {	
 	float:left;
-	width:100%;height:100%;	
+	width:100%;height:100%;
+	display:table;
 }
 
 .settingpanel .settingpanelleft {
 	float:left;
-	margin: 10px 5px 5px;
-	width:30%;height:95%;
+	margin: 10px 5px 0px;
+	width:30%;height:98%;
 	border:solid 2px #eee;
 	-webkit-border-radius:5px;
 	background-color:rgba(222,222,222,0.6);
@@ -130,8 +131,8 @@
 
 .settingpanel .settingpanelright {
 	float:right;
-	margin: 10px 5px 5px;
-	width:66%;;height:95%;
+	margin: 10px 5px 0px;
+	width:66%;;height:98%;
 	border:solid 2px #eee;
 	-webkit-border-radius:5px;
 	background-color:rgba(222,222,222,0.6);

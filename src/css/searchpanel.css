@@ -1,0 +1,65 @@
+@CHARSET "utf-8";
+
+.searchpanel {	
+	width:98%;height:99%;
+	display:table;
+	margin: 0px auto;
+	border:solid 2px #eee;
+	-webkit-border-radius:5px;
+	background-color:rgba(222,222,222,0.6);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
+	font:normal normal 宋体,Tahoma,Arial,Geogia,Sans-serif;
+	
+	overflow:auto;
+}
+
+.searchpanel .searchfield {
+	margin: 50px auto;
+	width:280px;height:28px;
+	padding:15px 2px 0px 2px;
+	font:normal 14 宋体,Tahoma,Arial,Geogia,Sans-serif;
+}
+
+.searchtextdiv{
+	width:232px;height:23px;
+	vertical-align:middle;
+	top:0;left:0px;
+	float:left;
+	margin-left:0;margin-right:0;
+}
+.searchtextdiv .searchtext{
+	width:100%;height:100%;
+	border:1px solid #999;
+	margin-left:0;margin-right:0;				
+	vertical-align:middle;
+	text-indent:5px;
+}
+.searchtextdiv .searchtext:focus {
+	outline: none;
+}
+.searchbutton {
+	border:1px solid #999;
+	float:right;
+	width:25px;height:25px;
+	margin-left:0;margin-right:0;
+}
+.round-right {
+	-webkit-border-top-right-radius:10px;
+	-webkit-border-bottom-right-radius:10px;
+}
+.round-left {
+	-webkit-border-top-left-radius:10px;
+	-webkit-border-bottom-left-radius:10px;
+}
+#search_submit{
+	background:url('../icons/searchsubmit.png') -2px 0!important;
+}
+#search_submit:hover{
+	background:url('../icons/searchsubmit.png') -2px -25px!important;
+}
+#search_submit:active{
+	background:url('../icons/searchsubmit.png') -2px -50px!important;
+}

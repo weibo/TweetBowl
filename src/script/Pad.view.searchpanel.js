@@ -14,7 +14,13 @@
 	$.buildSearchPanel = function(tweet) {
 		var searchDiv = document.createElement("div");
 		searchDiv.className = "searchpanel";
-		searchDiv.innerHTML = "TEST";
+		
+		var searchfield = document.createElement("div");
+		searchfield.className = "searchfield";
+		searchfield.innerHTML = '<div class="searchtextdiv"><input type="text" id="condition" name="condition" class="searchtext round-left"/></div>'
+		+'<div id="search_submit" class="searchbutton round-right" onclick="SearchWindow.search();"></div>'	;
+		
+		$(searchfield).appendTo(searchDiv);
 		
 		
 		return searchDiv;
