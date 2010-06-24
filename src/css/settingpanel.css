@@ -16,7 +16,7 @@
 		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
 		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
 		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
-	font:normal normal 宋体,Tahoma,Arial,Geogia,Sans-serif;
+	font:normal 15px 宋体,Tahoma,Arial,Geogia,Sans-serif;
 	
 	overflow:auto;
 }
@@ -25,7 +25,8 @@
 	list-style:none;
 	margin: 10px 0px;
 	padding: 10px;
-	font-weight:bolder;
+	font-weight:bold;
+	color: #333;
 }
 
 .settingpanelleft ul li {
@@ -56,15 +57,17 @@
 }
 
 .settingpanelleft ul li a {
-	padding: 3px;
-	padding-left: 26px;
+	padding: 1px;
+	padding-left: 20px;
+	margin-left: 5px;
 }
 
 .settingpanelleft div {
 	display:list-item;
 	margin: 0px 10px;
 	padding: 10px;
-	font-weight:bolder;
+	font-weight:bold;
+	font-size: 14px;
 }
 
 .settingpanelleft img {
@@ -79,32 +82,49 @@
 }
 
 .settingpanelleft div ul a {
+	width:90%;
 	display:list-item;
 	margin:0px;padding:0px;
 }
 
 .settingpanelleft .cnfol {
-	width:90%;
-	display:list-item;
-	background:transparent url(../icons/logo/cnfol.ico) no-repeat 3px 3px !important;
+	background:transparent url(../icons/logo/cnfol.ico) no-repeat left 1px !important;
 }
 
 .settingpanelleft .twitter {
-	width:90%;
-	display:list-item;
-	background:transparent url(../icons/logo/twitter.ico) no-repeat 3px 3px !important;
+	background:transparent url(../icons/logo/twitter.ico) no-repeat left 1px !important;
 }
 
 .settingpanelleft .sohu {
-	width:90%;
-	display:list-item;
-	background:transparent url(../icons/logo/sohu.ico) no-repeat 3px 3px !important;
+	background:transparent url(../icons/logo/sohu.ico) no-repeat left 1px !important;
+}
+
+.settingpanelleft .sina {
+	background:transparent url(../icons/logo/sina.ico) no-repeat left 1px !important;
+}
+
+.settingpanelleft .api9911 {
+	background:transparent url(../icons/logo/api9911.png) no-repeat left 1px !important;
+}
+
+.settingpanelleft .digu {
+	background:transparent url(../icons/logo/digu.png) no-repeat left 1px !important;
+}
+
+.settingpanelleft .renjian {
+	background:transparent url(../icons/logo/renjian.ico) no-repeat left 1px !important;
+}
+
+.settingpanelleft .tongxue {
+	background:transparent url(../icons/logo/tongxue.png) no-repeat left 1px !important;
+}
+
+.settingpanelleft .zuosa {
+	background:transparent url(../icons/logo/zuosa.png) no-repeat left 1px !important;
 }
 
 .settingpanelleft .setting {
-	width:90%;
-	display:list-item;
-	background:transparent url(../icons/settings.png) no-repeat 2px top !important;
+	background:transparent url(../icons/settings.png) no-repeat left 1px !important;
 }
 
 

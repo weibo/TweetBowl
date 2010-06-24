@@ -38,5 +38,59 @@
 			
 			return $.sohu;
 		}
+		
+		if(account.type == 'api9911') {
+			if(account.username && account.password) {
+				$.api9911.username = account.username;
+				$.api9911.password = account.password;
+			}
+			
+			return $.api9911;
+		}
+		
+		if(account.type == 'digu') {
+			if(account.username && account.password) {
+				$.digu.username = account.username;
+				$.digu.password = account.password;
+			}
+			
+			return $.digu;
+		}
+		
+		if(account.type == 'renjian') {
+			if(account.username && account.password) {
+				$.renjian.username = account.username;
+				$.renjian.password = account.password;
+			}
+			
+			return $.renjian;
+		}
+		
+		if(account.type == 'sina') {
+			if(account.username && account.password) {
+				$.sina.username = account.username;
+				$.sina.password = account.password;
+			}
+			
+			return $.sina;
+		}
+		
+		if(account.type == 'tongxue') {
+			if(account.username && account.password) {
+				$.tongxue.username = account.username;
+				$.tongxue.password = account.password;
+			}
+			
+			return $.tongxue;
+		}
+		
+		if(account.type == 'zuosa') {
+			if(account.username && account.password) {
+				$.zuosa.username = account.username;
+				$.zuosa.password = account.password;
+			}
+			
+			return $.zuosa;
+		}
 	}
 })(jQuery);

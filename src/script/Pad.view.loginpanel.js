@@ -20,6 +20,16 @@
 			$("form div",loginDiv).first().html("＂中金在线 微博 是一个全新打造的互动社区，我们用140个字记录，关注财经你我，分享投资生活。＂");
 		} else if(type == 'sohu') {
 			$("form div",loginDiv).first().html("＂写句话，发张图片，记录点滴瞬间。＂");
+		} else if(type == 'sina') {
+			$("form div",loginDiv).first().html("＂暂未不支持。＂");
+		} else if(type == 'digu') {
+			$("form div",loginDiv).first().html("＂嘀咕是我们普通人交流平凡生活的微博客，随时随地拍照记录所见所感，分享每一个生活点滴。＂");
+		} else if(type == 'renjian') {
+			$("form div",loginDiv).first().html("＂人与人之间的网络。＂");
+		} else if(type == 'tongxue') {
+			$("form div",loginDiv).first().html("＂创造你的影响力！＂");
+		} else if(type == 'zuosa') {
+			$("form div",loginDiv).first().html("＂迷你博客。记录生活。一次一句。即时分享。关注好友。你在做啥？＂");
 		}
 		
 		$("table",loginDiv).append("<tr><td style='text-align:right; width:100px;'>用户名：</td><td><input type='text' name='username' style='width:120px;height:20px;'></td></tr>");
@@ -55,7 +65,7 @@
 	
 	$.login = function(account) {
 		$.api(account).verify(account, function(response,options){
-			//air.trace(response.responseText);
+			air.trace(response.responseText);
 			var userInfo = Ext.decode(response.responseText);
 			userInfo.username = account.username;
 			userInfo.password = account.password;

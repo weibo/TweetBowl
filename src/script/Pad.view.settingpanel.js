@@ -22,6 +22,12 @@
 		$("ul", leftDiv).append("<li><a class='cnfol'>中金在线微博</a></li>");
 		$("ul", leftDiv).append("<li><a class='twitter'>Twitter(推特)</a></li>");
 		$("ul", leftDiv).append("<li><a class='sohu'>搜狐微博</a></li>");
+		$("ul", leftDiv).append("<li><a class='sina'>新浪微博</a></li>");
+		$("ul", leftDiv).append("<li><a class='api9911'>9911微博客</a></li>");
+		$("ul", leftDiv).append("<li><a class='digu'>digu嘀咕</a></li>");
+		$("ul", leftDiv).append("<li><a class='renjian'>人间网微社区</a></li>");
+		$("ul", leftDiv).append("<li><a class='tongxue'>同学网</a></li>");
+		//$("ul", leftDiv).append("<li><a class='zuosa'>做啥网zuosa</a></li>");
 		
 		if($.account.accounts.length) {
 			$(leftDiv).append("<div>已经添加的微博<ul></ul></div>");
@@ -99,6 +105,36 @@
 			$('a.sohu',this).bind('click', function(){
 				$(".settingpanel .rightcontainer").empty();
 				$(".settingpanel .rightcontainer").loginPanel("sohu");
+			});
+			
+			$('a.api9911',this).bind('click', function(){
+				$(".settingpanel .rightcontainer").empty();
+				$(".settingpanel .rightcontainer").loginPanel("api9911");
+			});
+			
+			$('a.digu',this).bind('click', function(){
+				$(".settingpanel .rightcontainer").empty();
+				$(".settingpanel .rightcontainer").loginPanel("digu");
+			});
+			
+			$('a.renjian',this).bind('click', function(){
+				$(".settingpanel .rightcontainer").empty();
+				$(".settingpanel .rightcontainer").loginPanel("renjian");
+			});
+			
+			$('a.sina',this).bind('click', function(){
+				$(".settingpanel .rightcontainer").empty();
+				$(".settingpanel .rightcontainer").loginPanel("sina");
+			});
+			
+			$('a.tongxue',this).bind('click', function(){
+				$(".settingpanel .rightcontainer").empty();
+				$(".settingpanel .rightcontainer").loginPanel("tongxue");
+			});
+			
+			$('a.zuosa',this).bind('click', function(){
+				$(".settingpanel .rightcontainer").empty();
+				$(".settingpanel .rightcontainer").loginPanel("zuosa");
 			});
 		}
 	}
