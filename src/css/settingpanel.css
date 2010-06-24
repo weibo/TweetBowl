@@ -61,6 +61,7 @@
 	padding: 1px;
 	padding-left: 20px;
 	margin-left: 5px;
+	display:list-item;
 }
 
 .settingpanelleft div {
@@ -83,7 +84,7 @@
 }
 
 .settingpanelleft div ul a {
-	width:90%;
+	width:95%;
 	display:list-item;
 	margin:0px;padding:0px;
 }
