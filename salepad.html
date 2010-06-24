@@ -43,6 +43,7 @@
 		<script type="text/javascript" src="src/script/Pad.view.settingpanel.js"></script>
 		<script type="text/javascript" src="src/script/Pad.view.loginpanel.js"></script>
 		<script type="text/javascript" src="src/script/Pad.view.accountpanel.js"></script>
+		<script type="text/javascript" src="src/script/Pad.view.searchpanel.js"></script>
 		<script type="text/javascript" src="src/script/Pad.view.skinpanel.js"></script>
         
 		<script type="text/javascript" src="src/script/Pad.utils.account.js"></script>
@@ -57,22 +58,7 @@
 			
 			$(function(){
 				
-				//$.account.save();
 				$.account.read();
-				
-				$.tweet = $.twitter;				
-				
-//				$.tweet.verify({username:'helio',password:'welcome8298'}, function(response, options){
-//					//var data = Ext.decode(response.responseText);
-//					//alert(data.results.length)
-//					air.trace(response.responseText);
-//				});
-				
-				
-				
-				
-				
-				
 				
 				$("#nativewindow").nativeWindow({
 					title: '百家微博',
@@ -81,33 +67,13 @@
 				});
 				
 				$(".windowheader").addNaviPanel();
-
 				
+				if($.account.accounts.length) {
+					$("#content").searchPanel();
+				} else {
+					$("#content").settingPanel();
+				}
 				
-				$.tweet.statuses.friends_timeline({}, function(results){
-					$.each(results, function(index, value){
-						
-						$("#content").addTweetPanel(value);
-						
-		    		});
-				});
-				
-				
-//				$.tweet.statuses.user_timeline({}, function(results){
-//					$.each(results, function(index, value){
-//						
-//						$("#content").addTweetPanel(value);
-//						
-//		    		});
-//				});
-				
-//				$.tweet.search({q:'世界杯'}, function(results){
-//					$.each(results, function(index, value){
-//						
-//						$("#content").addTweetPanel(value);
-//						
-//		    		});
-//				});
 			});
 		</script>
     </head>

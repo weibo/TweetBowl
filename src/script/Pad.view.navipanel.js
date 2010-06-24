@@ -36,7 +36,6 @@
 		menu.className = "menu";
 			
 		$("<li>添加微博用戶</li>").appendTo(menu).bind('click', function(){
-			$("#content").empty();
 			$("#content").settingPanel();
 		});
 		
@@ -94,6 +93,10 @@
 						$("#content").addTweetPanel(value);						
 		    		});
 				});
+			});
+			
+			$(".navipanelsearch",naviPanel).bind('click', function(){
+				$("#content").searchPanel();
 			});
 		}
 	}

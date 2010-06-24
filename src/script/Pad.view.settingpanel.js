@@ -83,6 +83,7 @@
 	$.fn.settingPanel = function() {		
 		if($(this)[0]){
 			var settingPanel = $.buildSettingPanel();
+			$(this).empty();
 			$(this).append(settingPanel);
 			
 			$('li',settingPanel).bind('click', function(){
