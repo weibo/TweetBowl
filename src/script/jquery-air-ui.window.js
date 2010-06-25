@@ -60,7 +60,9 @@
     					var exitingEvent = new air.Event(air.Event.EXITING, false, true);
     	                air.NativeApplication.nativeApplication.dispatchEvent(exitingEvent);
     	                if (!exitingEvent.isDefaultPrevented()) {
-    	                	$.account.save();
+    	                	if($.state.enable) {
+    	                		$.state.Manager.save();
+    	                	}
     	                    air.NativeApplication.nativeApplication.exit();
     	                }
     				});
@@ -136,6 +138,32 @@
 		if($(this).length){
 			$(this).css('backgroundColor', 'rgba(' + rgba.r + ',' +rgba.g +',' + rgba.b + ',' + rgba.a + ')');
 		}
+	}
+	
+	$.state = {
+		enable		: true,
+		storekey	: 'STATE_STORE_KEY',
+		storevalue	: {}
+	};	
+	$.state.Manager = {};
+	$.state.Manager.save = function() {
+		var bytes = new air.ByteArray();
+		var value = Ext.encode($.state.storevalue);
+		bytes.writeUTFBytes(value);
+		air.EncryptedLocalStore.setItem($.state.storekey, bytes);
+	}
+	$.state.Manager.read = function() {
+		var storedValue = air.EncryptedLocalStore.getItem($.state.storekey);
+		if (storedValue) {
+			var value = storedValue.readUTFBytes(storedValue.length);
+			if(value) {
+				$.state.storevalue = Ext.decode(value);
+			}
+		}
+	}
+	
+	if($.state.enable) {
+		$.state.Manager.read();
 	}
 	
 	$.decode = function(text) {

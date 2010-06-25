@@ -18,48 +18,73 @@
 
 .searchpanel .searchfield {
 	margin: 50px auto;
-	width:280px;height:28px;
-	padding:15px 2px 0px 2px;
-	font:normal 14 宋体,Tahoma,Arial,Geogia,Sans-serif;
+	padding: 1px;
+	width:300px;height:30px;
+	border:1px none #eee;
+	-webkit-border-radius:10px;
+	background-color:rgba(250,250,250,1);
+	font:normal 16 宋体,Tahoma,Arial,Geogia,Sans-serif;
 }
 
-.searchtextdiv{
-	width:232px;height:23px;
-	vertical-align:middle;
-	top:0;left:0px;
-	float:left;
-	margin-left:0;margin-right:0;
+.searchtext{
+	width:80%;height:100%;
+	margin-left:6px;
+	border:none;
+	background-color:rgba(250,250,250,0);
+	
+	font-weight: lighter;
 }
-.searchtextdiv .searchtext{
-	width:100%;height:100%;
-	border:1px solid #999;
-	margin-left:0;margin-right:0;				
-	vertical-align:middle;
-	text-indent:5px;
-}
-.searchtextdiv .searchtext:focus {
+.searchtext:focus {
 	outline: none;
 }
 .searchbutton {
-	border:1px solid #999;
 	float:right;
-	width:25px;height:25px;
-	margin-left:0;margin-right:0;
+	width:17%;height:100%;
+	-webkit-border-top-right-radius:9px;
+	-webkit-border-bottom-right-radius:9px;
+	background-color:rgba(200,200,200,0.6);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
+		
+	text-align:center;
+	vertical-align:middle;
+	line-height:30px;
+	font-weight:bold;
+	cursor:pointer;
 }
-.round-right {
-	-webkit-border-top-right-radius:10px;
-	-webkit-border-bottom-right-radius:10px;
+.searchbutton:hover {
+	background-color:rgba(200,200,200,0.8);
 }
-.round-left {
-	-webkit-border-top-left-radius:10px;
-	-webkit-border-bottom-left-radius:10px;
+
+.historyfield {
+	margin: 50px auto;
+	width:50%;
 }
-#search_submit{
-	background:url('../icons/searchsubmit.png') -2px 0!important;
+
+.historyfield span {
+	font-weight:lighter;
 }
-#search_submit:hover{
-	background:url('../icons/searchsubmit.png') -2px -25px!important;
+
+.historyfield hr {
+	
 }
-#search_submit:active{
-	background:url('../icons/searchsubmit.png') -2px -50px!important;
+.historyfield div {
+	float: left;
+	padding: 6px 2px 3px;
+	margin: 2px 4px;
+	cursor: pointer;
+	width:22%; height:20px;
+	overflow:hidden;
+}
+.historyfield div:hover {
+	padding: 5px 1px 2px;
+	border:solid 1px #888;
+	-webkit-border-radius:3px;
+	background-color:rgba(200,200,200,0.4);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
 }

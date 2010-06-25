@@ -18,6 +18,8 @@
 		
 		if(type == 'cnfol') {
 			$("form div",loginDiv).first().html("＂中金在线 微博 是一个全新打造的互动社区，我们用140个字记录，关注财经你我，分享投资生活。＂");
+		} else if(type == 'twitter') {
+			$("form div",loginDiv).first().html("\"Discover what’s happening right now, anywhere in the world\"")
 		} else if(type == 'sohu') {
 			$("form div",loginDiv).first().html("＂写句话，发张图片，记录点滴瞬间。＂");
 		} else if(type == 'sina') {
@@ -70,6 +72,7 @@
 			userInfo.type = account.type;
 			
 			$.account.add(userInfo);
+			$.account.save();
 			
 			$(".settingpanelleft div ul").addAccountItem(userInfo);
 			$(".loginpanel form")[0].reset();

@@ -17,21 +17,12 @@
 	}
 	
 	$.account.save = function() {
-		if($.account.accounts.length) {
-			var bytes = new air.ByteArray();
-			var value = Ext.encode($.account.accounts);
-			bytes.writeUTFBytes(value);
-			air.EncryptedLocalStore.setItem($.account.storekey, bytes);
-		}
+		$.state.storevalue.accounts = $.account.accounts;
 	}
 	
-	$.account.read = function() {
-		var storedValue = air.EncryptedLocalStore.getItem($.account.storekey);
-		if (storedValue) {
-			var value = storedValue.readUTFBytes(storedValue.length);
-			if(value) {
-				$.account.accounts = Ext.decode(value);
-			}
+	$.account.read = function() {		
+		if($.state.storevalue.accounts) {
+			$.account.accounts = $.state.storevalue.accounts;
 		}
 	}
 	

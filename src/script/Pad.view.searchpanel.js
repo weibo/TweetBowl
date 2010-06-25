@@ -12,25 +12,80 @@
 (function($){
 	
 	$.buildSearchPanel = function(tweet) {
-		var searchDiv = document.createElement("div");
-		searchDiv.className = "searchpanel";
+		var searchPanel = document.createElement("div");
+		searchPanel.className = "searchpanel";
 		
-		var searchfield = document.createElement("div");
-		searchfield.className = "searchfield";
-		searchfield.innerHTML = '<div class="searchtextdiv"><input type="text" id="condition" name="condition" class="searchtext round-left"/></div>'
-		+'<div id="search_submit" class="searchbutton round-right" onclick="SearchWindow.search();"></div>'	;
+		$("<div class='searchfield'><input type='text' name='keyword' class='searchtext'/><div class='searchbutton'>检索</div></div>").appendTo(searchPanel);
+		$("<div class='historyfield'><span class=''>最近关注的话题</span><hr/></div>").appendTo(searchPanel);
 		
-		$(searchfield).appendTo(searchDiv);
+		if($.searchHistory) {
+			$.each($.searchHistory, function(index, value){
+				$('.historyfield', searchPanel).append("<div>"+value+"</div>");
+			});
+		}
 		
-		
-		return searchDiv;
+		return searchPanel;
 	};
+	
+	$.historyKeyword = function(keyword) {
+		if(!$.searchHistory) {
+			$.searchHistory = [keyword];
+			$.state.storevalue.searchhistory = $.searchHistory;
+		} else {
+			var existed = false;
+			$.each($.searchHistory, function(index, value){
+				if(value == keyword) {
+					existed = true;
+					return false;
+				}
+			});
+			if(!existed) {
+				$.searchHistory.push(keyword);
+				if($.searchHistory.length > 20) {
+					$.searchHistory.splice(0,1);
+				}
+			}
+		}
+	}
 	
 	$.fn.searchPanel = function() {		
 		if($(this)[0]){
+			
+			if($.state.storevalue.searchhistory) {
+				$.searchHistory = $.state.storevalue.searchhistory;
+			}
+			
 			var searchPanel = $.buildSearchPanel();
 			$(this).empty();
 			$(this).append(searchPanel);
+			
+			$('.searchbutton', searchPanel).bind('click', function(){
+				var keyword = $(':input[name=keyword]', searchPanel).val();
+				if(keyword) {
+					$.api.current.search({q:keyword}, function(results){
+						$("#content").empty();
+						$.each(results, function(index, value){						
+							$("#content").addTweetPanel(value);						
+			    		});
+					});
+					
+					$.historyKeyword(keyword);
+				}
+			});
+			
+			$('.historyfield div', searchPanel).bind('click', function(){
+				var keyword = $(this).html();
+				if(keyword) {
+					$.api.current.search({q:keyword}, function(results){
+						$("#content").empty();
+						$.each(results, function(index, value){						
+							$("#content").addTweetPanel(value);						
+			    		});
+					});
+					
+					$.historyKeyword(keyword);
+				}
+			});
 		}
 	}
 	

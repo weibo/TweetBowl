@@ -17,7 +17,7 @@
 				$.cnfol.username = account.username;
 				$.cnfol.password = account.password;
 			}
-			
+			$.api.current = $.cnfol;
 			return $.cnfol;
 		}
 		
@@ -26,7 +26,7 @@
 				$.twitter.username = account.username;
 				$.twitter.password = account.password;
 			}
-			
+			$.api.current = $.twitter;
 			return $.twitter;
 		}
 		
@@ -35,7 +35,7 @@
 				$.sohu.username = account.username;
 				$.sohu.password = account.password;
 			}
-			
+			$.api.current = $.sohu;
 			return $.sohu;
 		}
 		
@@ -44,7 +44,7 @@
 				$.api9911.username = account.username;
 				$.api9911.password = account.password;
 			}
-			
+			$.api.current = $.api9911;
 			return $.api9911;
 		}
 		
@@ -53,7 +53,7 @@
 				$.digu.username = account.username;
 				$.digu.password = account.password;
 			}
-			
+			$.api.current = $.digu;
 			return $.digu;
 		}
 		
@@ -62,7 +62,7 @@
 				$.renjian.username = account.username;
 				$.renjian.password = account.password;
 			}
-			
+			$.api.current = $.renjian;
 			return $.renjian;
 		}
 		
@@ -71,7 +71,7 @@
 				$.sina.username = account.username;
 				$.sina.password = account.password;
 			}
-			
+			$.api.current = $.sina;
 			return $.sina;
 		}
 		
@@ -80,7 +80,7 @@
 				$.tongxue.username = account.username;
 				$.tongxue.password = account.password;
 			}
-			
+			$.api.current = $.tongxue;
 			return $.tongxue;
 		}
 		
@@ -89,8 +89,10 @@
 				$.zuosa.username = account.username;
 				$.zuosa.password = account.password;
 			}
-			
+			$.api.current = $.zuosa;
 			return $.zuosa;
 		}
 	}
+	
+	$.api.current = $.cnfol;
 })(jQuery);
