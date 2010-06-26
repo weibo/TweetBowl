@@ -46,7 +46,7 @@
 			var accountInfo = $.account.find(account);
 			
 			if(accountInfo) {
-				$.api(accountInfo).verify(accountInfo, function(userInfo){
+				$.api.find(accountInfo).verify(accountInfo, function(userInfo){
 					accountInfo = $.extend(accountInfo,userInfo||{});
 					var accountPanel = $.buildAccountPanel(accountInfo);
 					

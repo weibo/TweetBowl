@@ -147,6 +147,7 @@
 	};	
 	$.state.Manager = {};
 	$.state.Manager.save = function() {
+		$.account.save();
 		var bytes = new air.ByteArray();
 		var value = Ext.encode($.state.storevalue);
 		bytes.writeUTFBytes(value);

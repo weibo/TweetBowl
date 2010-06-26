@@ -46,8 +46,9 @@
 					type : $(this).attr('type')
 				}
 				
-				$.tweet = $.api($.account.find(account));
-				$.tweet.statuses.friends_timeline({}, function(results){
+				$.account.current = $.account.find(account);
+				var api = $.api.find($.account.current);
+				$.api.current(api).statuses.friends_timeline({}, function(results){
 					$("#content").empty();
 					$.each(results, function(index, value){
 						
@@ -87,7 +88,7 @@
 			});
 			
 			$(".navipanelhome",naviPanel).bind('click', function(){
-				$.tweet.statuses.friends_timeline({}, function(results){
+				$.api.current().statuses.friends_timeline({}, function(results){
 					$("#content").empty();
 					$.each(results, function(index, value){						
 						$("#content").addTweetPanel(value);						

@@ -111,7 +111,7 @@
 		if(form) {
 			var updatetext = form.elements["updatetext"].value;
 			
-			$.tweet.update({status:updatetext}, function(){
+			$.api.current().update({status:updatetext}, function(){
 				form.reset();
 				$('#updatewindow').hide();
 				$("#updatewindow #fontleft").html(140);
@@ -167,7 +167,7 @@
 		if(form) {
 			var updatetext = form.elements["updatetext"].value;
 			
-			$.tweet.update({status:updatetext,in_reply_to_status_id:$.replywindow.tweet.id}, function(){
+			$.api.current().update({status:updatetext,in_reply_to_status_id:$.replywindow.tweet.id}, function(){
 				form.reset();
 				$('#replywindow').hide();
 				$("#replywindow #fontleft").html(140);

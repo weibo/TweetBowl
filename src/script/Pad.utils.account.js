@@ -12,17 +12,22 @@
 (function($){
 	
 	$.account = {
-		accounts:[],
-		storekey:'ACCOUNTS_STORE_KEY'
+		accounts:[]
 	}
 	
 	$.account.save = function() {
 		$.state.storevalue.accounts = $.account.accounts;
+		if($.account.current) {
+			$.state.storevalue.currentaccount = $.account.current;
+		}
 	}
 	
 	$.account.read = function() {		
 		if($.state.storevalue.accounts) {
 			$.account.accounts = $.state.storevalue.accounts;
+		}
+		if($.state.storevalue.currentaccount) {
+			$.account.current = $.state.storevalue.currentaccount;
 		}
 	}
 	

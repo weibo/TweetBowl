@@ -11,13 +11,14 @@
  */
 (function($){
 	
-	$.api = function(account){
+	$.api = {};
+	
+	$.api.find = function(account){
 		if(account.type == 'cnfol') {
 			if(account.username && account.password) {
 				$.cnfol.username = account.username;
 				$.cnfol.password = account.password;
 			}
-			$.api.current = $.cnfol;
 			return $.cnfol;
 		}
 		
@@ -26,7 +27,6 @@
 				$.twitter.username = account.username;
 				$.twitter.password = account.password;
 			}
-			$.api.current = $.twitter;
 			return $.twitter;
 		}
 		
@@ -35,7 +35,6 @@
 				$.sohu.username = account.username;
 				$.sohu.password = account.password;
 			}
-			$.api.current = $.sohu;
 			return $.sohu;
 		}
 		
@@ -44,7 +43,6 @@
 				$.api9911.username = account.username;
 				$.api9911.password = account.password;
 			}
-			$.api.current = $.api9911;
 			return $.api9911;
 		}
 		
@@ -53,7 +51,6 @@
 				$.digu.username = account.username;
 				$.digu.password = account.password;
 			}
-			$.api.current = $.digu;
 			return $.digu;
 		}
 		
@@ -62,7 +59,6 @@
 				$.renjian.username = account.username;
 				$.renjian.password = account.password;
 			}
-			$.api.current = $.renjian;
 			return $.renjian;
 		}
 		
@@ -71,7 +67,6 @@
 				$.sina.username = account.username;
 				$.sina.password = account.password;
 			}
-			$.api.current = $.sina;
 			return $.sina;
 		}
 		
@@ -80,7 +75,6 @@
 				$.tongxue.username = account.username;
 				$.tongxue.password = account.password;
 			}
-			$.api.current = $.tongxue;
 			return $.tongxue;
 		}
 		
@@ -89,10 +83,27 @@
 				$.zuosa.username = account.username;
 				$.zuosa.password = account.password;
 			}
-			$.api.current = $.zuosa;
 			return $.zuosa;
 		}
 	}
 	
-	$.api.current = $.cnfol;
+	$.api.current = function(currentapi){
+		if(!currentapi) {
+			if(!$.api.currentapi) {
+				
+				if($.account.accounts.length > 0 && $.account.current) {
+					$.api.currentapi = $.api.find($.account.current);
+				} else if($.account.accounts.length > 0) {
+					$.account.current = $.account.accounts[0];
+					$.api.currentapi = $.api.find($.account.current);
+				} else {
+					$.api.currentapi = $.cnfol;
+				}
+			}
+		} else {
+			$.api.currentapi = currentapi;
+		}
+		
+		return $.api.currentapi;
+	}
 })(jQuery);

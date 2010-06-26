@@ -72,7 +72,6 @@
 			userInfo.type = account.type;
 			
 			$.account.add(userInfo);
-			$.account.save();
 			
 			$(".settingpanelleft div ul").addAccountItem(userInfo);
 			$(".loginpanel form")[0].reset();
