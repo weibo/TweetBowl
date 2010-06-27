@@ -66,7 +66,7 @@
 	}
 	
 	$.login = function(account) {
-		$.api(account).verify(account, function(userInfo){
+		$.api.find(account).verify(account, function(userInfo){
 			userInfo.username = account.username;
 			userInfo.password = account.password;
 			userInfo.type = account.type;
