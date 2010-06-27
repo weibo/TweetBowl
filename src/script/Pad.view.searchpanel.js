@@ -16,9 +16,10 @@
 		searchPanel.className = "searchpanel";
 		
 		$("<div class='searchfield'><input type='text' name='keyword' class='searchtext'/><div class='searchbutton'>检索</div></div>").appendTo(searchPanel);
-		$("<div class='historyfield'><span class=''>最近关注的话题</span><hr/></div>").appendTo(searchPanel);
 		
-		if($.searchHistory) {
+		if($.searchHistory && $.searchHistory.length) {
+			$("<div class='historyfield'><span class=''>最近关注的话题</span><hr/></div>").appendTo(searchPanel);
+			
 			$.each($.searchHistory, function(index, value){
 				$('.historyfield', searchPanel).append("<div>"+value+"</div>");
 			});

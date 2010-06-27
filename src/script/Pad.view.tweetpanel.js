@@ -14,6 +14,8 @@
 	$.buildTweetPanel = function(tweet) {
 		var panelDiv = document.createElement("div");
 		panelDiv.className = "tweetpanel";
+		panelDiv.id = tweet.id;
+		//air.trace(panelDiv.name);
 		
 		var titleDiv = document.createElement("div");
 		titleDiv.className = "tweetpaneltitle";
@@ -30,7 +32,11 @@
 		
 		var toolsDiv = document.createElement("div");
 		toolsDiv.className = "tweetpaneltools";
-		toolsDiv.innerHTML = "<li>收藏</li><li class='retweet'>转发</li><li class='reply'>回复</li>";
+		if(tweet.user.name && (tweet.user.name != $.account.current.name)) {
+			toolsDiv.innerHTML = "<li class='retweet'>转发</li><li class='reply'>回复</li>";
+		} else if(tweet.user.name == $.account.current.name) {
+			toolsDiv.innerHTML = "<li class='delete'>删除</li>";
+		}
 		titleDiv.appendChild(toolsDiv);
 		
 		var contentDiv = document.createElement("div");
@@ -68,10 +74,15 @@
 				$.replywindow.show(position,tweet);
 			});
 			$("li.retweet", tweetPanel).bind('click', function(){
+				$.api.current().retweet({id:tweet.id}, function(){
+					
+				});
+			});
+			$("li.delete", tweetPanel).bind('click', function(){
 				
-				var position = $(this).position();
-				
-				$.updatewindow.show(position, tweet.id);
+				$.api.current().destroy({id:tweet.id}, function(){
+					$(".tweetpanel[id='"+tweet.id+"']").remove();
+				});
 			});
 		}
 	}
