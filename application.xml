@@ -14,16 +14,16 @@
 -->
 
 	<!-- The application identifier string, unique to this application. Required. -->
-	<id>com.adobe.example.salepad</id>
+	<id>com.adobe.example.multiweibo</id>
 
 	<!-- Used as the filename for the application. Required. -->
-	<filename>salepad</filename>
+	<filename>multiweibo</filename>
 
 	<!-- The name that is displayed in the AIR application installer. Optional. -->
-	<name>salepad</name>
+	<name>multiweibo</name>
 
 	<!-- An application version designator (such as "v1", "2.5", or "Alpha 1"). Required. -->
-	<version>0.0.2</version>
+	<version>0.0.3</version>
 
 	<!-- Description, displayed in the AIR application installer. Optional. -->
 	<description/>
