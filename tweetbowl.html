@@ -16,6 +16,7 @@
 		<link rel="stylesheet" type="text/css" href="src/css/accountpanel.css" />
 		<link rel="stylesheet" type="text/css" href="src/css/searchpanel.css" />
 		<link rel="stylesheet" type="text/css" href="src/css/skinpanel.css" />
+		<link rel="stylesheet" type="text/css" href="src/css/messagedialog.css" />
 		
         <script type="text/javascript" src="lib/air/AIRAliases.js"></script>
 		<script type="text/javascript" src="lib/jquery/jquery-1.4.2.min.js"></script>
@@ -46,6 +47,7 @@
 		<script type="text/javascript" src="src/script/Pad.view.accountpanel.js"></script>
 		<script type="text/javascript" src="src/script/Pad.view.searchpanel.js"></script>
 		<script type="text/javascript" src="src/script/Pad.view.skinpanel.js"></script>
+		<script type="text/javascript" src="src/script/Pad.view.message.js"></script>
         
 		<script type="text/javascript" src="src/script/Pad.utils.account.js"></script>
 		<script type="text/javascript" src="src/script/Pad.utils.api.js"></script>
@@ -74,6 +76,8 @@
 				} else {
 					$("#content").settingPanel();
 				}
+				
+				$('.messagedialog').message('infomation','info');
 				
 			});
 		</script>
@@ -113,6 +117,17 @@
 				</div>
 			</div>
 			</form>
+		</div>
+		<div id="messagedialog" class="messagedialog">
+			<div class="messagedialogtitle"></div>
+			<div class="messagedialogbody">
+				<div class='message'>tttttttttt</div>
+			</div>
+			<div class="messagedialogfooter">
+				<div class="footerbotton">
+					<input type="button" value="确定" onclick="$('#messagedialog').message('close');" class="btn-image btn-cancel"/>
+				</div>
+			</div>
 		</div>
     </body>
 </html>

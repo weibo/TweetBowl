@@ -27,6 +27,7 @@
 		
 		/**皮肤修改*/
 		$("<span>@author waltz_h@163.com</span>").appendTo(".windowfooter");
+		$("<div class='loading'><img src='src/icons/loading.gif' width='48px' hight='24px'></img></div>").appendTo(".windowfooter");
 		
 		/**拖动窗口事件*/
 		if(opts.movable) {

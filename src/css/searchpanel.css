@@ -24,8 +24,15 @@
 	-webkit-border-radius:10px;
 	background-color:rgba(250,250,250,1);
 	font:normal 16 宋体,Tahoma,Arial,Geogia,Sans-serif;
+	
+	-webkit-transition: all .3s ease-in-out;
+	opacity:0.5;
 }
-
+.searchpanel .searchfield:hover {
+	-webkit-transform: scale(1.1);
+	-webkit-box-shadow:0 0 10px #000000; 
+	opacity:1;
+}
 .searchtext{
 	width:80%;height:100%;
 	margin-left:6px;

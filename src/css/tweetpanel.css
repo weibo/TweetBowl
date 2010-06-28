@@ -17,12 +17,11 @@
 	overflow:auto;
 }
 
-.tweetpanel:hover {	
-	width:33%;height:30%;
-	margin:1% auto;
+.tweetpanel:hover {
 	padding:9px;
 	border:1px outset #e1e1e1;
 	background-color:rgba(240,240,240,1);
+	-webkit-transform: scale(1.06);
 }
 
 .tweetpanel .tweetpaneltitle {

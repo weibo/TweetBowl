@@ -21,7 +21,7 @@
 .windowheader .title {
 	float: left;
 	padding: 5px 10px 2px 15px;
-	margin-left:6px;
+	margin-left: 10px;
 	-webkit-border-bottom-left-radius:5px;
 	-webkit-border-bottom-right-radius:5px;
 	border:1px solid #ffb700;
@@ -97,4 +97,9 @@
 .windowfooter span {
 	margin: 5px 15px 10px;
 	float: left;
+}
+.windowfooter .loading {
+	margin: 3px 15px auto;
+	float: right;
+	display: none;
 }

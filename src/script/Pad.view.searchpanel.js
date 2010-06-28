@@ -63,6 +63,7 @@
 			$('.searchbutton', searchPanel).bind('click', function(){
 				var keyword = $(':input[name=keyword]', searchPanel).val();
 				if(keyword) {
+					
 					$.api.current().search({q:keyword}, function(results){
 						$("#content").empty();
 						$.each(results, function(index, value){						
@@ -77,6 +78,7 @@
 			$('.historyfield div', searchPanel).bind('click', function(){
 				var keyword = $(this).html();
 				if(keyword) {
+					
 					$.api.current().search({q:keyword}, function(results){
 						$("#content").empty();
 						$.each(results, function(index, value){						

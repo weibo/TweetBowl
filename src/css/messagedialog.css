@@ -1,0 +1,40 @@
+@CHARSET "utf-8";
+
+.messagedialog {
+	position:absolute; 
+	display: table;
+	padding:15px 20px 20px;
+	width:250px;
+	border:1px outset #e1e1e1;
+	-webkit-border-radius:5px;
+	background-color:rgba(222,222,222,0.9);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
+	font:normal larger 宋体,Tahoma,Arial,Geogia,Sans-serif;
+	display:none;
+}
+.messagedialogtitle {
+	display:table-header-group; 
+	vertical-align: top;
+}
+
+.messagedialogbody {
+	display:table-cell;
+}
+
+.messagedialogbody .message {
+	height: 100%;
+}
+
+.messagedialogfooter {
+	display:table-footer-group;
+	font:normal normal 宋体,Tahoma,Arial,Geogia,Sans-serif;
+}
+
+.messagedialogfooter .footerbotton {
+	width:20%;
+	margin: 10px auto;
+	text-align:center;
+}
