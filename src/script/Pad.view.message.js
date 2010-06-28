@@ -15,7 +15,7 @@
 	
 	$.fn.message = function(info, type){
 		if(type && type == 'info') {
-			$(this).backgroundColor($.nativeWindow.config.rgba);
+			//$(this).backgroundColor($.nativeWindow.config.rgba);
 			$(this).css('left', (window.nativeWindow.width - 250) / 2);
 			$(this).css('top',  (window.nativeWindow.height - 250) / 2);
 			$(this).fadeIn("slow");

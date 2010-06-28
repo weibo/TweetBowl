@@ -69,19 +69,20 @@
 			
 			$("li.reply", tweetPanel).bind('click', function(){
 				
-				var position = $(this).position();
-				
+				var position = $(this).position();				
 				$.replywindow.show(position,tweet);
 			});
 			$("li.retweet", tweetPanel).bind('click', function(){
+				
 				$.api.current().retweet({id:tweet.id}, function(){
-					
+					$('.messagedialog').message('转发成功！！！','info');
 				});
 			});
 			$("li.delete", tweetPanel).bind('click', function(){
 				
 				$.api.current().destroy({id:tweet.id}, function(){
 					$(".tweetpanel[id='"+tweet.id+"']").remove();
+					$('.messagedialog').message('删除成功！！！','info');
 				});
 			});
 		}
@@ -126,6 +127,8 @@
 				form.reset();
 				$('#updatewindow').hide();
 				$("#updatewindow #fontleft").html(140);
+				
+				$('.messagedialog').message('发布成功！！！','info');
 			});
 		}		
 	}
@@ -182,6 +185,8 @@
 				form.reset();
 				$('#replywindow').hide();
 				$("#replywindow #fontleft").html(140);
+				
+				$('.messagedialog').message('回复成功！！！','info');
 			});
 		}		
 	}

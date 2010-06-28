@@ -73,6 +73,7 @@
 			
 			$.account.add(userInfo);
 			
+			$('.messagedialog').message('添加微博帐户成功！！！','info');
 			$(".settingpanelleft div ul").addAccountItem(userInfo);
 			$(".loginpanel form")[0].reset();
 		})

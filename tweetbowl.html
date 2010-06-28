@@ -77,8 +77,6 @@
 					$("#content").settingPanel();
 				}
 				
-				$('.messagedialog').message('infomation','info');
-				
 			});
 		</script>
     </head>
@@ -119,13 +117,13 @@
 			</form>
 		</div>
 		<div id="messagedialog" class="messagedialog">
-			<div class="messagedialogtitle"></div>
+			<div class="messagedialogtitle">消息</div>
 			<div class="messagedialogbody">
-				<div class='message'>tttttttttt</div>
+				<div class='message'></div>
 			</div>
 			<div class="messagedialogfooter">
 				<div class="footerbotton">
-					<input type="button" value="确定" onclick="$('#messagedialog').message('close');" class="btn-image btn-cancel"/>
+					<input type="button" value="确定" onclick="$('#messagedialog').message('close');" class="btn-image"/>
 				</div>
 			</div>
 		</div>
