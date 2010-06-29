@@ -4,7 +4,7 @@
 	display: table;
 	float:left;
 	margin:1%;
-	padding:10px;
+	padding:9px;
 	width:31%;height:30%;
 	-webkit-border-radius:5px;
 	background-color:rgba(222,222,222,0.6);
@@ -18,7 +18,7 @@
 }
 
 .tweetpanel:hover {
-	padding:9px;
+	padding:8px;
 	border:1px outset #e1e1e1;
 	background-color:rgba(240,240,240,1);
 	-webkit-transform: scale(1.06);
