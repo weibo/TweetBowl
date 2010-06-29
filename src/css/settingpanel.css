@@ -33,6 +33,7 @@
 .settingpanelleft ul li {
 	padding: 5px;
 	cursor:pointer;
+	-webkit-transition: color .5s linear, background-color .5s linear, border-color .5s linear;
 }
 
 .settingpanelleft li:hover {

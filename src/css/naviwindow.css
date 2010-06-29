@@ -20,7 +20,13 @@
 .navipanelhome:hover {
 	
 }
-
+.navipanelfriends {
+	float: left;
+	margin-left:5px;
+	width:16px;height:16px;
+	cursor:pointer;
+	background:transparent url(../icons/navibar/friends.png) no-repeat center 1px !important;
+}
 .navipanelupdate {
 	float: left;
 	margin-left:5px;

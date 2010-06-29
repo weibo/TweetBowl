@@ -15,18 +15,29 @@
 		var panelDiv = document.createElement("div");
 		panelDiv.className = "navipanel";
 		
-		var homeDiv = document.createElement("div");
-		homeDiv.className = "navipanelhome";
+		$("<div class='navipanelhome'></div>").appendTo(panelDiv).bind('click', function(){
+			$.api.current().statuses.friends_timeline({}, function(results){
+				$("#content").empty();
+				$.each(results, function(index, value){						
+					$("#content").addTweetPanel(value);						
+	    		});
+			});
+		});
+		$("<div class='navipanelfriends'></div>").appendTo(panelDiv).bind('click', function(){
+			var position = $(this).position();
+			position.top = position.top + $(this).height();
+			$.updatewindow.show(position);
+		});
 		
-		var updateDiv = document.createElement("div");
-		updateDiv.className = "navipanelupdate";
-			
-		var searchDiv = document.createElement("div");
-		searchDiv.className = "navipanelsearch";
+		$("<div class='navipanelupdate'></div>").appendTo(panelDiv).bind('click', function(){
+			var position = $(this).position();
+			position.top = position.top + $(this).height();
+			$.updatewindow.show(position);
+		});
 		
-		panelDiv.appendChild(homeDiv);
-		panelDiv.appendChild(updateDiv);	
-		panelDiv.appendChild(searchDiv);	
+		$("<div class='navipanelsearch'></div>").appendTo(panelDiv).bind('click', function(){
+			$("#content").searchPanel();
+		});
 		
 		return panelDiv;
 	},
@@ -81,24 +92,6 @@
 			
 			var naviPanel = $.buildNaviPanel();
 			$(this).append(naviPanel);
-			
-			$(".navipanelupdate",naviPanel).bind('click', function(){
-				var position = $(this).position();				
-				$.updatewindow.show(position);
-			});
-			
-			$(".navipanelhome",naviPanel).bind('click', function(){
-				$.api.current().statuses.friends_timeline({}, function(results){
-					$("#content").empty();
-					$.each(results, function(index, value){						
-						$("#content").addTweetPanel(value);						
-		    		});
-				});
-			});
-			
-			$(".navipanelsearch",naviPanel).bind('click', function(){
-				$("#content").searchPanel();
-			});
 		}
 	}
 	

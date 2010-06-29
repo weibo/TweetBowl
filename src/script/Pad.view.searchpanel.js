@@ -32,20 +32,18 @@
 		if(!$.searchHistory) {
 			$.searchHistory = [keyword];
 			$.state.storevalue.searchhistory = $.searchHistory;
-		} else {
-			var existed = false;
+		} else {			
 			$.each($.searchHistory, function(index, value){
 				if(value == keyword) {
-					existed = true;
+					$.searchHistory.splice(index,1);
 					return false;
 				}
 			});
-			if(!existed) {
-				$.searchHistory.push(keyword);
-				if($.searchHistory.length > 20) {
-					$.searchHistory.splice(0,1);
-				}
-			}
+			
+			$.searchHistory.push(keyword);
+			if($.searchHistory.length > 20) {
+				$.searchHistory.splice(0,1);
+			}			
 		}
 	}
 	

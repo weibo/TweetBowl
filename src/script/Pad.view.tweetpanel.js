@@ -106,7 +106,7 @@
 		} else {
 			$('#updatewindow').css('top',position.top);
 		}
-		$('#updatewindow').show();
+		$('#updatewindow').fadeIn('slow');
 		$("#updatewindow #updatetext").focus();
 	}
 	
@@ -125,7 +125,7 @@
 			
 			$.api.current().update({status:updatetext}, function(){
 				form.reset();
-				$('#updatewindow').hide();
+				$('#updatewindow').fadeOut('slow');
 				$("#updatewindow #fontleft").html(140);
 				
 				$('.messagedialog').message('发布成功！！！','info');
@@ -136,7 +136,7 @@
 	$.updatewindow.cancel = function(form) {
 		if(form) {
 			form.reset();
-			$('#updatewindow').hide();
+			$('#updatewindow').fadeOut('slow');
 			$("#updatewindow #fontleft").html(140);
 		}		
 	}
@@ -164,7 +164,7 @@
 		} else {
 			$('#replywindow').css('top',position.top);
 		}
-		$('#replywindow').show();
+		$('#replywindow').fadeIn('slow');
 		$("#replywindow #updatetext").focus();
 	}
 	
@@ -183,7 +183,7 @@
 			
 			$.api.current().update({status:updatetext,in_reply_to_status_id:$.replywindow.tweet.id}, function(){
 				form.reset();
-				$('#replywindow').hide();
+				$('#replywindow').fadeOut('slow');
 				$("#replywindow #fontleft").html(140);
 				
 				$('.messagedialog').message('回复成功！！！','info');
@@ -194,7 +194,7 @@
 	$.replywindow.cancel = function(form) {
 		if(form) {
 			form.reset();
-			$('#replywindow').hide();
+			$('#replywindow').fadeOut('slow');
 			$("#replywindow #fontleft").html(140);
 		}		
 	}

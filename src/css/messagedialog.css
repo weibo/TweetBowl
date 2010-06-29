@@ -14,6 +14,7 @@
 		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
 	font:normal normal 宋体,Tahoma,Arial,Geogia,Sans-serif;
 	display:none;
+	z-index: 999;
 }
 .messagedialogtitle {
 	display:table-header-group; 
