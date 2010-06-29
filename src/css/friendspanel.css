@@ -1,0 +1,18 @@
+@CHARSET "utf-8";
+
+.friendspanel {	
+	position:absolute; 
+	display: table;
+	padding:20px;
+	width:250px;height:200px;
+	border:1px outset #e1e1e1;
+	-webkit-border-radius:5px;
+	background-color:rgba(222,222,222,0.9);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
+	font:normal larger 宋体,Tahoma,Arial,Geogia,Sans-serif;
+	display:none;
+	z-index: 999;
+}

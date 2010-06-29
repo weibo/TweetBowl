@@ -26,7 +26,7 @@
 		$("<div class='navipanelfriends'></div>").appendTo(panelDiv).bind('click', function(){
 			var position = $(this).position();
 			position.top = position.top + $(this).height();
-			$.updatewindow.show(position);
+			$(this).friendsPanel();
 		});
 		
 		$("<div class='navipanelupdate'></div>").appendTo(panelDiv).bind('click', function(){
