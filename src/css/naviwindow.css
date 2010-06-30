@@ -23,13 +23,17 @@
 .navipanelfriends {
 	float: left;
 	margin-left:5px;
+	padding-bottom:3px;
 	width:16px;height:16px;
 	cursor:pointer;
-	background:transparent url(../icons/navibar/friends.png) no-repeat center 1px !important;
+}
+.navipanelfriends .friendsimg {
+	margin-top:1px;
 }
 .navipanelupdate {
 	float: left;
 	margin-left:5px;
+	padding-bottom:3px;
 	width:16px;height:16px;
 	cursor:pointer;
 	background:transparent url(../icons/navibar/update.png) no-repeat center 1px !important;

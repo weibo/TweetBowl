@@ -23,15 +23,12 @@
 	    		});
 			});
 		});
-		$("<div class='navipanelfriends'></div>").appendTo(panelDiv).bind('click', function(){
-			var position = $(this).position();
-			position.top = position.top + $(this).height();
-			$(this).friendsPanel();
-		});
+		$("<div class='navipanelfriends'><img src='src/icons/navibar/friends.png' width='16px' height='16px' class='friendsimg'></img></div>").appendTo(panelDiv);
+		
 		
 		$("<div class='navipanelupdate'></div>").appendTo(panelDiv).bind('click', function(){
 			var position = $(this).position();
-			position.top = position.top + $(this).height();
+			position.top = position.top + $(this).outerHeight();
 			$.updatewindow.show(position);
 		});
 		
@@ -92,6 +89,10 @@
 			
 			var naviPanel = $.buildNaviPanel();
 			$(this).append(naviPanel);
+			
+			$('.navipanelfriends .friendsimg').bind('click', function(){
+				$(".friendspanel").friendsPanel();
+			});
 		}
 	}
 	

@@ -3,11 +3,10 @@
 .friendspanel {	
 	position:absolute; 
 	display: table;
-	padding:20px;
-	width:250px;height:200px;
+	width:250px;height:350px;
 	border:1px outset #e1e1e1;
 	-webkit-border-radius:5px;
-	background-color:rgba(222,222,222,0.9);
+	background-color:rgba(222,222,222,0.6);
 	background-image: -webkit-gradient(linear, left top, left bottom,
 		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
 		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
@@ -16,3 +15,41 @@
 	display:none;
 	z-index: 999;
 }
+
+.friendspanel ul {
+	list-style:none;
+	margin:10px 10px;
+	padding:5px;
+	height:300px;
+	overflow-y:auto;
+}
+
+.friendspanel ul li {
+	float:left;
+	width:200px;
+	margin:0 auto;
+	padding:3px 5px 3px;
+	cursor:pointer;
+	color: #111;
+	font-weight:bold;
+}
+
+.friendspanel ul li:hover {	
+	-webkit-border-radius:5px;
+	background-color:rgba(255,100,0,0.7);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
+}
+
+.friendspanel ul li img {
+	float: left;
+	-webkit-border-radius:2px;
+	margin: 3px 5px;
+}
+.friendspanel ul li span {
+	float: left;
+	margin: 5px auto;
+}
+

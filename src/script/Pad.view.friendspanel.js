@@ -11,31 +11,56 @@
  */
 (function($){
 	
-	$.buildSearchPanel = function(tweet) {
-		var searchPanel = document.createElement("div");
-		searchPanel.className = "searchpanel";
+	$.buildFriendsPanel = function() {
+		var friendsPanel = document.createElement("div");
+		friendsPanel.className = "friendspanel";
 		
-		$("<div class='searchfield'><input type='text' name='keyword' class='searchtext'/><div class='searchbutton'>检索</div></div>").appendTo(searchPanel);
+		$("<ul></ul>").appendTo(friendsPanel);
 		
-		if($.searchHistory && $.searchHistory.length) {
-			$("<div class='historyfield'><span class=''>最近关注的话题</span><hr/></div>").appendTo(searchPanel);
-			
-			$.each($.searchHistory, function(index, value){
-				$('.historyfield', searchPanel).append("<div>"+value+"</div>");
-			});
-		}
-		
-		return searchPanel;
+		return friendsPanel;
 	};
 	
-	$.fn.friendsPanel = function() {		
-		if($(this)[0]){
+	$.buildFriendsList = function(friends) {
+		$(".friendspanel ul").empty();
+		$.each(friends, function(index, value){
+			$("<li name='"+value.name+"'><img src='"+value.profile_image_url+"' width='24' height='24'/><span>"+value.screen_name+"</span></li>").appendTo(".friendspanel ul").bind('click', function(){
+				$.api.current().statuses.user_timeline({id:value.id,name:value.name}, function(results){
+					$("#content").empty();
+					$.each(results, function(index, value){						
+						$("#content").addTweetPanel(value);						
+		    		});
+				});
+			});
+		});
+	}
+	
+	$.fn.friendsPanel = function() {
+		
+		if(!$(this)[0]){
+			var friendsPanel = $.buildFriendsPanel();
+			$('.navipanelfriends').append(friendsPanel);
 			
-			var friendsPanel = $.buildSearchPanel();
-			$(".friendspanel").append(friendsPanel);
-			$(".friendspanel").fadeIn('slow');
-			
+			$('.navipanelfriends').hover(
+				function () {
+					if($.api.current().results.tweetcache.friends) {
+						$.buildFriendsList($.api.current().results.tweetcache.friends);
+					} else {
+						$.api.current().friends({}, function(friends) {
+							$.buildFriendsList(friends);
+						});
+					}			
+					$('.friendspanel').slideDown(100);				
+				}, 
+				function () {
+					$('.friendspanel').slideUp(100);			
+				}
+			);
 		}
+		
+		$('.friendspanel').slideDown(100);
+		$.api.current().friends({}, function(friends) {
+			$.buildFriendsList(friends);
+		});
 	}
 	
 })(jQuery);
