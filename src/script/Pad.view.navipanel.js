@@ -43,7 +43,7 @@
 		var menu = document.createElement("ul");
 		menu.className = "menu";
 			
-		$("<li>添加微博用戶</li>").appendTo(menu).bind('click', function(){
+		$("<li>添加微博帐户</li>").appendTo(menu).bind('click', function(){
 			$("#content").settingPanel();
 		});
 		
