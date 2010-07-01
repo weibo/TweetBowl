@@ -42,8 +42,8 @@
 			
 			$('.navipanelfriends').hover(
 				function () {
-					if($.api.current().results.tweetcache.friends) {
-						$.buildFriendsList($.api.current().results.tweetcache.friends);
+					if($.api.current().results.tweetcache.friends[$.api.current().username]) {
+						$.buildFriendsList($.api.current().results.tweetcache.friends[$.api.current().username]);
 					} else {
 						$.api.current().friends({}, function(friends) {
 							$.buildFriendsList(friends);
