@@ -33,7 +33,7 @@
 		
 #titlenenu ul li {
 	float:left;
-	width:150px;
+	width:160px;
 	margin:0 1px;
 	padding:5px 15px 5px;
 	border-top:1px solid #fff;
@@ -52,8 +52,13 @@
 }
 
 #titlenenu ul li img {
+	float: left;
 	-webkit-border-radius:2px;
-	margin-right:5px;
+	margin: 1px auto;
+}
+#titlenenu ul li span {
+	float: left;
+	margin: 3px 2px;
 }
 		
 /* display block will make the link fill the whole area of LI */
