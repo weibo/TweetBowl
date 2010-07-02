@@ -58,14 +58,7 @@
     						air.EncryptedLocalStore.setItem('windowstate', bytes);
     					}
     					
-    					var exitingEvent = new air.Event(air.Event.EXITING, false, true);
-    	                air.NativeApplication.nativeApplication.dispatchEvent(exitingEvent);
-    	                if (!exitingEvent.isDefaultPrevented()) {
-    	                	if($.state.enable) {
-    	                		$.state.Manager.save();
-    	                	}
-    	                    air.NativeApplication.nativeApplication.exit();
-    	                }
+    					$.nativeWindow.close();
     				});
     			} else if(value == 'maximize') {
     				$('.windowheader').append("<div class='tools-maximize'></div>");
@@ -122,6 +115,20 @@
 				}
 			}
     	}
+    	
+    	nativeWindow.addEventListener(air.Event.CLOSING, function(event){
+    		$.nativeWindow.close();
+    	});
+	}
+	$.nativeWindow.close = function(){
+		var exitingEvent = new air.Event(air.Event.EXITING, false, true);
+        air.NativeApplication.nativeApplication.dispatchEvent(exitingEvent);
+        if (!exitingEvent.isDefaultPrevented()) {
+        	if($.app && $.app.saveState) {
+        		$.app.saveState();
+        	}
+            air.NativeApplication.nativeApplication.exit();
+        }
 	}
 	$.fn.nativeWindow = function(opts) {		
 		if(!$(this).length){
@@ -139,33 +146,6 @@
 		if($(this).length){
 			$(this).css('backgroundColor', 'rgba(' + rgba.r + ',' +rgba.g +',' + rgba.b + ',' + rgba.a + ')');
 		}
-	}
-	
-	$.state = {
-		enable		: true,
-		storekey	: 'STATE_STORE_KEY',
-		storevalue	: {}
-	};	
-	$.state.Manager = {};
-	$.state.Manager.save = function() {
-		$.account.save();
-		var bytes = new air.ByteArray();
-		var value = Ext.encode($.state.storevalue);
-		bytes.writeUTFBytes(value);
-		air.EncryptedLocalStore.setItem($.state.storekey, bytes);
-	}
-	$.state.Manager.read = function() {
-		var storedValue = air.EncryptedLocalStore.getItem($.state.storekey);
-		if (storedValue) {
-			var value = storedValue.readUTFBytes(storedValue.length);
-			if(value) {
-				$.state.storevalue = Ext.decode(value);
-			}
-		}
-	}
-	
-	if($.state.enable) {
-		$.state.Manager.read();
 	}
 	
 	$.decode = function(text) {

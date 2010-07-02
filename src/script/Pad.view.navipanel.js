@@ -16,8 +16,12 @@
 		panelDiv.className = "navipanel";
 		
 		$("<div class='navipanelhome'></div>").appendTo(panelDiv).bind('click', function(){
+			$.app.addTrackAction('friends_timeline');
+			
 			$.api.current().statuses.friends_timeline({}, function(results){
 				$("#content").empty();
+				$.app.addTrackSinceId(results[0].id);
+				
 				$.each(results, function(index, value){						
 					$("#content").addTweetPanel(value);						
 	    		});
@@ -33,6 +37,7 @@
 		});
 		
 		$("<div class='navipanelsearch'></div>").appendTo(panelDiv).bind('click', function(){
+			$.app.addTrackAction('search');
 			$("#content").searchPanel();
 		});
 		
@@ -54,10 +59,14 @@
 					type : $(this).attr('type')
 				}
 				
+				$.app.addTrackAction('friends_timeline');
+				
 				$.account.current = $.account.find(account);
 				var api = $.api.find($.account.current);
 				$.api.current(api).statuses.friends_timeline({}, function(results){
 					$("#content").empty();
+					$.app.addTrackSinceId(results[0].id);
+					
 					$.each(results, function(index, value){
 						
 						$("#content").addTweetPanel(value);

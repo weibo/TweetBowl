@@ -41,6 +41,8 @@
 		
 		<script type="text/javascript" src="src/script/DateFormat.js"></script>
 		<script type="text/javascript" src="src/script/jquery-air-ui.window.js"></script>
+		<script type="text/javascript" src="src/script/Pad.app.main.js"></script>
+		
 		<script type="text/javascript" src="src/script/Pad.view.tweetpanel.js"></script>
 		<script type="text/javascript" src="src/script/Pad.view.navipanel.js"></script>
 		<script type="text/javascript" src="src/script/Pad.view.settingpanel.js"></script>
@@ -55,16 +57,13 @@
 		<script type="text/javascript" src="src/script/Pad.utils.account.js"></script>
 		<script type="text/javascript" src="src/script/Pad.utils.api.js"></script>
 		<script type="text/javascript" src="src/script/Pad.utils.link.js"></script>
+		<script type="text/javascript" src="src/script/Pad.utils.state.js"></script>
 		
 		<script>
 			
-			function printSuccess(result) {
-				alert(result);
-			}
-			
 			$(function(){
 				
-				$.account.read();
+				$.app.init();
 				
 				$("#nativewindow").nativeWindow({
 					title: '百家微博 beta',
