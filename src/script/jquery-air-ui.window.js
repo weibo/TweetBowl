@@ -133,7 +133,7 @@
     	}
     	
     	nativeWindow.addEventListener(air.Event.CLOSING, function(event){
-    		$.nativeWindow.close();
+    		$.nativeWindow.onClose();
     	});
     	
     	nativeWindow.addEventListener(air.NativeWindowBoundsEvent.RESIZE, function(event){

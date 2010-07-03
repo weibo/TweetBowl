@@ -53,12 +53,49 @@
 		panelDiv.appendChild(footerDiv);		
 		
 		return panelDiv;
-	},
+	};
 	
 	$.fn.addTweetPanel = function(tweet) {		
 		if($(this)[0]){
 			var tweetPanel = $.buildTweetPanel(tweet);
 			$(this).append(tweetPanel);
+			
+			$(tweetPanel).bind('click', function(){
+				$(this).fadeIn("slow");
+				var position = $(this).position();
+			});
+			
+			$(tweetPanel).addLink();
+			
+			$("li.reply", tweetPanel).bind('click', function(){
+				
+				var position = $(this).position();				
+				$.replywindow.show(position,tweet);
+			});
+			$("li.retweet", tweetPanel).bind('click', function(){
+				
+				$.api.current().retweet({id:tweet.id}, function(){
+					$('.messagedialog').message('转发成功！！！','info');
+				});
+			});
+			$("li.delete", tweetPanel).bind('click', function(){
+				
+				$.api.current().destroy({id:tweet.id}, function(){
+					$(".tweetpanel[id='"+tweet.id+"']").remove();
+					$('.messagedialog').message('删除成功！！！','info');
+				});
+			});
+		}
+	};
+	
+	$.fn.insertTweetPanel = function(tweet) {		
+		if($(this)[0]){
+			var tweetPanel = $.buildTweetPanel(tweet);
+			if($('.tweetpanel', this).first()) {
+				$(tweetPanel).insertBefore($('.tweetpanel', this).first());
+			} else {
+				$(this).append(tweetPanel);
+			}		
 			
 			$(tweetPanel).bind('click', function(){
 				$(this).fadeIn("slow");

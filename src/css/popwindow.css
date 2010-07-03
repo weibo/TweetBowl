@@ -1,0 +1,102 @@
+@CHARSET "utf-8";
+
+.popwindow {
+	margin:0px auto;
+	position:absolute;
+	display: table;
+	padding:1%;
+	width:100%;height:100%;
+	border:1px outset #99bbe8;
+	-webkit-border-radius: 5px;
+	background-color: rgba(188,210,240,0.8);
+}
+.tweetpanel {	
+	margin:0px auto;
+	display: table;
+	padding:9px;
+	width:100%;height:100%;
+	-webkit-border-radius: 5px;
+	background-color: rgba(222,222,222,0.6);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
+	font:normal normal 宋体,Tahoma,Arial,Geogia,Sans-serif;	
+}
+
+.tweetpanel:hover {
+	padding:8px;
+	border:1px outset #e1e1e1;
+}
+
+.tweetpanel .tweetpaneltitle {
+	display:table-header-group; 
+}
+
+.tweetpanel .profile_image_url {
+	float:left;
+	height:40px;width:40px;
+}
+
+.tweetpanel img {	
+	-webkit-border-radius:3px;
+}
+
+.tweetpanel .user_name {
+	float:left;
+	height:16px;width:48%;
+	padding:0px 5px 0px;
+	font-weight:bolder;
+}
+
+.tweetpanel .tweetpaneltools {
+	float:right;
+	display:none;
+}
+
+.tweetpanel:hover .tweetpaneltools {
+	float:right;
+	display:block;
+}
+
+.tweetpaneltools ul{
+	list-style-type:none;
+	margin: 0px;
+}
+.tweetpaneltools li{
+	font-size: 12px;
+	float: right;
+	color: #888;
+	font-weight: bold;
+	padding-left:4px;
+	background-color: transparent;
+	background-image: url(../icons/line.gif);
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-position: 0px 4px;
+	cursor:pointer;
+}
+
+.tweetpanel .tweetpanelbody {	
+	display:table-cell;
+	overflow:hidden;
+}
+
+.tweetpanel .tweetcontent {
+	height:108px;
+	word-wrap:break-word;
+	word-break:break-all;
+}
+
+.tweetpanel .tweetpanelfooter {	
+	display:table-footer-group;
+}
+
+.tweetpanel .create_date {
+	float:left;
+	height:10px;width:60%;
+	padding:2px auto;
+	font-size:small;
+	font-style:oblique;
+	color:#888;
+}

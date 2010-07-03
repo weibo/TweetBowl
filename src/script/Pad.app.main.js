@@ -29,6 +29,7 @@
 		//初始化系统配置
 		if($.state.storevalue.config) {
 			$.app.config = $.state.storevalue.config;
+			$.app.config.backing.time = 10;
 		}
 		
 		//初始化系历史记录
@@ -94,7 +95,8 @@
 			var params = {};
 			
 			if($.app.track && $.app.track.since_id) {
-				params.since_id = $.app.track.since_id;
+				//params.since_id = $.app.track.since_id;
+				params.since_id = '17626064680'
 			}
 			
 			api.statuses.friends_timeline(params, function(results){
@@ -103,12 +105,33 @@
 				}
 				$.each(results, function(index, value){					
 					if($.app.track && $.app.track.action == 'friends_timeline') {
-						$("#content").addTweetPanel(value);
+						$("#content").insertTweetPanel(value);
 					}
+					
+					if($.nativeWindow.displayState && $.nativeWindow.displayState == 'minimized') {
+						$.app.showPopWindow(value);
+					}
+					
 	    		});
 			});
-			//$.app.clearTimelineListener();
 		}
 	}
 	
+	$.app.showPopWindow = function(tweet) {
+		var options = new air.NativeWindowInitOptions();
+		options.systemChrome = "none";
+		options.transparent = true;
+		options.type = "lightweight";
+		
+		var place = $.place.rightBottom({width:300,height:200});
+		var windowBounds = new air.Rectangle(place.x,place.y,300,200);
+		
+		var popHtmlLoader = air.HTMLLoader.createRootWindow(true, options, false, windowBounds);
+		popHtmlLoader.load(new air.URLRequest("src/html/popwindow.html"));
+		popHtmlLoader.window.CALLBACK = {
+			init : function(buildView) {
+				buildView(tweet);
+			}
+		}			
+	}
 })(jQuery);
