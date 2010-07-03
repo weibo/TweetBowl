@@ -18,6 +18,7 @@
 			position: 'center',
 			closable: true,
 			minimizable: true,
+			maximizable: true,
 			movable: true,
 			tools: ['close','minimize']
 		},opts||{});
@@ -34,6 +35,19 @@
 			$('.windowheader')[0].onmousedown = function(){
 				nativeWindow.startMove()
 			};
+		}
+		if(opts.maximizable) {
+			$('.windowheader').bind('dblclick', function(){
+				if(!$.nativeWindow.displayState || $.nativeWindow.displayState == runtime.flash.display.StageDisplayState.NORMAL) {
+					nativeWindow.stage.displayState = runtime.flash.display.StageDisplayState.FULL_SCREEN_INTERACTIVE;
+					$.nativeWindow.displayState = runtime.flash.display.StageDisplayState.FULL_SCREEN_INTERACTIVE;
+				} else if($.nativeWindow.displayState == runtime.flash.display.StageDisplayState.FULL_SCREEN_INTERACTIVE) {
+					nativeWindow.stage.displayState = runtime.flash.display.StageDisplayState.NORMAL;
+					$.nativeWindow.displayState = runtime.flash.display.StageDisplayState.NORMAL;
+				}
+				$.nativeWindow.onMaximize();
+			});
+			
 		}
 		
 		/**窗口名称*/
@@ -58,25 +72,27 @@
     						air.EncryptedLocalStore.setItem('windowstate', bytes);
     					}
     					
-    					$.nativeWindow.close();
+    					$.nativeWindow.onClose();
     				});
     			} else if(value == 'maximize') {
-    				$('.windowheader').append("<div class='tools-maximize'></div>");
+    				$('.windowheader').append("<div id='tools-maximize' class='tools-maximize'></div>");
     				$('.windowheader .tools-maximize').click(function(){
-      					
-    					if($(this).attr('class') == 'tools-maximize'){
-	    					nativeWindow.maximize();    					
-	    					$(this).removeClass('tools-maximize');  
-	    					$(this).addClass('tools-restore');
-    					} else {
-    						nativeWindow.restore();    					
-	    					$(this).removeClass('tools-restore');  
-	    					$(this).addClass('tools-maximize');
+    					
+    					if(!$.nativeWindow.displayState || $.nativeWindow.displayState == runtime.flash.display.StageDisplayState.NORMAL) {
+    						nativeWindow.stage.displayState = runtime.flash.display.StageDisplayState.FULL_SCREEN_INTERACTIVE;
+    						$.nativeWindow.displayState = runtime.flash.display.StageDisplayState.FULL_SCREEN_INTERACTIVE;
+    					} else if($.nativeWindow.displayState == runtime.flash.display.StageDisplayState.FULL_SCREEN_INTERACTIVE) {
+    						nativeWindow.stage.displayState = runtime.flash.display.StageDisplayState.NORMAL;
+    						$.nativeWindow.displayState = runtime.flash.display.StageDisplayState.NORMAL;
     					}
+    					$.nativeWindow.onMaximize();
     				});  				
     			} else if(value == 'minimize') {
     				$('.windowheader').append("<div class='tools-minimize'></div>");
-    				$('.windowheader .tools-minimize').click(function(){nativeWindow.minimize();});
+    				$('.windowheader .tools-minimize').click(function(){
+    					nativeWindow.minimize();
+    				});
+    				
     			}
     		});
     	}
@@ -119,9 +135,33 @@
     	nativeWindow.addEventListener(air.Event.CLOSING, function(event){
     		$.nativeWindow.close();
     	});
+    	
+    	nativeWindow.addEventListener(air.NativeWindowBoundsEvent.RESIZE, function(event){
+    		//air.trace(event);
+    	});
+    	
+    	nativeWindow.addEventListener(air.NativeWindowDisplayStateEvent.DISPLAY_STATE_CHANGE, function(event){
+    		$.nativeWindow.displayState = event.afterDisplayState;
+    		$.nativeWindow.onMaximize();
+    	});
 	}
-	$.nativeWindow.close = function(){
-		var exitingEvent = new air.Event(air.Event.EXITING, false, true);
+	$.nativeWindow.onDisplay = function(afterDisplayState){
+		if(afterDisplayState == 'minimized') {
+			
+		}
+		air.trace(afterDisplayState);
+	}
+	$.nativeWindow.onMaximize = function(){
+		if($.nativeWindow.displayState && $.nativeWindow.displayState == runtime.flash.display.StageDisplayState.FULL_SCREEN_INTERACTIVE) {
+			$('#tools-maximize').removeClass('tools-maximize');
+			$('#tools-maximize').addClass('tools-restore');
+		} else {
+			$('#tools-maximize').removeClass('tools-restore');
+			$('#tools-maximize').addClass('tools-maximize');
+		}
+	}
+	$.nativeWindow.onClose = function(){
+		var exitingEvent = new air.Event(air.Event.EXITING, true, true);
         air.NativeApplication.nativeApplication.dispatchEvent(exitingEvent);
         if (!exitingEvent.isDefaultPrevented()) {
         	if($.app && $.app.saveState) {
