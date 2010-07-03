@@ -5,7 +5,6 @@
  *
  * @author Helio (waltz_h@163.com)
  * @version 1.0
- * @param {int} maxentries Number of entries to paginate
  * @param {Object} opts Several options (see README for documentation)
  * @return {Object} jQuery Object
  */

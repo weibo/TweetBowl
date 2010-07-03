@@ -10,7 +10,9 @@
 	}
 	
 	$.popwindow.init = function() {
-		CALLBACK.init($.popwindow.build);
+		CALLBACK.init($('.popwindow'), $.popwindow.build);
+		
+		nativeWindow.alwaysInFront = true;
 	}
 	
 	$.popwindow.build = function(tweet) {
@@ -45,7 +47,7 @@
 		
 		var toolsDiv = document.createElement("div");
 		toolsDiv.className = "tweetpaneltools";		
-		toolsDiv.innerHTML = "<li class='close'>关闭</li>";
+		toolsDiv.innerHTML = "<ul><li class='close'>关闭</li></ul>";
 		titleDiv.appendChild(toolsDiv);
 		
 		var contentDiv = document.createElement("div");

@@ -6,7 +6,7 @@
 	display: table;
 	padding:1%;
 	width:100%;height:100%;
-	border:1px outset #99bbe8;
+	/*border:1px outset #99bbe8;*/
 	-webkit-border-radius: 5px;
 	background-color: rgba(188,210,240,0.8);
 }
@@ -66,7 +66,7 @@
 .tweetpaneltools li{
 	font-size: 12px;
 	float: right;
-	color: #888;
+	color: #555;
 	font-weight: bold;
 	padding-left:4px;
 	background-color: transparent;

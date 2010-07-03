@@ -1,11 +1,8 @@
 /**
- * This jQuery plugin displays native window in adobe air.
+ * Main Class.
  * 
- * This plugin needs at least jQuery 1.4.2
- *
  * @author Helio (waltz_h@163.com)
  * @version 1.0
- * @param {int} maxentries Number of entries to paginate
  * @param {Object} opts Several options (see README for documentation)
  * @return {Object} jQuery Object
  */
@@ -16,6 +13,9 @@
 		track	: {action: 'init'}
 	};
 	
+	/**
+	 * 初始化方法
+	 */
 	$.app.init = function(){
 		
 		//读取存储区的数据
@@ -29,7 +29,7 @@
 		//初始化系统配置
 		if($.state.storevalue.config) {
 			$.app.config = $.state.storevalue.config;
-			$.app.config.backing.time = 10;
+			$.app.config.backing.time = 60;
 		}
 		
 		//初始化系历史记录
@@ -40,7 +40,9 @@
 		
 		$.app.addTimelineListener();
 	}
-	
+	/**
+	 * 保存软件状态，包括系统配置，操作记录等
+	 */
 	$.app.saveState = function() {
 		
 		//存储系统配置
@@ -58,20 +60,26 @@
     		$.state.Manager.save();
     	}
 	}
-	
+	/**
+	 * 实时信息监听器，获取新发布的微博内容。
+	 */
 	$.app.addTimelineListener = function() {
 		if($.app.config && $.app.config.backing && $.app.config.backing.enable) {
 			$.app.timelineListening = setInterval(function(){$.app.getNewFriendsTimeline();}, $.app.config.backing.time * 1000);
 		}	
 	}
-	
+	/**
+	 * 取消实时信息监听。
+	 */
 	$.app.clearTimelineListener = function() {
 		if($.app.timelineListening) {
 			clearInterval($.app.timelineListening);
 			$.app.timelineListening = null;
 		}	
 	}
-	
+	/**
+	 * 记录当前操作。
+	 */
 	$.app.addTrackAction = function(action) {
 		if(!$.app.track) {
 			$.app.track = {};
@@ -79,7 +87,9 @@
 		}
 		$.app.track.action = action;
 	}
-	
+	/**
+	 * 记录当前最大的微博ID.
+	 */
 	$.app.addTrackSinceId = function(id) {
 		if(!$.app.track) {
 			$.app.track = {};
@@ -87,10 +97,12 @@
 		}
 		$.app.track.since_id = id;
 	}
-	
+	/**
+	 * 获取自己和好友新新发布的微博内容。
+	 */
 	$.app.getNewFriendsTimeline = function() {
 		var api = $.api.current();
-		if(api) {
+		if(api && api.username) {
 			
 			var params = {};
 			
@@ -116,7 +128,9 @@
 			});
 		}
 	}
-	
+	/**
+	 * 显示最新微博内容提示窗口。
+	 */
 	$.app.showPopWindow = function(tweet) {
 		var options = new air.NativeWindowInitOptions();
 		options.systemChrome = "none";
@@ -126,11 +140,12 @@
 		var place = $.place.rightBottom({width:300,height:200});
 		var windowBounds = new air.Rectangle(place.x,place.y,300,200);
 		
-		var popHtmlLoader = air.HTMLLoader.createRootWindow(true, options, false, windowBounds);
+		var popHtmlLoader = air.HTMLLoader.createRootWindow(true, options, true, windowBounds);
 		popHtmlLoader.load(new air.URLRequest("src/html/popwindow.html"));
 		popHtmlLoader.window.CALLBACK = {
-			init : function(buildView) {
-				buildView(tweet);
+			init : function(popwindow, buildViewCallBack) {
+				buildViewCallBack(tweet);
+				$(popwindow).backgroundColor();
 			}
 		}			
 	}
