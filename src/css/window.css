@@ -106,4 +106,8 @@
 	float: right;
 	background:transparent url(../icons/window/resize.png) no-repeat left top !important;
 	cursor:se-resize;
+	opacity:0.5;
+}
+.windowfooter .resize:hover {
+	opacity:1;
 }
