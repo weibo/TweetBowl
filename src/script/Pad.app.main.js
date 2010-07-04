@@ -184,4 +184,11 @@
 			}
 		}			
 	}
+	$.fn.scrollActionListener = function(){
+		if($(this)[0]){
+			$(this).bind('scroll', function(){
+				air.trace($(this).attr('scrollHeight') + ':' + $(this).attr('scrollTop') + ':' + $(this).attr('offsetHeight'));
+			});
+		}
+	}
 })(jQuery);
