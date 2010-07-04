@@ -8,8 +8,8 @@
 
 .settingpanel .settingpanelleft {
 	float:left;
-	margin: 10px 5px 0px;
-	width:30%;height:98%;
+	margin: 10px 0px 0px 5px;
+	width:30%;height:97%;
 	border:solid 2px #eee;
 	-webkit-border-radius:5px;
 	background-color:rgba(222,222,222,0.6);
@@ -134,7 +134,7 @@
 .settingpanel .settingpanelright {
 	float:right;
 	margin: 10px 5px 0px;
-	width:66%;;height:98%;
+	width:66%;;height:97%;
 	border:solid 2px #eee;
 	-webkit-border-radius:5px;
 	background-color:rgba(222,222,222,0.6);
