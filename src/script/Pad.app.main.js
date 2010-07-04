@@ -9,7 +9,9 @@
 (function($){
 	
 	$.app = {
-		config	: {backing : {enable:true,time:60}},
+		config	: {
+			backing:{enable:true,time:60},popwindow:{enable:true,time:10}
+		},
 		track	: {action: 'init'}
 	};
 	
@@ -86,6 +88,10 @@
 			$.state.storevalue.track = $.app.track;
 		}
 		$.app.track.action = action;
+		
+		if($.app.track.action == 'friends_timeline') {
+			$.tweetCache.empty();
+		}
 	}
 	/**
 	 * 记录当前最大的微博ID.
@@ -107,26 +113,54 @@
 			var params = {};
 			
 			if($.app.track && $.app.track.since_id) {
-				//params.since_id = $.app.track.since_id;
-				params.since_id = '17626064680'
+				params.since_id = $.app.track.since_id;
+				params.since_id = '221370'
 			}
 			
 			api.statuses.friends_timeline(params, function(results){
 				if($.app.track) {
 					$.app.track.since_id = results[0].id;
 				}
-				$.each(results, function(index, value){					
-					if($.app.track && $.app.track.action == 'friends_timeline') {
-						$("#content").insertTweetPanel(value);
-					}
-					
-					if($.nativeWindow.displayState && $.nativeWindow.displayState == 'minimized') {
-						$.app.showPopWindow(value);
-					}
-					
-	    		});
+				$.tweetCache.merge(results);
+				
+				if($.tweetCache.length() && !$.app.popthread) {
+					$.app.addPopListener();
+				} else if(!$.tweetCache.length() && $.app.popthread) {
+					$.app.clearPopListener();
+				}
 			});
 		}
+	}
+	/**
+	 * 弹出窗口监听器，定时弹出新发布的微博内容。
+	 */
+	$.app.addPopListener = function() {
+		if(!$.app.popthread) {
+			$.app.popthread = setInterval(function(){
+				var tweet = $.tweetCache.pop();
+				
+				if($.app.track && $.app.track.action == 'friends_timeline') {
+					$("#content").insertTweetPanel(tweet);
+					
+					if($.nativeWindow.displayState && $.nativeWindow.displayState == 'minimized' && $.app.config.popwindow.enable) {
+						$.app.showPopWindow(tweet);
+					}
+				} else {
+					if($.app.config.popwindow.enable) {
+						$.app.showPopWindow(tweet);
+					}
+				}
+			}, $.app.config.popwindow.time * 1000);
+		}	
+	}
+	/**
+	 * 取消弹出窗口监听器。
+	 */
+	$.app.clearPopListener = function() {
+		if($.app.popthread) {
+			clearInterval($.app.popthread);
+			$.app.popthread = null;
+		}	
 	}
 	/**
 	 * 显示最新微博内容提示窗口。
@@ -143,9 +177,10 @@
 		var popHtmlLoader = air.HTMLLoader.createRootWindow(true, options, true, windowBounds);
 		popHtmlLoader.load(new air.URLRequest("src/html/popwindow.html"));
 		popHtmlLoader.window.CALLBACK = {
-			init : function(popwindow, buildViewCallBack) {
-				buildViewCallBack(tweet);
-				$(popwindow).backgroundColor();
+			init : function(buildViewCallBack) {
+				buildViewCallBack({
+					config: $.nativeWindow.config,
+					tweet : tweet});
 			}
 		}			
 	}

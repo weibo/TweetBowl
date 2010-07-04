@@ -5,23 +5,30 @@
 (function($){
 	
 	$.popwindow = {
-		width	: 200,
-		height	: 150
+		time	: 8
 	}
 	
 	$.popwindow.init = function() {
-		CALLBACK.init($('.popwindow'), $.popwindow.build);
 		
-		nativeWindow.alwaysInFront = true;
+		CALLBACK.init($.popwindow.build);
+		
+		nativeWindow.alwaysInFront = true;		
+		setTimeout(function(){nativeWindow.close();}, $.popwindow.time * 1000);
 	}
 	
-	$.popwindow.build = function(tweet) {
+	$.popwindow.build = function(result) {
 		
-		var tweetpanel = $.popwindow.buildTweetPanel(tweet);
+		$.popwindow.config = result.config;
+		$.popwindow.tweet = result.tweet;
+		//创建窗口
+		var tweetpanel = $.popwindow.buildTweetPanel($.popwindow.tweet);
 		$(tweetpanel).appendTo('.popwindow');
-		
+		//设置窗口背景色
+		var rgba = $.popwindow.config.rgba;
+		$('.popwindow').css('backgroundColor', 'rgba(' + rgba.r + ',' +rgba.g +',' + rgba.b + ',' + rgba.a + ')');
+		//设置超连接
 		$(tweetpanel).addLink();
-		
+		//添加关闭事件
 		$("li.close", tweetpanel).bind('click', function(){
 			nativeWindow.close();
 		});
