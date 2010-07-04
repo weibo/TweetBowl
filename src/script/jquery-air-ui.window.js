@@ -16,6 +16,7 @@
 			title: 'Native Window',
 			position: 'center',
 			closable: true,
+			resizable: true,
 			minimizable: true,
 			maximizable: true,
 			movable: true,
@@ -25,14 +26,23 @@
 		/**创建窗口*/
 		$(document.body).append("<div class='nativewindow'><div class='windowheader'></div><div class='windowbody'></div><div class='windowfooter'></div></div>");
 		
-		/**皮肤修改*/
-		$("<span>@author waltz_h@163.com</span>").appendTo(".windowfooter");
-		$("<div class='loading'><img src='src/icons/loading.gif' width='48px' hight='24px'></img></div>").appendTo(".windowfooter");
+		/**改变窗口大小事件*/
+		if(opts.resizable) {
+			$("<div class='resize'></div>").appendTo(".windowfooter").bind("mousedown", function(){
+				if($.nativeWindow.displayState != runtime.flash.display.StageDisplayState.FULL_SCREEN_INTERACTIVE) {
+					nativeWindow.startResize();
+				} else {
+					nativeWindow.stage.displayState = runtime.flash.display.StageDisplayState.NORMAL;
+					$.nativeWindow.displayState = runtime.flash.display.StageDisplayState.NORMAL;
+					$.nativeWindow.onMaximize();
+				}
+			});
+		}
 		
 		/**拖动窗口事件*/
 		if(opts.movable) {
 			$('.windowheader')[0].onmousedown = function(){
-				nativeWindow.startMove()
+				nativeWindow.startMove();
 			};
 		}
 		if(opts.maximizable) {
@@ -64,7 +74,9 @@
     					if($.nativeWindow.state == 'preserve') {
     						$.nativeWindow.config.position = {
     							x: window.nativeWindow.x,
-    							y: window.nativeWindow.y
+    							y: window.nativeWindow.y,
+    							width	: window.nativeWindow.width,
+    							height	: window.nativeWindow.height
     						}
     						var bytes = new air.ByteArray();
     						bytes.writeUTFBytes($.encode($.nativeWindow.config));
@@ -102,6 +114,10 @@
     		});
     	}
     	
+    	/**皮肤修改*/
+		$("<span>@author waltz_h@163.com</span>").appendTo(".windowfooter");
+		$("<div class='loading'><img src='src/icons/loading.gif' width='48px' hight='24px'></img></div>").appendTo(".windowfooter");
+		    	
     	/**窗口坐标*/
     	if(opts.position) {
     		if(opts.position == 'center') {
@@ -127,6 +143,11 @@
 					var position = $.nativeWindow.config.position;
 					window.nativeWindow.x = position.x;
 	    			window.nativeWindow.y = position.y;
+	    			
+	    			if(position.width && position.height) {
+	    				window.nativeWindow.width  = position.width;
+	    				window.nativeWindow.height = position.height;
+	    			}
 				}
 			}
     	}

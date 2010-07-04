@@ -96,7 +96,14 @@
 	float: left;
 }
 .windowfooter .loading {
-	margin: 3px 20px auto;
+	margin: 3px 8px auto;
 	float: right;
 	display: none;
+}
+.windowfooter .resize {
+	width:24px; height:24px;
+	margin: 1% auto 0px;
+	float: right;
+	background:transparent url(../icons/window/resize.png) no-repeat left top !important;
+	cursor:se-resize;
 }

@@ -10,7 +10,8 @@
 	
 	$.app = {
 		config	: {
-			backing:{enable:true,time:60},popwindow:{enable:true,time:10}
+			backing		: {enable:true,time:60},
+			popwindow	: {enable:true,time:10}
 		},
 		track	: {action: 'init'}
 	};
@@ -31,7 +32,7 @@
 		//初始化系统配置
 		if($.state.storevalue.config) {
 			$.app.config = $.state.storevalue.config;
-			$.app.config.backing.time = 60;
+			//$.app.config.backing.time = 60;
 		}
 		
 		//初始化系历史记录
@@ -114,7 +115,6 @@
 			
 			if($.app.track && $.app.track.since_id) {
 				params.since_id = $.app.track.since_id;
-				params.since_id = '221370'
 			}
 			
 			api.statuses.friends_timeline(params, function(results){
