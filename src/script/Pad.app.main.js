@@ -172,23 +172,25 @@
 	 * 显示最新微博内容提示窗口。
 	 */
 	$.app.showPopWindow = function(tweet) {
-		var options = new air.NativeWindowInitOptions();
-		options.systemChrome = "none";
-		options.transparent = true;
-		options.type = "lightweight";
-		
-		var place = $.place.rightBottom({width:300,height:200});
-		var windowBounds = new air.Rectangle(place.x,place.y,300,200);
-		
-		var popHtmlLoader = air.HTMLLoader.createRootWindow(true, options, true, windowBounds);
-		popHtmlLoader.load(new air.URLRequest("src/html/popwindow.html"));
-		popHtmlLoader.window.CALLBACK = {
-			init : function(buildViewCallBack) {
-				buildViewCallBack({
-					config: $.nativeWindow.config,
-					tweet : tweet});
+		if(tweet && tweet.id) {
+			var options = new air.NativeWindowInitOptions();
+			options.systemChrome = "none";
+			options.transparent = true;
+			options.type = "lightweight";
+			
+			var place = $.place.rightBottom({width:300,height:200});
+			var windowBounds = new air.Rectangle(place.x,place.y,300,200);
+			
+			var popHtmlLoader = air.HTMLLoader.createRootWindow(true, options, true, windowBounds);
+			popHtmlLoader.load(new air.URLRequest("src/html/popwindow.html"));
+			popHtmlLoader.window.CALLBACK = {
+				init : function(buildViewCallBack) {
+					buildViewCallBack({
+						config: $.nativeWindow.config,
+						tweet : tweet});
+				}
 			}
-		}			
+		}
 	}
 	$.fn.scrollActionListener = function(){
 		if($(this)[0]){
