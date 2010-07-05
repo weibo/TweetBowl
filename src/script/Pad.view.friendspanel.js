@@ -24,7 +24,9 @@
 		$(".friendspanel ul").empty();
 		$.each(friends, function(index, value){
 			$("<li name='"+value.name+"'><img src='"+value.profile_image_url+"' width='24' height='24'/><span>"+value.screen_name+"</span></li>").appendTo(".friendspanel ul").bind('click', function(){
-				$.api.current().statuses.user_timeline({id:value.id,name:value.name}, function(results){
+				$.app.addTrackAction('user_timeline');
+				$.app.track.user = {id:value.id,name:value.name};
+				$.api.current().statuses.user_timeline($.app.track.user, function(results){
 					$("#content").empty();
 					$.each(results, function(index, value){						
 						$("#content").addTweetPanel(value);						

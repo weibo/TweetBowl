@@ -20,13 +20,13 @@
 		leftDiv.innerHTML = "<ul></ul>";
 		
 		$("ul", leftDiv).append("<li><a class='cnfol'>中金在线微博</a></li>");
-		//$("ul", leftDiv).append("<li><a class='twitter'>Twitter(推特)</a></li>");
-		//$("ul", leftDiv).append("<li><a class='sohu'>搜狐微博</a></li>");
+		$("ul", leftDiv).append("<li><a class='twitter'>Twitter(推特)</a></li>");
+		$("ul", leftDiv).append("<li><a class='sohu'>搜狐微博</a></li>");
 		//$("ul", leftDiv).append("<li><a class='sina'>新浪微博</a></li>");
 		//$("ul", leftDiv).append("<li><a class='api9911'>9911微博客</a></li>");
 		//$("ul", leftDiv).append("<li><a class='digu'>digu嘀咕</a></li>");
-		//$("ul", leftDiv).append("<li><a class='renjian'>人间网微社区</a></li>");
-		//$("ul", leftDiv).append("<li><a class='tongxue'>同学网</a></li>");
+		$("ul", leftDiv).append("<li><a class='renjian'>人间网微社区</a></li>");
+		$("ul", leftDiv).append("<li><a class='tongxue'>同学网</a></li>");
 		//$("ul", leftDiv).append("<li><a class='zuosa'>做啥网zuosa</a></li>");
 		
 		if($.account.accounts.length) {

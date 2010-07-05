@@ -93,6 +93,12 @@
 		if($.app.track.action == 'friends_timeline') {
 			$.tweetCache.empty();
 		}
+		
+		if($.app.track.action == 'friends_timeline' || $.app.track.action == 'user_timeline') {
+			$.app.track.page = 1;
+			$.app.track.busy = false;
+		}
+		
 	}
 	/**
 	 * 记录当前最大的微博ID.
@@ -187,7 +193,56 @@
 	$.fn.scrollActionListener = function(){
 		if($(this)[0]){
 			$(this).bind('scroll', function(){
-				air.trace($(this).attr('scrollHeight') + ':' + $(this).attr('scrollTop') + ':' + $(this).attr('offsetHeight'));
+				
+				var scrollHeight = $(this).attr('scrollHeight');
+				var scrollTop = $(this).attr('scrollTop');
+				var offsetHeight = $(this).attr('offsetHeight');
+				
+				if(scrollTop + offsetHeight == scrollHeight && !$.app.track.busy) {
+					$.app.track.busy = true;
+					if($.app.track.action == 'friends_timeline') {
+
+						if(!$.app.track.page) {
+							$.app.track.page = 2;
+						} else {
+							$.app.track.page ++;
+						}
+						var params = {
+								page : $.app.track.page
+						};
+						$.api.current().statuses.friends_timeline(params, function(results){
+							if(results.length == $.api.current().config.count) {
+								$.app.track.busy = false;
+							}
+							$.each(results, function(index, value){
+								
+								$("#content").addTweetPanel(value);
+								
+				    		});
+						});
+					}
+					if($.app.track.action == 'user_timeline') {
+
+						if(!$.app.track.page) {
+							$.app.track.page = 2;
+						} else {
+							$.app.track.page ++;
+						}
+						var params = $.extend({
+								page : $.app.track.page
+						}, $.app.track.user||{});
+						$.api.current().statuses.user_timeline(params, function(results){
+							if(results.length == $.api.current().config.count) {
+								$.app.track.busy = false;
+							}
+							$.each(results, function(index, value){
+								
+								$("#content").addTweetPanel(value);
+								
+				    		});
+						});
+					}
+				}
 			});
 		}
 	}
