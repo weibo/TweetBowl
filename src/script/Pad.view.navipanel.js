@@ -49,6 +49,7 @@
 		menu.className = "menu";
 			
 		$("<li>添加微博帐户</li>").appendTo(menu).bind('click', function(){
+			$.app.addTrackAction('gotosetting');
 			$("#content").settingPanel();
 		});
 		
