@@ -122,7 +122,7 @@
 				params.since_id = $.app.track.since_id;
 			}
 			
-			if(params.since_id) {
+			if(params.since_id && !$.app.track.busy) {
 				api.statuses.friends_timeline(params, function(results){
 					if($.app.track && results[0].id) {
 						if($.app.track.since_id < results[0].id) {
