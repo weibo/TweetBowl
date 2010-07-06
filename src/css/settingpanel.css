@@ -161,6 +161,10 @@
 }
 .loginpanel table{
 	margin:30px auto;
+	font-size:18px;
+}
+.loginpanel .username,.password {
+	width:160px;height:26px;
 }
 
 .btn-login {

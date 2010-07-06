@@ -20,6 +20,13 @@
 .navipanelhome:hover {
 	
 }
+.navipanelmentions {
+	float: left;
+	margin-left:5px;
+	width:16px;height:16px;
+	cursor:pointer;
+	background:transparent url(../icons/navibar/mentions.png) no-repeat left top !important;
+}
 .navipanelfriends {
 	float: left;
 	margin-left:5px;

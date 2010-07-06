@@ -94,7 +94,7 @@
 			$.tweetCache.empty();
 		}
 		
-		if($.app.track.action == 'friends_timeline' || $.app.track.action == 'user_timeline') {
+		if($.app.track.action == 'friends_timeline' || $.app.track.action == 'user_timeline' || $.app.track.action == 'statuses_mentions') {
 			$.app.track.page = 1;
 			$.app.track.busy = false;
 		}
@@ -234,6 +234,28 @@
 								page : $.app.track.page
 						}, $.app.track.user||{});
 						$.api.current().statuses.user_timeline(params, function(results){
+							if(results.length == $.api.current().config.count) {
+								$.app.track.busy = false;
+							}
+							$.each(results, function(index, value){
+								
+								$("#content").addTweetPanel(value);
+								
+				    		});
+						});
+					}
+					
+					if($.app.track.action == 'statuses_mentions') {
+
+						if(!$.app.track.page) {
+							$.app.track.page = 2;
+						} else {
+							$.app.track.page ++;
+						}
+						var params = $.extend({
+								page : $.app.track.page
+						}, $.app.track.user||{});
+						$.api.current().statuses.statuses_mentions(params, function(results){
 							if(results.length == $.api.current().config.count) {
 								$.app.track.busy = false;
 							}

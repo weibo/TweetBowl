@@ -67,25 +67,30 @@
 	$.replywindow = {};
 	
 	$.replywindow.show = function(position, tweet) {
-		$.replywindow.tweet = tweet;
-		
-		$('#replywindow .profile_image_url').html("<img src='"+tweet.user.profile_image_url+"' width='32px' height='32px'/>");
-		$('#replywindow .screen_name').html(tweet.user.screen_name);
-		$('#replywindow #updatetext').val("@" + tweet.user.screen_name);
-		
-		if(position.left + $('#replywindow').outerWidth(true) > 800) {
-			$('#replywindow').css('left',position.left - $('#replywindow').outerWidth(true));
-		} else {
-			$('#replywindow').css('left',position.left);
+		if(tweet && tweet.id) {
+			$.replywindow.tweet = tweet;
+			
+			$('#replywindow .profile_image_url').html("<img src='"+tweet.user.profile_image_url+"' width='32px' height='32px'/>");
+			$('#replywindow .screen_name').html(tweet.user.screen_name);
+			
+			if(!$.api.current().config.reply_auto) {
+				$('#replywindow #updatetext').val("@" + tweet.user.screen_name);
+			}
+			
+			if(position.left + $('#replywindow').outerWidth(true) > 800) {
+				$('#replywindow').css('left',position.left - $('#replywindow').outerWidth(true));
+			} else {
+				$('#replywindow').css('left',position.left);
+			}
+			
+			if(position.top + $('#replywindow').outerHeight(true) > 600) {
+				$('#replywindow').css('top',position.top - $('#replywindow').outerHeight(true));
+			} else {
+				$('#replywindow').css('top',position.top);
+			}
+			$('#replywindow').fadeIn('slow');
+			$("#replywindow #updatetext").focus();
 		}
-		
-		if(position.top + $('#replywindow').outerHeight(true) > 600) {
-			$('#replywindow').css('top',position.top - $('#replywindow').outerHeight(true));
-		} else {
-			$('#replywindow').css('top',position.top);
-		}
-		$('#replywindow').fadeIn('slow');
-		$("#replywindow #updatetext").focus();
 	}
 	
 	$.replywindow.checkLength = function(textArea) {

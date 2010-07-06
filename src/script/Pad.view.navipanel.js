@@ -27,6 +27,18 @@
 	    		});
 			});
 		});
+		$("<div class='navipanelmentions'></div>").appendTo(panelDiv).bind('click', function(){
+			$.app.addTrackAction('statuses_mentions');
+			
+			$.api.current().statuses.statuses_mentions({}, function(results){
+				$("#content").empty();
+				$.app.addTrackSinceId(results[0].id);
+				
+				$.each(results, function(index, value){						
+					$("#content").addTweetPanel(value);						
+	    		});
+			});
+		});
 		$("<div class='navipanelfriends'><img src='src/icons/navibar/friends.png' width='16px' height='16px' class='friendsimg'></img></div>").appendTo(panelDiv);
 		
 		

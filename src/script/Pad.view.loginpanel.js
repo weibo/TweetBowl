@@ -34,9 +34,9 @@
 			$("form div",loginDiv).first().html("＂迷你博客。记录生活。一次一句。即时分享。关注好友。你在做啥？＂");
 		}
 		
-		$("table",loginDiv).append("<tr><td style='text-align:right; width:100px;'>用户名：</td><td><input type='text' name='username' style='width:120px;height:20px;'></td></tr>");
+		$("table",loginDiv).append("<tr><td style='text-align:right; width:80px;'>用户名：</td><td><input type='text' name='username' class='username'></td></tr>");
 		
-		$("table",loginDiv).append("<tr><td style='text-align:right;'>密码：</td>	<td><input type='password' name='password' style='width:120px;height:20px;'></td></tr>");
+		$("table",loginDiv).append("<tr><td style='text-align:right;'>密码：</td>	<td><input type='password' name='password' class='password'></td></tr>");
 		
 		$("table",loginDiv).append("<tr><td colspan='2' style='text-align:center;'><input type='button' value='添加' class='btn-image btn-login'/></td></tr>");
 		
