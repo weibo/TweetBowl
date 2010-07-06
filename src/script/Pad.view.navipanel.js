@@ -32,7 +32,6 @@
 			
 			$.api.current().statuses.statuses_mentions({}, function(results){
 				$("#content").empty();
-				$.app.addTrackSinceId(results[0].id);
 				
 				$.each(results, function(index, value){						
 					$("#content").addTweetPanel(value);						

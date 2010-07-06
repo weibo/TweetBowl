@@ -122,18 +122,22 @@
 				params.since_id = $.app.track.since_id;
 			}
 			
-			api.statuses.friends_timeline(params, function(results){
-				if($.app.track) {
-					$.app.track.since_id = results[0].id;
-				}
-				$.tweetCache.merge(results);
-				
-				if($.tweetCache.length() && !$.app.popthread) {
-					$.app.addPopListener();
-				} else if(!$.tweetCache.length() && $.app.popthread) {
-					$.app.clearPopListener();
-				}
-			});
+			if(params.since_id) {
+				api.statuses.friends_timeline(params, function(results){
+					if($.app.track && results[0].id) {
+						if($.app.track.since_id < results[0].id) {
+							$.app.track.since_id = results[0].id;
+						}
+					}
+					$.tweetCache.merge(results);
+					
+					if($.tweetCache.length() && !$.app.popthread) {
+						$.app.addPopListener();
+					} else if(!$.tweetCache.length() && $.app.popthread) {
+						$.app.clearPopListener();
+					}
+				});
+			}
 		}
 	}
 	/**
@@ -252,9 +256,9 @@
 						} else {
 							$.app.track.page ++;
 						}
-						var params = $.extend({
+						var params = {
 								page : $.app.track.page
-						}, $.app.track.user||{});
+						};
 						$.api.current().statuses.statuses_mentions(params, function(results){
 							if(results.length == $.api.current().config.count) {
 								$.app.track.busy = false;
