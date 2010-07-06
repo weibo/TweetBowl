@@ -20,6 +20,25 @@
 			$(this).css('top',  (window.nativeWindow.height - 250) / 2);
 			$(this).fadeIn("slow");
 			
+			$('.icon', this).html("<img src='src/icons/message/get_info.png'></img>");
+			$('.message', this).html(info);
+		} else if(type && type == 'warning') {
+			//$(this).backgroundColor($.nativeWindow.config.rgba);
+			$(this).css('left', (window.nativeWindow.width - 250) / 2);
+			$(this).css('top',  (window.nativeWindow.height - 250) / 2);
+			$(this).fadeIn("slow");
+			
+			$('.messagedialogtitle', this).html("警告信息");
+			$('.icon', this).html("<img src='src/icons/message/warning.png'></img>");
+			$('.message', this).html(info);
+		} else if(type && type == 'error') {
+			//$(this).backgroundColor($.nativeWindow.config.rgba);
+			$(this).css('left', (window.nativeWindow.width - 250) / 2);
+			$(this).css('top',  (window.nativeWindow.height - 250) / 2);
+			$(this).fadeIn("slow");
+			
+			$('.messagedialogtitle', this).html("错误信息");
+			$('.icon', this).html("<img src='src/icons/message/error.png'></img>");
 			$('.message', this).html(info);
 		} else if(info == 'close' || type == 'close') {
 			$(this).fadeOut("slow");
