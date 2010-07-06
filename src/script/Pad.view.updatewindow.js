@@ -43,13 +43,15 @@
 		if(form) {
 			var updatetext = form.elements["updatetext"].value;
 			
-			$.api.current().update({status:updatetext}, function(){
-				form.reset();
-				$('#updatewindow').fadeOut('slow');
-				$("#updatewindow #fontleft").html(140);
-				
-				$('.messagedialog').message('发布成功！！！','info');
-			});
+			if(updatetext) {
+				$.api.current().update({status:updatetext}, function(){
+					form.reset();
+					$('#updatewindow').fadeOut('slow');
+					$("#updatewindow #fontleft").html(140);
+					
+					$('.messagedialog').message('发布成功！！！','info');
+				});
+			}
 		}		
 	}
 	
@@ -106,13 +108,15 @@
 		if(form) {
 			var updatetext = form.elements["updatetext"].value;
 			
-			$.api.current().update({status:updatetext,in_reply_to_status_id:$.replywindow.tweet.id}, function(){
-				form.reset();
-				$('#replywindow').fadeOut('slow');
-				$("#replywindow #fontleft").html(140);
-				
-				$('.messagedialog').message('回复成功！！！','info');
-			});
+			if(updatetext) {
+				$.api.current().update({status:updatetext,in_reply_to_status_id:$.replywindow.tweet.id}, function(){
+					form.reset();
+					$('#replywindow').fadeOut('slow');
+					$("#replywindow #fontleft").html(140);
+					
+					$('.messagedialog').message('回复成功！！！','info');
+				});
+			}
 		}		
 	}
 	

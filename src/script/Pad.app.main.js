@@ -30,9 +30,8 @@
 		$.account.read();
 		
 		//初始化系统配置
-		if($.state.storevalue.config) {
+		if($.state.storevalue.config && $.app.config.popwindow) {
 			$.app.config = $.state.storevalue.config;
-			//$.app.config.backing.time = 60;
 		}
 		
 		//初始化系历史记录
@@ -152,6 +151,7 @@
 						$.app.showPopWindow(tweet);
 					}
 				} else {
+					
 					if($.app.config.popwindow.enable) {
 						$.app.showPopWindow(tweet);
 					}
