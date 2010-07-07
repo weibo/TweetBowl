@@ -66,7 +66,6 @@
 					username: $(this).attr('name'),
 					type : $(this).attr('type')
 				};
-				$(".settingpanel .rightcontainer").empty();
 				$(".settingpanel .rightcontainer").accountPanel(account);
 			}
 		});

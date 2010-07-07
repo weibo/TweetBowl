@@ -67,8 +67,17 @@
 	 */
 	$.app.addTimelineListener = function() {
 		if($.app.config && $.app.config.backing && $.app.config.backing.enable) {
-			$.app.timelineListening = setInterval(function(){$.app.getNewFriendsTimeline();}, $.app.config.backing.time * 1000);
-		}	
+			if($.app.config.backing.time && $.app.config.backing.time > 9) {
+				$.app.timelineListening = setInterval(function(){$.app.getNewFriendsTimeline();}, $.app.config.backing.time * 1000);
+			}
+		}
+	}
+	/**
+	 * 重新设置实时信息监听器。
+	 */
+	$.app.changeTimelineListener = function() {
+		$.app.clearTimelineListener();
+		$.app.addTimelineListener();
 	}
 	/**
 	 * 取消实时信息监听。

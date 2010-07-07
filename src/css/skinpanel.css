@@ -11,6 +11,9 @@
 	font:normal 14px 宋体,Tahoma,Arial,Geogia,Sans-serif;
 }
 .skinsetting span {	
+	float: left;
+	display:block;
+	width:100%;
 	font:bolder 16px 宋体,Tahoma,Arial,Geogia,Sans-serif;
 }
 .skinsetting hr {
@@ -21,7 +24,7 @@
 .skinsetting ul {
 	list-style:none;
 	margin: 10px 0px;
-	padding: 10px;
+	padding: 10px 0px 50px 5px;
 	font-weight: lighter;
 }
 
@@ -34,7 +37,18 @@
 .skinsetting ul li label{
 	float: left;
 }
-
+.skinsetting ul li ul{
+	margin: 0px auto;
+	padding: 0px 28px;
+}
+.skinsetting ul li ul .time{
+	font-size:small;
+	display:none;
+}
+.skinsetting ul li ul .time input{
+	width: 50px;
+	margin-right: 5px;
+}
 .skinsetting #colorSelector {
 	float: left;
 	margin:-10px 50px 0px 0px;

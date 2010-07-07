@@ -50,6 +50,7 @@
 					accountInfo = $.extend(accountInfo,userInfo||{});
 					var accountPanel = $.buildAccountPanel(accountInfo);
 					
+					currentObj.empty();
 					currentObj.append(accountPanel);
 					
 					$('.btn_delete', accountPanel).bind('click', function(){
