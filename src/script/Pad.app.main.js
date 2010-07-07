@@ -95,7 +95,7 @@
 		
 		if($.app.track.action == 'friends_timeline' || $.app.track.action == 'user_timeline' || $.app.track.action == 'statuses_mentions') {
 			$.app.track.page = 1;
-			$.app.track.busy = false;
+			$.app.track.end  = false;
 		}
 		
 	}
@@ -122,8 +122,10 @@
 				params.since_id = $.app.track.since_id;
 			}
 			
-			if(params.since_id && !$.app.track.busy) {
+			if(params.since_id) {
+				
 				api.statuses.friends_timeline(params, function(results){
+					
 					if($.app.track && results[0].id) {
 						if($.app.track.since_id < results[0].id) {
 							$.app.track.since_id = results[0].id;
@@ -204,8 +206,8 @@
 				var scrollTop = $(this).attr('scrollTop');
 				var offsetHeight = $(this).attr('offsetHeight');
 				
-				if(scrollTop + offsetHeight == scrollHeight && !$.app.track.busy) {
-					$.app.track.busy = true;
+				if(scrollTop + offsetHeight == scrollHeight && !$.app.track.end) {
+					
 					if($.app.track.action == 'friends_timeline') {
 
 						if(!$.app.track.page) {
@@ -217,8 +219,8 @@
 								page : $.app.track.page
 						};
 						$.api.current().statuses.friends_timeline(params, function(results){
-							if(results.length == $.api.current().config.count) {
-								$.app.track.busy = false;
+							if(results.length < $.api.current().config.count) {
+								$.app.track.end = true;
 							}
 							$.each(results, function(index, value){
 								
@@ -238,8 +240,8 @@
 								page : $.app.track.page
 						}, $.app.track.user||{});
 						$.api.current().statuses.user_timeline(params, function(results){
-							if(results.length == $.api.current().config.count) {
-								$.app.track.busy = false;
+							if(results.length < $.api.current().config.count) {
+								$.app.track.end = true;
 							}
 							$.each(results, function(index, value){
 								
@@ -260,8 +262,8 @@
 								page : $.app.track.page
 						};
 						$.api.current().statuses.statuses_mentions(params, function(results){
-							if(results.length == $.api.current().config.count) {
-								$.app.track.busy = false;
+							if(results.length < $.api.current().config.count) {
+								$.app.track.end = true;
 							}
 							$.each(results, function(index, value){
 								
