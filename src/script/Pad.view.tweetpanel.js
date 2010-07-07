@@ -10,7 +10,21 @@
  * @return {Object} jQuery Object
  */
 (function($){
-	
+	function Todate(num) 
+	{ //Fri Oct 31 18:00:00 UTC+0800 2008 
+	num=num+"";
+	var date="";
+	var month=new Array();
+	month["Jan"]=1;month["Feb"]=2;month["Mar"]=3;month["Apr"]=4;month["May"]=5;month["Jan"]=6;
+	month["Jul"]=7;month["Aug"]=8;month["Sep"]=9;month["Oct"]=10;month["Nov"]=11;month["Dec"]=12;
+	var week=new Array();
+	week["Mon"]="一";week["Tue"]="二";week["Wed"]="三";week["Thu"]="四";week["Fri"]="五";week["Sat"]="六";week["Sun"]="日";
+	str=num.split(" ");
+	date=str[5]+"-";
+	date=date+month[str[1]]+"-"+str[2]+"-"+str[3];
+	//date=date+" 周"+week[str[0]];
+	return date;
+	}
 	$.buildTweetPanel = function(tweet) {
 		if(tweet && tweet.id) {
 			var panelDiv = document.createElement("div");
@@ -47,7 +61,7 @@
 			var footerDiv = document.createElement("div");
 			footerDiv.className = "tweetpanelfooter";
 			var createDate = new Date(tweet.created_at);
-			footerDiv.innerHTML = "<div class='create_date'>" + createDate.format("Y-m-d H:i:s") + "</div>";
+			footerDiv.innerHTML = "<div class='create_date'>" + createDate.format("yyyy-mm-dd HH:MM:ss") + "</div>";
 			
 			panelDiv.appendChild(titleDiv);
 			panelDiv.appendChild(contentDiv);

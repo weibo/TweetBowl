@@ -32,7 +32,7 @@
 		if(account.status) {
 			$("<div class='text'>"+$.link.check(account.status.text)+"</div>").appendTo(detailDiv).addLink();
 			var date = new Date(account.status.created_at);
-			$("<div class='created_at'>"+date.format("Y-m-d H:i:s")+"</div>").appendTo(detailDiv);
+			$("<div class='created_at'>"+date.format("yyyy-mm-dd HH:MM:ss")+"</div>").appendTo(detailDiv);
 		}
 		
 		$(accountDiv).append(detailDiv);
