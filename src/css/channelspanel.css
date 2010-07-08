@@ -7,11 +7,32 @@
 }
 
 .channelspanel .descripanel {
-	margin:20px auto;
+	margin:20px;
 	width:95%;
-	
+	float:left;
 }
 .descripanel span {	
 	text-indent: 40px;
 	font:normal 20px 宋体,Tahoma,Arial,Geogia,Sans-serif;
+}
+
+.channelspanel .buttonpanel {
+	margin:20px;
+	width:95%;
+	float:left;
+}
+
+.buttonpanel .addsubject{
+	position:relative;
+	display:none;
+}
+.buttonpanel .updatepanel{
+	position:relative;
+	display:none;
+}
+
+.channelspanel .subjectpanel {
+	margin:20px;
+	width:95%;
+	float:left;
 }
