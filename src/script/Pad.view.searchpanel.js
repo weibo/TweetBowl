@@ -90,10 +90,10 @@
 				}
 			});
 			
-			$.api.current().search({q:'#百家微博广播频道推荐'}, function(results){
+			$.api.current().search({q:$.channel.keyword}, function(results){
 				
 				$.each(results, function(index, value){
-					var channel = $.trim(value.text.replace('#百家微博广播频道推荐', ''));
+					var channel = $.trim(value.text.replace($.channel.keyword, ''));
 					if(channel) {
 						$.channel.push(channel);
 					}

@@ -9,7 +9,8 @@
 (function($){
 	
 	$.channel = {
-		channels : []
+		channels : [],
+		keyword		: '#百家微博广播频道推荐'
 	};
 	
 	$.channel.push = function(text) {
@@ -25,5 +26,25 @@
 		if(text) {
 			$.channel.channels.push({text:text,number:1});
 		}
+	}
+	
+	$.app.merge = function(subject) {
+		if(!$.app.channels) {
+			$.app.channels = [];
+			$.app.channels.push(subject);
+			return true;
+		} else {
+			$.each($.app.channels, function(index, value) {
+				if(value == subject) {
+					subject = null;
+					return false;
+				}
+			});
+			if(subject) {
+				$.app.channels.push(subject);
+				return true;
+			}
+		}
+		return false;
 	}
 })(jQuery);

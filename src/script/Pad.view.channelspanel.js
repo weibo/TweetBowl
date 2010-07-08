@@ -31,44 +31,62 @@
 		});
 		$("<div class='addsubject'><input type='text' class='channelsubject'/><input type='button' value='添加' class='btn-image'/><div>推荐给其它用户：<input type='checkbox'/></div></div>").appendTo(buttonpanel);
 		$('<div class="updatepanel"><form onsubmit="$.updatewindow.update(this)"><div class="updatewindowbody"><textarea id="updatetext" name="updatetext" wrap="on" style="margin:0 auto;height:150px;width:300px" onkeyup="$.updatewindow.checkLength(this);"></textarea></div><div class="updatewindowfooter"><div id="fontleft" class="fontleft">140</div><div class="bottonright"><input type="button" value="发布" onclick="$.updatewindow.update(this.form)" class="btn-image btn-update"/></div></div></form></div>').appendTo(buttonpanel);
-		
-		var subjectpanel = document.createElement("div");
-		subjectpanel.className = "subjectpanel";
-		$('.channelspanel .subjectpanel').buildSubjectPanel();
-		
+				
 		$(descripanel).appendTo(channelspanel);
 		$(buttonpanel).appendTo(channelspanel);
-		$(subjectpanel).appendTo(channelspanel);
 		
 		return channelspanel;
 	},
 	
 	$.fn.buildSubjectPanel = function() {
-		if($(this)[0]) {
-			$(this).empty();
-			if($.app.channels && $.app.channels.length) {
-				$.each($.app.channels, function(index,value){
-					$('<li>' + value + '</li>').appendTo(this);
-				});
-			}
+		
+		if($(this)[0] && $.app.channels && $.app.channels.length) {
+			var channelspanel = $(this);
+			
+			var subjectpanel = document.createElement("div");
+			subjectpanel.className = "subjectpanel";
+			subjectpanel.innerHTML = "<p>我添加的广播频道</p><hr><ul></ul>";
+			
+			$.each($.app.channels, function(index,value){
+				$('ul', subjectpanel).append('<li>' + value + '</li>');
+			});
+			
+			$(subjectpanel).appendTo(channelspanel);
 		}
 	}
 	
 	$.fn.channelsPanel = function() {		
 		if($(this)[0]){
 			$(this).append($.buildChannelsPanel());
+			$('.channelspanel').buildSubjectPanel();
 			
 			$('.addsubject :button').bind('click', function(){
-				air.trace('click');
-				if(!$.app.channels) {
-					$.app.channels = [];
+				var subject = $('.addsubject .channelsubject').val();
+				var submit = $('.addsubject :checkbox').val();
+				$('.addsubject .channelsubject').val('');
+				if(subject) {
+					subject = "#" + subject;
+					if(!$.app.channels) {
+						$.app.channels = [];
+						$.app.channels.push(subject);
+						$('.channelspanel').buildSubjectPanel();
+						if(submit) {
+							$.submitChannel(subject);
+						}
+					} else {
+						if($.app.merge(subject)) {
+							$('.channelspanel .subjectpanel ul').append('<li>' + subject + '</li>');
+							if(submit) {
+								$.submitChannel(subject);
+							}
+						}
+					}
 				}
-				
-				$.app.channels.push($('.addsubject .channelsubject').val());
-				air.trace($('.addsubject .channelsubject').val());
-				$('.channelspanel .subjectpanel').buildSubjectPanel();
 			});
 		}
 	}
-	
+	$.submitChannel = function(subject) {
+		var status = $.channel.keyword + " " + subject;
+		$.api.current().update({status:status}, function(){});
+	}
 })(jQuery);
