@@ -52,6 +52,11 @@
 			$("#content").searchPanel();
 		});
 		
+		$("<div class='navipanelchannels'></div>").appendTo(panelDiv).bind('click', function(){
+			$.app.addTrackAction('search');
+			$("#content").searchPanel();
+		});
+		
 		return panelDiv;
 	},
 	

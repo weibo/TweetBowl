@@ -65,7 +65,7 @@
 			var footerDiv = document.createElement("div");
 			footerDiv.className = "tweetpanelfooter";
 			var createDate = new Date(tweet.created_at);
-			footerDiv.innerHTML = "<div class='create_date'>" + createDate.format("Y-m-d H:i:s") + "</div>";
+			footerDiv.innerHTML = "<div class='create_date'>" + createDate.format("yyyy-mm-dd HH:MM:ss") + "</div>";
 			
 			panelDiv.appendChild(titleDiv);
 			panelDiv.appendChild(contentDiv);

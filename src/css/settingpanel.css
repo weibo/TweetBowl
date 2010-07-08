@@ -126,6 +126,10 @@
 	background:transparent url(../icons/logo/zuosa.png) no-repeat left 1px !important;
 }
 
+.settingpanelleft .channels {
+	background:transparent url(../icons/channels.png) no-repeat left 1px !important;
+}
+
 .settingpanelleft .setting {
 	background:transparent url(../icons/settings.png) no-repeat left 1px !important;
 }

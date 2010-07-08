@@ -1,0 +1,17 @@
+@CHARSET "utf-8";
+
+.channelspanel {	
+	float:left;
+	width:100%;height:100%;	
+	font:normal 15px 宋体,Tahoma,Arial,Geogia,Sans-serif;
+}
+
+.channelspanel .descripanel {
+	margin:20px auto;
+	width:95%;
+	
+}
+.descripanel span {	
+	text-indent: 40px;
+	font:normal 20px 宋体,Tahoma,Arial,Geogia,Sans-serif;
+}

@@ -28,6 +28,8 @@
 		return searchPanel;
 	};
 	
+	$.buildHashTagPanel
+	
 	$.historyKeyword = function(keyword) {
 		if(!$.searchHistory) {
 			$.searchHistory = [keyword];
@@ -85,6 +87,38 @@
 					});
 					
 					$.historyKeyword(keyword);
+				}
+			});
+			
+			$.api.current().search({q:'#百家微博广播频道推荐'}, function(results){
+				
+				$.each(results, function(index, value){
+					var channel = $.trim(value.text.replace('#百家微博广播频道推荐', ''));
+					if(channel) {
+						$.channel.push(channel);
+					}
+	    		});
+				
+				if($.channel.channels && $.channel.channels.length) {
+					$("<br/><br/><div class='channelsfield'><span class=''>推荐广播频道</span><hr/></div>").appendTo('.searchpanel');
+					
+					$.each($.channel.channels, function(index, value){
+						$('.searchpanel .channelsfield').append("<div>"+value.text+"</div>");
+					});
+					
+					$('.channelsfield div').bind('click', function(){
+						var keyword = $(this).html();
+						if(keyword) {
+							
+							$.api.current().search({q:keyword}, function(results){
+								$("#content").empty();
+								$.each(results, function(index, value){						
+									$("#content").addTweetPanel(value);						
+					    		});
+							});
+						}
+						$.channel.current = keyword;
+					});
 				}
 			});
 		}

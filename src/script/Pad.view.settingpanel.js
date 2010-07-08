@@ -36,11 +36,17 @@
 			});
 		}
 		
-		$("<ul><li><a class='setting'>系统设置</a></li></ul>").appendTo(leftDiv).bind('click', function(){
+		var othersDiv = document.createElement("ul");
+		othersDiv.className = "others";
+		leftDiv.appendChild(othersDiv);
+		$("<li><a class='channels'>我的广播频道</a></li>").appendTo(othersDiv).bind('click', function(){
+			$(".settingpanel .rightcontainer").empty();
+			$(".settingpanel .rightcontainer").channelsPanel();
+		});		
+		$("<li><a class='setting'>系统设置</a></li>").appendTo(othersDiv).bind('click', function(){
 			$(".settingpanel .rightcontainer").empty();
 			$(".settingpanel .rightcontainer").skinPanel();
 		});
-		
 		
 		var rightDiv = document.createElement("div");
 		rightDiv.className = "settingpanelright";

@@ -67,15 +67,18 @@
 
 .historyfield {
 	margin: 50px auto;
-	width:50%;
+	width:60%;
 }
 
 .historyfield span {
-	font-weight:lighter;
+	font-weight:bold;
+	float:left;
+	width:100%
 }
 
 .historyfield hr {
-	
+	float:left;
+	width:100%
 }
 .historyfield div {
 	float: left;
@@ -86,6 +89,41 @@
 	overflow:hidden;
 }
 .historyfield div:hover {
+	padding: 5px 1px 2px;
+	border:solid 1px #888;
+	-webkit-border-radius:3px;
+	background-color:rgba(200,200,200,0.4);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
+}
+
+.channelsfield {
+	margin: 0px auto;
+	width:60%;
+}
+
+.channelsfield span {
+	font-weight:bold;
+	float:left;
+	padding: 20px 0px 0px;
+	width:100%
+}
+
+.channelsfield hr {
+	float:left;
+	width:100%
+}
+.channelsfield div {
+	float: left;
+	padding: 6px 2px 3px;
+	margin: 2px 4px;
+	cursor: pointer;
+	width:22%; height:20px;
+	overflow:hidden;
+}
+.channelsfield div:hover {
 	padding: 5px 1px 2px;
 	border:solid 1px #888;
 	-webkit-border-radius:3px;

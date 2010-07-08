@@ -23,7 +23,7 @@
 	<name>TweetBowl</name>
 
 	<!-- An application version designator (such as "v1", "2.5", or "Alpha 1"). Required. -->
-	<version>0.0.12</version>
+	<version>0.0.13</version>
 
 	<!-- Description, displayed in the AIR application installer. Optional. -->
 	<description/>
@@ -73,7 +73,7 @@
 		<minSize>660 445</minSize>
 
 		<!-- The window's initial maximum size, specified as a width/height pair, such as "1600 1200". Optional. -->
-		<maxSize>1280 1024</maxSize>
+		<maxSize>1920 1080</maxSize>
 	</initialWindow>
 
 	<!-- The subpath of the standard default installation location to use. Optional. -->
