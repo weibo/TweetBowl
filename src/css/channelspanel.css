@@ -25,14 +25,34 @@
 .buttonpanel .addsubject{
 	position:relative;
 	display:none;
+	padding:10px;
+	width: 266px;
+	-webkit-border-radius:5px;
+	background-color:rgba(222,222,222,0.9);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
+}
+.addsubject .channelsubject {
+	width:200px;height:26px;
 }
 .buttonpanel .updatepanel{
 	position:relative;
 	display:none;
+	padding:10px;
+	width: 300px;
+	-webkit-border-radius:5px;
+	background-color:rgba(222,222,222,0.9);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
 }
 
 .channelspanel .subjectpanel {
-	margin:20px;
-	width:95%;
+	margin:0px 20px;
+	width:50%;
+	padding:10px;
 	float:left;
 }

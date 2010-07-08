@@ -30,11 +30,11 @@
 			$('.updatepanel').slideDown(100);
 		});
 		$("<div class='addsubject'><input type='text' class='channelsubject'/><input type='button' value='添加' class='btn-image'/><div>推荐给其它用户：<input type='checkbox'/></div></div>").appendTo(buttonpanel);
-		$('<div class="updatepanel"><form onsubmit="$.updatewindow.update(this)"><div class="updatewindowbody"><textarea id="updatetext" name="updatetext" wrap="on" style="margin:0 auto;height:150px;width:250px" onkeyup="$.updatewindow.checkLength(this);"></textarea></div><div class="updatewindowfooter"><div id="fontleft" class="fontleft">140</div><div class="bottonright"><input type="button" value="发布" onclick="$.updatewindow.update(this.form)" class="btn-image btn-update"/></div></div></form></div>').appendTo(buttonpanel);
+		$('<div class="updatepanel"><form onsubmit="$.updatewindow.update(this)"><div class="updatewindowbody"><textarea id="updatetext" name="updatetext" wrap="on" style="margin:0 auto;height:150px;width:300px" onkeyup="$.updatewindow.checkLength(this);"></textarea></div><div class="updatewindowfooter"><div id="fontleft" class="fontleft">140</div><div class="bottonright"><input type="button" value="发布" onclick="$.updatewindow.update(this.form)" class="btn-image btn-update"/></div></div></form></div>').appendTo(buttonpanel);
 		
 		var subjectpanel = document.createElement("div");
 		subjectpanel.className = "subjectpanel";
-		$("<span>通过我的广播频道，可以做商品营销，做产品宣传，可以跟客户进行交流。<span>").appendTo(subjectpanel);
+		$('.channelspanel .subjectpanel').buildSubjectPanel();
 		
 		$(descripanel).appendTo(channelspanel);
 		$(buttonpanel).appendTo(channelspanel);
@@ -43,11 +43,31 @@
 		return channelspanel;
 	},
 	
+	$.fn.buildSubjectPanel = function() {
+		if($(this)[0]) {
+			$(this).empty();
+			if($.app.channels && $.app.channels.length) {
+				$.each($.app.channels, function(index,value){
+					$('<li>' + value + '</li>').appendTo(this);
+				});
+			}
+		}
+	}
+	
 	$.fn.channelsPanel = function() {		
 		if($(this)[0]){
 			$(this).append($.buildChannelsPanel());
 			
-			
+			$('.addsubject :button').bind('click', function(){
+				air.trace('click');
+				if(!$.app.channels) {
+					$.app.channels = [];
+				}
+				
+				$.app.channels.push($('.addsubject .channelsubject').val());
+				air.trace($('.addsubject .channelsubject').val());
+				$('.channelspanel .subjectpanel').buildSubjectPanel();
+			});
 		}
 	}
 	
