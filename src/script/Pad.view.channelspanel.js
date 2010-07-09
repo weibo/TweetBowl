@@ -30,7 +30,7 @@
 			$('.updatepanel').slideDown(100);
 		});
 		$("<div class='addsubject'><input type='text' class='channelsubject'/><input type='button' value='添加' class='btn-image'/><div>推荐给其它用户：<input type='checkbox'/></div></div>").appendTo(buttonpanel);
-		$('<div class="updatepanel"><form onsubmit="$.updatewindow.update(this)"><div class="updatewindowbody"><textarea id="updatetext" name="updatetext" wrap="on" style="margin:0 auto;height:150px;width:300px" onkeyup="$.updatewindow.checkLength(this);"></textarea></div><div class="updatewindowfooter"><div id="fontleft" class="fontleft">140</div><div class="bottonright"><input type="button" value="发布" onclick="$.updatewindow.update(this.form)" class="btn-image btn-update"/></div></div></form></div>').appendTo(buttonpanel);
+		$('<div class="updatepanel"><div class="updatewindowbody"><textarea wrap="on" style="margin:0 auto;height:150px;width:300px"></textarea></div><div class="updatewindowfooter"><div id="fontleft" class="fontleft">140</div><div class="bottonright"><input type="button" value="取消" class="btn-image btn-cancel"/><input type="button" value="发布" class="btn-image btn-update"/></div></div></div>').appendTo(buttonpanel);
 				
 		$(descripanel).appendTo(channelspanel);
 		$(buttonpanel).appendTo(channelspanel);
@@ -39,19 +39,31 @@
 	},
 	
 	$.fn.buildSubjectPanel = function() {
-		
-		if($(this)[0] && $.channel.favorites && $.channel.favorites.length) {
-			var channelspanel = $(this);
-			
-			var subjectpanel = document.createElement("div");
-			subjectpanel.className = "subjectpanel";
-			subjectpanel.innerHTML = "<p>我添加的广播频道</p><hr><ul></ul>";
+		if($(this)[0]) {
+			if(!$(".subjectpanel", this)[0]) {
+				var subjectpanel = document.createElement("div");
+				subjectpanel.className = "subjectpanel";
+				subjectpanel.innerHTML = "<p>我添加的广播频道</p><hr><ul></ul>";
+				
+				$(subjectpanel).appendTo(this);
+			} else {
+				$(".subjectpanel ul").empty();
+			}
 			
 			$.each($.channel.favorites, function(index,value){
-				$('ul', subjectpanel).append('<li>' + value + '</li>');
+				$('.subjectpanel ul').append('<li><p>'+(index + 1)+'</p><span>' + value + '</span><img src="src/icons/erase.png"/></li>');
 			});
 			
-			$(subjectpanel).appendTo(channelspanel);
+			$('.subjectpanel li').bind('click',	function() {
+				var value = $('.updatepanel textarea').val();
+				if(value.length) value = value + ' ';
+				$('.updatepanel textarea').val(value + $(this).children('span').html());
+			});
+			
+			$('.subjectpanel li img').bind('click',	function() {
+				$.channel.remove($(this).parent().children('span').html());
+				$(this).parent().remove();
+			});
 		}
 	}
 	
@@ -74,9 +86,12 @@
 						if(submit) {
 							$.submitChannel(subject);
 						}
+						if($.channel.favorites && $.channel.favorites.length) {
+							$('.navipanelchannels').show();
+						}
 					} else {
 						if($.channel.merge(subject)) {
-							$('.channelspanel .subjectpanel ul').append('<li>' + subject + '</li>');
+							$('.channelspanel').buildSubjectPanel();
 							if(submit) {
 								$.submitChannel(subject);
 							}
@@ -84,6 +99,32 @@
 					}
 				}
 			});
+			
+			$('.updatepanel textarea').bind('keyup', function(){
+				var length = 140 - $(this).val().length;
+				if(length > 0) {
+					$(".updatepanel #fontleft").html(length);
+				} else {
+					$(".updatepanel #fontleft").html('<font color="red">' + length + '</font>');
+				}
+			})
+			
+			$('.updatepanel .btn-update').bind('click', function(){
+				var updatetext = $('.updatepanel textarea').val();
+				if(updatetext) {
+					$.api.current().update({status:updatetext}, function(){
+						$('.updatepanel textarea').val('')
+						$(".updatepanel #fontleft").html(140);
+						
+						$('.messagedialog').message('发布成功！！！','info');
+					});
+				}
+			})
+			
+			$('.updatepanel .btn-cancel').bind('click', function(){
+				$('.updatepanel textarea').val('')
+				$(".updatepanel #fontleft").html(140);
+			})
 		}
 	}
 	$.submitChannel = function(subject) {

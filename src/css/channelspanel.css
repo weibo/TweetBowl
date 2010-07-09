@@ -40,7 +40,7 @@
 .buttonpanel .updatepanel{
 	position:relative;
 	display:none;
-	padding:20px 15px 1px;
+	padding:20px 15px 10px;
 	width: 300px;
 	-webkit-border-radius:5px;
 	background-color:rgba(222,222,222,0.9);
@@ -66,7 +66,7 @@
 	list-style:none;
 	position:relative;
 	margin: 0px auto 5px;
-	padding:10px;
+	padding:5px;
 	height:200px;
 	overflow-y:auto;
 	border:solid 2px #eee;
@@ -81,17 +81,44 @@
 	float:left;
 	width:200px;
 	margin:5px 10px;
-	padding:5px 10px 5px;
+	padding:3px;
 	border-bottom:1px dotted #333;
 	cursor:pointer;
 	color: #111;
 	font-weight:normal;
 }
-.subjectpanel ul li:hover {	
+.subjectpanel ul li:hover {
+	border-bottom:1px none #333;
+	padding-bottom:4px;
 	-webkit-border-radius:5px;
 	background-color:rgba(255,100,0,0.7);
 	background-image: -webkit-gradient(linear, left top, left bottom,
 		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
 		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
 		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
+}
+
+.subjectpanel ul li p {
+	float: left;
+	-webkit-border-radius:15px;
+	background-color:rgba(200,0,0,0.8);
+	margin: 4px 5px 3px 0px;
+	padding: 3px 2px 0px;
+	width:18px; height:18px;
+	text-align:center;
+	vertical-align:middle;
+	font-size:small;
+	color:#ffffff
+}
+.subjectpanel ul li span {
+	float: left;
+	margin: 5px auto;
+}
+.subjectpanel ul li img {
+	float:right;
+	margin: 6px 0px 3px 5px;
+	display:none;
+}
+.subjectpanel ul li:hover img {	
+	display:block;
 }

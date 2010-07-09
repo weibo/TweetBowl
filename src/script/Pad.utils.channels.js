@@ -48,4 +48,12 @@
 		}
 		return false;
 	}
+	$.channel.remove = function(subject) {
+		$.each($.channel.favorites, function(index, value) {
+			if(value == subject) {
+				$.channel.favorites.splice(index,1);
+				return false;
+			}
+		});
+	}
 })(jQuery);

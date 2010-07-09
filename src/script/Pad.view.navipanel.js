@@ -66,8 +66,8 @@
 		$.each($.channel.favorites, function(index, value){
 			$("<li><p>"+(index + 1)+"</p><span>"+value+"</span></li>").appendTo(".channelmenu ul").bind('click', function(){
 				$.app.addTrackAction('search_channel');
+				$.channel.current = value;
 				$.api.current().search({q:value}, function(results){
-					$.channel.current = value;
 					$("#content").empty();
 					$.each(results, function(index, value){						
 						$("#content").addTweetPanel(value);						

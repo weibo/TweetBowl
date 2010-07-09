@@ -63,7 +63,7 @@
 		}
 		
 		//存储我的广播频道
-		if(!$.state.storevalue.channels && $.channel.favorites) {
+		if($.channel.favorites) {
 			$.state.storevalue.channels = $.channel.favorites;
 		}
 		

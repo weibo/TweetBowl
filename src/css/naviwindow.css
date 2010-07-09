@@ -60,6 +60,9 @@
 	cursor:pointer;
 	display:none;
 }
+.navipanelchannels .channelsimg {
+	margin-top:1px;
+}
 .navipanelchannels .channelmenu {	
 	position:absolute; 
 	display: table;
