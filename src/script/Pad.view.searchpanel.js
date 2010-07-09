@@ -109,7 +109,7 @@
 					$('.channelsfield div').bind('click', function(){
 						var keyword = $(this).html();
 						if(keyword) {
-							
+							$.app.addTrackAction('search_channel');
 							$.api.current().search({q:keyword}, function(results){
 								$("#content").empty();
 								$.each(results, function(index, value){						

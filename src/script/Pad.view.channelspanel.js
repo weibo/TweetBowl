@@ -25,7 +25,7 @@
 			$('.updatepanel').hide();
 			$('.addsubject').slideDown(100);
 		});
-		$("<input type='button' value='我要广播' class='btn-image'/>").appendTo(buttonpanel).appendTo(buttonpanel).bind('click', function(){
+		$("<input type='button' value='通过我的频道发布广播' class='btn-image'/>").appendTo(buttonpanel).appendTo(buttonpanel).bind('click', function(){
 			$('.addsubject').hide();
 			$('.updatepanel').slideDown(100);
 		});
@@ -40,14 +40,14 @@
 	
 	$.fn.buildSubjectPanel = function() {
 		
-		if($(this)[0] && $.app.channels && $.app.channels.length) {
+		if($(this)[0] && $.channel.favorites && $.channel.favorites.length) {
 			var channelspanel = $(this);
 			
 			var subjectpanel = document.createElement("div");
 			subjectpanel.className = "subjectpanel";
 			subjectpanel.innerHTML = "<p>我添加的广播频道</p><hr><ul></ul>";
 			
-			$.each($.app.channels, function(index,value){
+			$.each($.channel.favorites, function(index,value){
 				$('ul', subjectpanel).append('<li>' + value + '</li>');
 			});
 			
@@ -62,19 +62,20 @@
 			
 			$('.addsubject :button').bind('click', function(){
 				var subject = $('.addsubject .channelsubject').val();
-				var submit = $('.addsubject :checkbox').val();
+				var submit = $('.addsubject :checkbox').attr('checked');
 				$('.addsubject .channelsubject').val('');
+				$('.addsubject :checkbox').attr('checked', false);
 				if(subject) {
 					subject = "#" + subject;
-					if(!$.app.channels) {
-						$.app.channels = [];
-						$.app.channels.push(subject);
+					if(!$.channel.favorites || !$.channel.favorites.length) {
+						$.channel.favorites = [];
+						$.channel.favorites.push(subject);
 						$('.channelspanel').buildSubjectPanel();
 						if(submit) {
 							$.submitChannel(subject);
 						}
 					} else {
-						if($.app.merge(subject)) {
+						if($.channel.merge(subject)) {
 							$('.channelspanel .subjectpanel ul').append('<li>' + subject + '</li>');
 							if(submit) {
 								$.submitChannel(subject);

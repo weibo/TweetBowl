@@ -55,7 +55,66 @@
 .navipanelchannels {
 	float: left;
 	margin-left:5px;
+	padding-bottom:3px;
 	width:16px;height:16px;
 	cursor:pointer;
-	background:transparent url(../icons/navibar/channels.png) no-repeat center 1px !important;
+	display:none;
+}
+.navipanelchannels .channelmenu {	
+	position:absolute; 
+	display: table;
+	width:250px;height:280px;
+	border:1px outset #e1e1e1;
+	-webkit-border-radius:5px;
+	background-color:rgba(222,222,222,0.6);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
+	font:normal larger 宋体,Tahoma,Arial,Geogia,Sans-serif;
+	display:none;
+	z-index: 999;
+}
+
+.channelmenu ul {
+	list-style:none;
+	margin:10px 10px;
+	padding:5px;
+	height:245px;
+	overflow-y:auto;
+}
+
+.channelmenu ul li {
+	float:left;
+	width:200px;
+	margin:0 auto;
+	padding:3px 5px 3px;
+	cursor:pointer;
+	color: #111;
+	font-weight:bold;
+}
+
+.channelmenu ul li:hover {	
+	-webkit-border-radius:5px;
+	background-color:rgba(255,100,0,0.7);
+	background-image: -webkit-gradient(linear, left top, left bottom,
+		color-stop(10%, rgba(255, 255, 255, .6)),/*透明度 40%*/
+		color-stop(60%, rgba(255, 255, 255, .3)), /*透明度 70%*/
+		color-stop(100%, rgba(255, 255, 255, .1)));/*透明度 90%*/
+}
+.channelmenu ul li p {
+	float: left;
+	-webkit-border-radius:15px;
+	background-color:rgba(200,0,0,0.8);
+	margin: 4px 5px 3px 0px;
+	padding: 3px 2px 0px;
+	width:18px; height:18px;
+	text-align:center;
+	vertical-align:middle;
+	font-size:small;
+	color:#ffffff
+}
+.channelmenu ul li span {
+	float: left;
+	margin: 5px auto;
 }

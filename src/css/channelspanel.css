@@ -40,7 +40,7 @@
 .buttonpanel .updatepanel{
 	position:relative;
 	display:none;
-	padding:20px 10px 1px;
+	padding:20px 15px 1px;
 	width: 300px;
 	-webkit-border-radius:5px;
 	background-color:rgba(222,222,222,0.9);

@@ -39,8 +39,7 @@
 			});
 		});
 		$("<div class='navipanelfriends'><img src='src/icons/navibar/friends.png' width='16px' height='16px' class='friendsimg'></img></div>").appendTo(panelDiv);
-		
-		
+				
 		$("<div class='navipanelupdate'></div>").appendTo(panelDiv).bind('click', function(){
 			var position = $(this).position();
 			position.top = position.top + $(this).outerHeight();
@@ -52,13 +51,31 @@
 			$("#content").searchPanel();
 		});
 		
-		$("<div class='navipanelchannels'></div>").appendTo(panelDiv).bind('click', function(){
-			$.app.addTrackAction('search');
-			$("#content").searchPanel();
-		});
+		$("<div class='navipanelchannels'><img src='src/icons/navibar/channels.png' width='16px' height='16px' class='channelsimg'/></div>").appendTo(panelDiv);
 		
 		return panelDiv;
 	},
+	
+	$.buildChannelMenu = function() {		
+		if(!$(".navipanelchannels .channelmenu")[0]) {
+			$(".navipanelchannels").append("<div class='channelmenu'><ul></ul></div>");
+		} else {
+			$(".channelmenu ul").empty();
+		}
+		
+		$.each($.channel.favorites, function(index, value){
+			$("<li><p>"+(index + 1)+"</p><span>"+value+"</span></li>").appendTo(".channelmenu ul").bind('click', function(){
+				$.app.addTrackAction('search_channel');
+				$.api.current().search({q:value}, function(results){
+					$.channel.current = value;
+					$("#content").empty();
+					$.each(results, function(index, value){						
+						$("#content").addTweetPanel(value);						
+			    	});
+				});
+			});
+		});
+	}
 	
 	$.buildTitleMenu = function() {
 		var menu = document.createElement("ul");
@@ -119,6 +136,22 @@
 			$('.navipanelfriends .friendsimg').bind('click', function(){
 				$(".friendspanel").friendsPanel();
 			});
+			
+			$('.navipanelchannels').hover(
+				function () {
+					if($.channel.favorites && $.channel.favorites.length) {
+						$.buildChannelMenu();
+						$('.channelmenu').slideDown(100);
+					}	
+				}, 
+				function () {
+					$('.channelmenu').slideUp(100);			
+				}
+			);
+			
+			if($.channel.favorites && $.channel.favorites.length) {
+				$('.navipanelchannels').show();
+			}
 		}
 	}
 	

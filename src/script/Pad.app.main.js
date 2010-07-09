@@ -34,10 +34,15 @@
 			$.app.config = $.state.storevalue.config;
 		}
 		
-		//初始化系历史记录
+		//初始化历史记录
 		if($.state.storevalue.track) {
 			$.app.track = $.state.storevalue.track;
 			$.app.track.action = 'init';
+		}
+		
+		//初始化我的广播频道
+		if($.state.storevalue.channels) {
+			$.channel.favorites = $.state.storevalue.channels;
 		}
 		
 		$.app.addTimelineListener();
@@ -55,6 +60,11 @@
 		//存储历史记录
 		if(!$.state.storevalue.track && $.app.track) {
 			$.state.storevalue.track = $.app.track;
+		}
+		
+		//存储我的广播频道
+		if(!$.state.storevalue.channels && $.channel.favorites) {
+			$.state.storevalue.channels = $.channel.favorites;
 		}
 		
 		//存储数据到存储区

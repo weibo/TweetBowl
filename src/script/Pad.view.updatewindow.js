@@ -14,7 +14,11 @@
 	$.updatewindow = {};
 	
 	$.updatewindow.show = function(position) {
-
+		
+		if($.app.track.action == 'search_channel' && $.channel.current) {
+			$('#updatewindow #updatetext').val($.channel.current);
+		}
+		
 		if(position.left + $('#updatewindow').outerWidth(true) > 800) {
 			$('#updatewindow').css('left',position.left - $('#updatewindow').outerWidth(true));
 		} else {
