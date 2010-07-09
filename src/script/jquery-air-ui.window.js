@@ -88,7 +88,7 @@
     			} else if(value == 'maximize') {
     				$('.windowheader').append("<div id='tools-maximize' class='tools-maximize'></div>");
     				$('.windowheader .tools-maximize').click(function(){
-    					
+
     					if(!$.nativeWindow.displayState || $.nativeWindow.displayState == runtime.flash.display.StageDisplayState.NORMAL) {
     						nativeWindow.stage.displayState = runtime.flash.display.StageDisplayState.FULL_SCREEN_INTERACTIVE;
     						$.nativeWindow.displayState = runtime.flash.display.StageDisplayState.FULL_SCREEN_INTERACTIVE;
@@ -198,7 +198,7 @@
 	
 	$.nativeWindow.state = 'preserve';
 	$.nativeWindow.config = {};
-	$.nativeWindow.config.rgba = {r: 75, g: 175, b: 175, a: 0.8};
+	$.nativeWindow.config.rgba = {r: 0, g: 150, b: 200, a: 0.8};
 	
 	$.fn.backgroundColor = function(rgba) {
 		$.nativeWindow.config.rgba = jQuery.extend($.nativeWindow.config.rgba, rgba||{});

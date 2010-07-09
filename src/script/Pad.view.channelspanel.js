@@ -39,7 +39,7 @@
 	},
 	
 	$.fn.buildSubjectPanel = function() {
-		if($(this)[0]) {
+		if($(this)[0] && $.channel.favorites && $.channel.favorites.length) {
 			if(!$(".subjectpanel", this)[0]) {
 				var subjectpanel = document.createElement("div");
 				subjectpanel.className = "subjectpanel";
