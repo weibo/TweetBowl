@@ -1,10 +1,8 @@
 /**
- * Main Class.
+ * System Main Class.
  * 
  * @author Helio (waltz_h@163.com)
  * @version 1.0
- * @param {Object} opts Several options (see README for documentation)
- * @return {Object} jQuery Object
  */
 (function($){
 	
@@ -112,10 +110,8 @@
 			$.tweetCache.empty();
 		}
 		
-		if($.app.track.action == 'friends_timeline' || $.app.track.action == 'user_timeline' || $.app.track.action == 'statuses_mentions') {
-			$.app.track.page = 1;
-			$.app.track.end  = false;
-		}
+		$.app.track.page = 1;
+		$.app.track.end  = false;
 		
 	}
 	/**
@@ -172,7 +168,7 @@
 				if($.app.track && $.app.track.action == 'friends_timeline') {
 					$("#content").insertTweetPanel(tweet);
 					
-					if($.nativeWindow.displayState && $.nativeWindow.displayState == 'minimized' && $.app.config.popwindow.enable) {
+					if((!nativeWindow.visible || $.nativeWindow.displayState == 'minimized') && $.app.config.popwindow.enable) {
 						$.app.showPopWindow(tweet);
 					}
 				} else {
@@ -217,6 +213,11 @@
 			}
 		}
 	}
+	/**
+	 * 窗口滚动条事件
+	 * 
+	 * 当滚动到最后时，自动获取下一页并显示。
+	 */
 	$.fn.scrollActionListener = function(){
 		if($(this)[0]){
 			$(this).bind('scroll', function(){
@@ -281,6 +282,52 @@
 								page : $.app.track.page
 						};
 						$.api.current().statuses.statuses_mentions(params, function(results){
+							if(results.length < $.api.current().config.count) {
+								$.app.track.end = true;
+							}
+							$.each(results, function(index, value){
+								
+								$("#content").addTweetPanel(value);
+								
+				    		});
+						});
+					}
+					
+					if($.app.track.action == 'search' && $.channel.current) {
+
+						if(!$.app.track.page) {
+							$.app.track.page = 2;
+						} else {
+							$.app.track.page ++;
+						}
+						var params = {
+								page : $.app.track.page,
+								q : $.channel.current
+						};
+						$.api.current().search(params, function(results){
+							if(results.length < $.api.current().config.count) {
+								$.app.track.end = true;
+							}
+							$.each(results, function(index, value){
+								
+								$("#content").addTweetPanel(value);
+								
+				    		});
+						});
+					}
+					
+					if($.app.track.action == 'search_channel' && $.channel.current) {
+
+						if(!$.app.track.page) {
+							$.app.track.page = 2;
+						} else {
+							$.app.track.page ++;
+						}
+						var params = {
+								page : $.app.track.page,
+								q : $.channel.current
+						};
+						$.api.current().search(params, function(results){
 							if(results.length < $.api.current().config.count) {
 								$.app.track.end = true;
 							}

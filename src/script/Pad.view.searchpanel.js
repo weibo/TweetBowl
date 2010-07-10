@@ -63,14 +63,14 @@
 			$('.searchbutton', searchPanel).bind('click', function(){
 				var keyword = $(':input[name=keyword]', searchPanel).val();
 				if(keyword) {
-					
+					$.app.addTrackAction('search');
 					$.api.current().search({q:keyword}, function(results){
 						$("#content").empty();
 						$.each(results, function(index, value){						
 							$("#content").addTweetPanel(value);						
 			    		});
 					});
-					
+					$.channel.current = keyword;
 					$.historyKeyword(keyword);
 				}
 			});
@@ -78,14 +78,14 @@
 			$('.historyfield div', searchPanel).bind('click', function(){
 				var keyword = $(this).html();
 				if(keyword) {
-					
+					$.app.addTrackAction('search');
 					$.api.current().search({q:keyword}, function(results){
 						$("#content").empty();
 						$.each(results, function(index, value){						
 							$("#content").addTweetPanel(value);						
 			    		});
 					});
-					
+					$.channel.current = keyword;
 					$.historyKeyword(keyword);
 				}
 			});

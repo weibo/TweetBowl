@@ -1,5 +1,5 @@
 /**
- * This jQuery plugin check url in adobe air.
+ * This jQuery plugin about channel.
  * 
  * This plugin needs at least jQuery 1.4.2
  *
