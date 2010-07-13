@@ -68,6 +68,7 @@
 				$.app.addTrackAction('search_channel');
 				$.channel.current = value;
 				$.api.current().search({q:value}, function(results){
+					$.app.addTrackSinceId(results[0].id);
 					$("#content").empty();
 					$.each(results, function(index, value){						
 						$("#content").addTweetPanel(value);						

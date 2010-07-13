@@ -138,22 +138,39 @@
 			}
 			
 			if(params.since_id) {
-				
-				api.statuses.friends_timeline(params, function(results){
-					
-					if($.app.track && results[0].id) {
-						if($.app.track.since_id < results[0].id) {
-							$.app.track.since_id = results[0].id;
+				if($.app.track.action == 'search_channel' && $.channel.current) {
+					params.q = $.channel.current;
+					$.api.current().search(params, function(results){
+						if($.app.track && results[0].id) {
+							if($.app.track.since_id < results[0].id) {
+								$.app.track.since_id = results[0].id;
+							}
 						}
-					}
-					$.tweetCache.merge(results);
-					
-					if($.tweetCache.length() && !$.app.popthread) {
-						$.app.addPopListener();
-					} else if(!$.tweetCache.length() && $.app.popthread) {
-						$.app.clearPopListener();
-					}
-				});
+						$.tweetCache.merge(results);
+						
+						if($.tweetCache.length() && !$.app.popthread) {
+							$.app.addPopListener();
+						} else if(!$.tweetCache.length() && $.app.popthread) {
+							$.app.clearPopListener();
+						}
+					});
+				} else {
+					api.statuses.friends_timeline(params, function(results){
+						
+						if($.app.track && results[0].id) {
+							if($.app.track.since_id < results[0].id) {
+								$.app.track.since_id = results[0].id;
+							}
+						}
+						$.tweetCache.merge(results);
+						
+						if($.tweetCache.length() && !$.app.popthread) {
+							$.app.addPopListener();
+						} else if(!$.tweetCache.length() && $.app.popthread) {
+							$.app.clearPopListener();
+						}
+					});
+				}				
 			}
 		}
 	}
@@ -165,7 +182,7 @@
 			$.app.popthread = setInterval(function(){
 				var tweet = $.tweetCache.pop();
 				
-				if($.app.track && $.app.track.action == 'friends_timeline') {
+				if($.app.track && ($.app.track.action == 'friends_timeline' || $.app.track.action == 'search_channel')) {
 					$("#content").insertTweetPanel(tweet);
 					
 					if((!nativeWindow.visible || $.nativeWindow.displayState == 'minimized') && $.app.config.popwindow.enable) {

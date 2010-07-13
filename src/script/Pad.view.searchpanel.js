@@ -111,6 +111,7 @@
 						if(keyword) {
 							$.app.addTrackAction('search_channel');
 							$.api.current().search({q:keyword}, function(results){
+								$.app.addTrackSinceId(results[0].id);
 								$("#content").empty();
 								$.each(results, function(index, value){						
 									$("#content").addTweetPanel(value);						
