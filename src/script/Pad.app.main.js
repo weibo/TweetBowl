@@ -106,7 +106,7 @@
 		}
 		$.app.track.action = action;
 		
-		if($.app.track.action == 'friends_timeline') {
+		if($.app.track.action == 'friends_timeline' || $.app.track.action == 'search_channel') {
 			$.tweetCache.empty();
 		}
 		
