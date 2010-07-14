@@ -17,7 +17,7 @@
 	$.state.Manager.save = function() {
 		$.account.save();
 		var bytes = new air.ByteArray();
-		var value = Ext.encode($.state.storevalue);
+		var value = $.encode($.state.storevalue);
 		bytes.writeUTFBytes(value);
 		air.EncryptedLocalStore.setItem($.state.storekey, bytes);
 	}
@@ -26,7 +26,7 @@
 		if (storedValue) {
 			var value = storedValue.readUTFBytes(storedValue.length);
 			if(value) {
-				$.state.storevalue = Ext.decode(value);
+				$.state.storevalue = $.decode(value);
 			}
 		}
 	}

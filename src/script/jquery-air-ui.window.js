@@ -212,7 +212,7 @@
 		if(!text) {
 			return null;
 		}
-		return eval("("+text+")");
+		return $.parseJSON(text);
 	}
 	$.encode = function(json) {
 		if(!json) {
