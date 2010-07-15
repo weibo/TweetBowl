@@ -91,7 +91,10 @@
 			$(this).empty();
 			$(this).append(settingPanel);			
 			
-			$(".settingpanel .rightcontainer").append("<div class='descri'>百家微博可以帮你同时管理多个微博帐户。帐户之间切换方便。</div>");			
+			$(".settingpanel .rightcontainer").append("<div class='descri'></div>");
+			$("<p>1.支持多个微博帐户同时登录，可以帮你同时管理多个微博帐户，帐户之间切换方便。<p>").appendTo(".rightcontainer .descri");
+			$("<p>2.支持实时信息监听，可以监听好友实时发布的微博。<p>").appendTo(".rightcontainer .descri");
+			$("<p>3.支持我的广播频道，可以管理我的广播频道，通过我的广播频道发布微博，并可监听我的广播频道的最新微博。<p>").appendTo(".rightcontainer .descri");
 			
 			$('li',settingPanel).bind('click', function(){
 				if($(this)[0]){
