@@ -13,7 +13,11 @@
     air.NativeApplication.nativeApplication.autoExit = false; 
     var iconLoad = new air.Loader(); 
     var iconMenu = new air.NativeMenu(); 
-    //iconMenu.addItem(new air.NativeMenuItem("", true));//分隔符
+    var updateCommand = iconMenu.addItem(new air.NativeMenuItem("检查更新")); 
+    updateCommand.addEventListener(air.Event.SELECT,function(event){ 
+    	application.checkForUpdates();
+    });
+    iconMenu.addItem(new air.NativeMenuItem("", true));//分隔符
     //退出菜单
     var exitCommand = iconMenu.addItem(new air.NativeMenuItem("退出")); 
     exitCommand.addEventListener(air.Event.SELECT,function(event){ 

@@ -7,6 +7,7 @@
 (function($){
 	
 	$.app = {
+		home_url: "http://wiki.github.com/tweetbowl/TweetBowl/",
 		config	: {
 			backing		: {enable:true,time:60},
 			popwindow	: {enable:true,time:10}
