@@ -11,7 +11,7 @@
 	$.channel = {
 		channels	: [],
 		favorites	: [],
-		keyword		: '#百家微博广播频道推荐'
+		keyword		: '#somechannelkey'
 	};
 	
 	$.channel.push = function(text) {
