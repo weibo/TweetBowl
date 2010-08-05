@@ -23,7 +23,7 @@
 		} else if(type == 'sohu') {
 			$("form div",loginDiv).first().html("＂写句话，发张图片，记录点滴瞬间。＂");
 		} else if(type == 'sina') {
-			$("form div",loginDiv).first().html("＂暂未不支持。＂");
+			$("form div",loginDiv).first().html("＂加入微博，一起分享新鲜事儿~＂");
 		} else if(type == 'digu') {
 			$("form div",loginDiv).first().html("＂嘀咕是我们普通人交流平凡生活的微博客，随时随地拍照记录所见所感，分享每一个生活点滴。＂");
 		} else if(type == 'renjian') {
