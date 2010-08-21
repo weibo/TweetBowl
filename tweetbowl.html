@@ -80,7 +80,17 @@
 				$(".windowheader").addNaviPanel();
 				
 				if($.account.accounts.length) {
-					$("#content").searchPanel();
+					//$("#content").searchPanel();
+					$.app.addTrackAction('friends_timeline');
+			
+					$.api.current().statuses.friends_timeline({}, function(results){
+						$("#content").empty();
+						$.app.addTrackSinceId(results[0].id);
+						
+						$.each(results, function(index, value){						
+							$("#content").addTweetPanel(value);						
+			    		});
+					});
 				} else {
 					$("#content").settingPanel();
 				}

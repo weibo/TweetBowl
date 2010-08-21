@@ -4,7 +4,7 @@
 	<id>com.helio.tweetbowl</id>
 	<filename>TweetBowl</filename>
 	<name>TweetBowl</name>
-	<version>0.0.20</version>
+	<version>0.0.21</version>
 	<description/>
 	<copyright/>
 	<initialWindow>
@@ -32,8 +32,7 @@
 		<image128x128>icons/bowl_128.png</image128x128>
 	</icon>
 
-	<fileTypes>
-	</fileTypes>
+	<fileTypes/>
 	<customUpdateUI>false</customUpdateUI>
 	<allowBrowserInvocation>false</allowBrowserInvocation>
 </application>

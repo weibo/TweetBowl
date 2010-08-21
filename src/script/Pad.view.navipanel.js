@@ -43,10 +43,10 @@
 			$.updatewindow.show(position);
 		});
 		
-		$("<div class='navipanelsearch'></div>").appendTo(panelDiv).bind('click', function(){
-			$.app.addTrackAction('search');
-			$("#content").searchPanel();
-		});
+//		$("<div class='navipanelsearch'></div>").appendTo(panelDiv).bind('click', function(){
+//			$.app.addTrackAction('search');
+//			$("#content").searchPanel();
+//		});
 		
 		$("<div class='navipanelchannels'><img src='src/icons/navibar/channels.png' width='16px' height='16px' class='channelsimg'/></div>").appendTo(panelDiv);
 		
