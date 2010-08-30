@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<update xmlns="http://ns.adobe.com/air/framework/update/description/1.0">
+  <version>0.0.22</version>
+  <url>http://cloud.github.com/downloads/weibo/TweetBowl/TweetBowl.air</url>
+  <description><![CDATA[ TweetBowl-0.0.21 ]]></description>
+</update>

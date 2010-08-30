@@ -16,15 +16,15 @@
 		leftDiv.className = "settingpanelleft";
 		leftDiv.innerHTML = "<ul></ul>";
 		
-		$("ul", leftDiv).append("<li><a class='cnfol'>中金在线微博</a></li>");
-		$("ul", leftDiv).append("<li><a class='twitter'>Twitter(推特)</a></li>");
-		$("ul", leftDiv).append("<li><a class='sohu'>搜狐微博</a></li>");
 		$("ul", leftDiv).append("<li><a class='sina'>新浪微博</a></li>");
+		$("ul", leftDiv).append("<li><a class='sohu'>搜狐微博</a></li>");
+		$("ul", leftDiv).append("<li><a class='twitter'>Twitter</a></li>");
+		$("ul", leftDiv).append("<li><a class='cnfol'>中金在线微博</a></li>");
 		$("ul", leftDiv).append("<li><a class='api9911'>9911微博客</a></li>");
 		$("ul", leftDiv).append("<li><a class='digu'>digu嘀咕</a></li>");
 		$("ul", leftDiv).append("<li><a class='renjian'>人间网微社区</a></li>");
 		$("ul", leftDiv).append("<li><a class='tongxue'>同学网</a></li>");
-		$("ul", leftDiv).append("<li><a class='zuosa'>做啥网zuosa</a></li>");
+		//$("ul", leftDiv).append("<li><a class='zuosa'>做啥网zuosa</a></li>");
 		
 		if($.account.accounts.length) {
 			$(leftDiv).append("<div>已经添加的微博<ul></ul></div>");
@@ -36,10 +36,10 @@
 		var othersDiv = document.createElement("ul");
 		othersDiv.className = "others";
 		leftDiv.appendChild(othersDiv);
-		$("<li><a class='channels'>我的广播频道</a></li>").appendTo(othersDiv).bind('click', function(){
-			$(".settingpanel .rightcontainer").empty();
-			$(".settingpanel .rightcontainer").channelsPanel();
-		});		
+//		$("<li><a class='channels'>我的广播频道</a></li>").appendTo(othersDiv).bind('click', function(){
+//			$(".settingpanel .rightcontainer").empty();
+//			$(".settingpanel .rightcontainer").channelsPanel();
+//		});		
 		$("<li><a class='setting'>系统设置</a></li>").appendTo(othersDiv).bind('click', function(){
 			$(".settingpanel .rightcontainer").empty();
 			$(".settingpanel .rightcontainer").skinPanel();
@@ -89,9 +89,10 @@
 			$(this).append(settingPanel);			
 			
 			$(".settingpanel .rightcontainer").append("<div class='descri'></div>");
-			$("<p>1.支持多个微博帐户同时登录，可以帮你同时管理多个微博帐户，帐户之间切换方便。<p>").appendTo(".rightcontainer .descri");
-			$("<p>2.支持实时信息监听，可以监听好友实时发布的微博。<p>").appendTo(".rightcontainer .descri");
-			$("<p>3.支持我的广播频道，可以管理我的广播频道，通过我的广播频道发布微博，并可监听我的广播频道的最新微博。<p>").appendTo(".rightcontainer .descri");
+			$("<p>1.支持我的主页、@我的、好友微博、发布微博、转发微博等基本操作。<p>").appendTo(".rightcontainer .descri");
+			$("<p>2.支持多个微博帐户同时登录，可以帮你同时管理多个微博帐户，帐户之间切换方便。<p>").appendTo(".rightcontainer .descri");
+			$("<p>3.支持实时信息监听，可以监听好友实时发布的微博。<p>").appendTo(".rightcontainer .descri");
+			$("<p>目前支持的微博有：<br/>新浪微博、搜狐微博、Twitter（大陆以外地区）、中金在线微博、9911微博、Digu嘀咕、人间网微博、同学网。<p>").appendTo(".rightcontainer .descri");
 			
 			$('li',settingPanel).bind('click', function(){
 				if($(this)[0]){
